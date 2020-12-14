@@ -1,0 +1,93 @@
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+section{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.mx0{
+    margin-left:0;
+    margin-right:0;
+}
+
+.mx1{
+    margin-left:0.25em;
+    margin-right:0.25em;
+}
+
+.my0{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.my8{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.mb4{
+    margin-bottom: 1.2em;
+}
+
+.py1{
+    padding-top:0.25em;
+    padding-bottom:0.25em;
+}
+
+.linehg1{
+ line-height:1em;
+}
+
+.txtdecor-none{
+    text-decoration: none;
+}
+
+
+
+.fitcont{
+    width:fit-content;
+}
+
+.centerx{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centertxt{
+    text-align: center;
+}
+
+.em4{
+    font-size: 4em;
+}
+
+.h100{
+    height: 100%;
+}
+
+.flex-row{
+    display: flex;
+    align-items: center;
+}
+
+.gridpcenter{
+    display: grid;
+    place-items: center;
+}
+
+nav>a{
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+nav>a:hover{
+    opacity: 1;
+}
+
+nav>a:last-of-type{
+    margin-right: auto;
+}

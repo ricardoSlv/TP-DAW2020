@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  section.w3-containter
+    h1.em4.flex-row.centerx.fitcont= message
+    details
+      summary= error.status 
+      pre #{error.stack}

@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title File Store
+    meta(charset='utf-8')
+    link(rel='icon' href='/favicon.png')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='/javascripts/index.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css')
+    link(rel='stylesheet' href='/stylesheets/w3.css')
+    link(rel='stylesheet' href='/stylesheets/styles.css')
+    script(type='module' src='https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js')
+    script(nomodule='' src='https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js')
+  body
+    header
+      nav.w3-bar.w3-blue.flex-row
+        h3.w3-bar-item.w3-margin-left.my0 Daw File Storage
+        a.w3-bar-item(href='/')   
+          h4.my0.flex-row 
+            ion-icon.mx1(name='home-outline') 
+            | Home
+        a.w3-bar-item(href='/')
+          h4.my0.flex-row
+            ion-icon.mx1(name='file-tray-full-outline')
+            | Files
+        a.w3-bar-item(href='/files/upload')   
+          h4.my0.flex-row 
+            ion-icon.mx1(name='add-outline')
+            | Upload
+        a.w3-bar-item(href='https://github.com/ricardoSlv/DAW2020/tree/master/T8')
+          h4.my0.flex-row
+            ion-icon.mx1(name='logo-github')
+            | Github
+        whitespace
+        h3.w3-bar-item.w3-margin-right.my0 DAW 2020
+
+    main
+      block content
+
+    footer.w3-container.w3-blue
+      h3.w3-margin-left.my0.py1 DAW TPC8 2020
