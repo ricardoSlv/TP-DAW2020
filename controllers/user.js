@@ -1,4 +1,4 @@
-import User from "../models/file.js";
+import User from "../models/user.js";
 
 export function list(){
     return User
