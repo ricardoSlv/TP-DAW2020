@@ -17,7 +17,7 @@ router.get('/login', (req, res, _next) => {
 })
 
 router.get('/logout', (req, res, _next) => {
-    const username = req.user.username
+    const username = req.user?.username
     res.clearCookie('JWT')
     res.status(200).jsonp({Message: `Goodbye ${username}`})
 })
