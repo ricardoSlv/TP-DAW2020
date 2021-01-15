@@ -5,8 +5,8 @@ html
     meta(charset='utf-8')
     link(rel='icon' href='/favicon.png')
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous")
     link(rel='stylesheet' href='/stylesheets/styles.css')
     script(type='module' src='https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js')
     script(nomodule='' src='https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js')
@@ -15,7 +15,7 @@ html
         nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.px-4
           a.navbar-brand(href='/')
             | My To do List
-          button.navbar-toggler( type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+          button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
             span.navbar-toggler-icon
           #navbarContent.collapse.navbar-collapse
             ul.navbar-nav.me-auto
@@ -24,7 +24,7 @@ html
                   ion-icon.px-1(name='home-outline')
                   h5.mb-0='Home' 
               li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='https://github.com/ricardoSlv/DAW2020/tree/master/T6')
+                a.nav-link.d-flex.align-items-center.mb-0(href='https://github.com/ricardoSlv/TP-DAW2020')
                   ion-icon.px-1(name='logo-github')
                   h5.mb-0='Github' 
             span.navbar-text.h5.mb-0

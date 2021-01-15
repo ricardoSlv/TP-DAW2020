@@ -4,7 +4,7 @@ const router = Router()
 
 router.get('/login', (req, res, _next) => {
     const token = jwt.sign({
-        username: req.query.username,
+        username: req.body.username,
         expiresIn:'1d'
     },process.env.JWTSECRET)
 
@@ -13,7 +13,7 @@ router.get('/login', (req, res, _next) => {
         httpOnly: true
     })
 
-    res.status(200).jsonp({Message: `Welcome ${req.query.username}`})
+    res.status(200).jsonp({Message: `Welcome ${req.body.username}`})
 })
 
 router.get('/logout', (req, res, _next) => {
@@ -25,8 +25,5 @@ router.get('/logout', (req, res, _next) => {
 router.get('/logged', (req, res, _next) => {
     res.status(200).jsonp({Message: `Hello ${req.user.username}`})
 })
-
-
-
 
 export default router;
