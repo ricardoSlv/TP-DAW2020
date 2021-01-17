@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.mt-3.text-center='Create Account'
+      form#signupform.col-lg-8(method="post" enctype="multipart/form-data")
+
+        label.form-label(for='nameInput') Name
+        input#nameInput.mb-3.form-control(type='text' name='name' required)
+
+        label.form-label(for='emailInput') Email address
+        input#emailInput.form-control(type='email' name='email' aria-describedby='emailHelp' required)
+        #emailHelp.form-text.mb-3 We'll never share your email with anyone else.
+
+        label.form-label(for='pictureInput') Profile picture
+        input#pictureInput.mb-3.form-control(type='file' name='picture' accept='image/*' required)
+
+        label.form-label(for='passInput') Password
+        input#passInput.mb-3.form-control(type='password' name='pass' required)
+        
+        label.form-label(for='confirmPassInput') Confirm Password
+        input#confirmPassInput.mb-3.form-control(type='password' name='passConf' required)
+
+        label.form-label(for='studentRadio') Position
+        br
+        .form-check.form-check-inline
+          input#studentRadio.form-check-input(type='radio' name='position' value='STUD' checked)
+          label.form-check-label(for='studentRadio')
+            | Student
+        .form-check.form-check-inline
+          input#teacherRadio.form-check-input(type='radio' name='position' value='TEAC')
+          label.mb-3.form-check-label(for='teacherRadio')
+            | Teacher
+        br
+
+        label.form-label(for='courseInput') Course
+        input#courseInput.mb-3.form-control(type='text' name='course' required)
+
+        button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Signup
+
+  script(src='/javascripts/signup.js')
+
+

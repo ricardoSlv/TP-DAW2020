@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.mt-3.text-center='Login'
+      form.col-lg-8
+        .mb-3
+          label.form-label(for='emailInput') Email address
+          input#emailInput.form-control(type='email' aria-describedby='emailHelp')
+          #emailHelp.form-text We'll never share your email with anyone else.
+        .mb-3
+          label.form-label(for='passInput') Password
+          input#passInput.form-control(type='password')
+        .mb-3.form-check
+          input#remember.form-check-input(type='checkbox')
+          label.form-check-label(for='remember') Remember me
+        button.btn.btn-primary.btn-block.w-100(type='submit') Login
+
