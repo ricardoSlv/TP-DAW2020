@@ -12,7 +12,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 import mongoose from 'mongoose'
-const mongoDB = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASS}@daw2020.akqj9.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`
+const mongoDB = `mongodb://127.0.0.1:27017/tpdaw`
+//const mongoDB = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASS}@daw2020.akqj9.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 import jwt from 'jsonwebtoken'
@@ -36,7 +37,7 @@ app.use(express.static(join(__dirname, 'public')))
 app.use((req, _res, next) => {
     jwt.verify(req.cookies.JWT, process.env.JWTSECRET, (e, payload) => {
         if (!e)
-            req.user = {username: payload.username}
+            req.user = {name: payload.name, level: payload.level}
     })
     next()
 })

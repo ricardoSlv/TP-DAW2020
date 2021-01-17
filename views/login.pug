@@ -4,16 +4,20 @@ block content
   section.container
     .row.justify-content-center
       h1.mt-3.text-center='Login'
-      form.col-lg-8
-        .mb-3
-          label.form-label(for='emailInput') Email address
-          input#emailInput.form-control(type='email' aria-describedby='emailHelp')
-          #emailHelp.form-text We'll never share your email with anyone else.
-        .mb-3
-          label.form-label(for='passInput') Password
-          input#passInput.form-control(type='password')
-        .mb-3.form-check
-          input#remember.form-check-input(type='checkbox')
-          label.form-check-label(for='remember') Remember me
+      form#loginform.col-lg-8(method="post" enctype="multipart/form-data")
+
+        label.form-label(for='emailInput') Email address
+        input#emailInput.form-control(type='email'  name='email' aria-describedby='emailHelp')
+        #emailHelp.form-text.mb-3 We'll never share your email with anyone else.
+        
+        label.form-label(for='passInput') Password
+        input#passInput.form-control.mb-3(type='password' name='password' )
+        
+        input#remember.form-check-input.me-2(type='checkbox' name='remember')
+        label.form-check-label.mb-3(for='remember' ) Remember me
+
         button.btn.btn-primary.btn-block.w-100(type='submit') Login
+
+  script(src='/javascripts/login.js')
+  
 

@@ -6,10 +6,10 @@ form.addEventListener('submit', async e => {
     e.preventDefault()
 
     const signupForm = e.target
-    const { name, email, picture, pass, passConf, position, course } = signupForm
+    const { name, email, picture, password, passConf, position, course } = signupForm
     const [STUD, TEAC] = [...position]
 
-    if (pass.value !== passConf.value) {
+    if (password.value !== passConf.value) {
         alert('Passwords don\'t match 😥')
         return
     }
@@ -18,7 +18,7 @@ form.addEventListener('submit', async e => {
 
     signupFormData.append(name.name, name.value)
     signupFormData.append(email.name, email.value)
-    signupFormData.append(pass.name, pass.value)
+    signupFormData.append(password.name, password.value)
     signupFormData.append(course.name, course.value)
     signupFormData.append(picture.name, picture.files[0])
     STUD.checked ? signupFormData.append(STUD.name, STUD.value)
