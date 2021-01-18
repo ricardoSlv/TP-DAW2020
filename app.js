@@ -37,8 +37,10 @@ app.use(express.static(join(__dirname, 'public')))
 
 app.use((req, _res, next) => {
     jwt.verify(req.cookies.JWT, process.env.JWTSECRET, (e, payload) => {
-        if (!e)
+        if (!e){
             req.user = {_id: payload._id, name: payload.name, level: payload.level}
+            User.update({_id: payload._id},{$set:{lastOnline : new Date()}})
+        }
     })
     next()
 })
@@ -48,6 +50,10 @@ app.use((req, _res, next) => {
     console.log(req.user&&Object.entries(req.user))
     console.log((req.user?.id))
     next()
+})
+
+app.get('/',(req,res,_next)=>{
+    res.render('landing',{user: req.user})
 })
 app.use('/', authRouter)
 app.use('/users', usersRouter)

@@ -10,11 +10,8 @@ const upload = multer({ dest: 'uploads/' })
 router.post('/login', upload.none(), async (req, res, _next) => {
     try {
         const { email, password, remember } = req.body
-        console.log(req.body)
 
         const user = await User.checkCredentials(email, password)
-
-        User.update({email},{$set:{lastOnline : new Date()}})
 
         const token = jwt.sign({
             _id: user._id,
@@ -48,7 +45,6 @@ router.get('/login', (req, res, _next) => {
 
 router.get('/logout', (_req, res, _next) => {
     res.clearCookie('JWT')
-    User.update({email},{$set:{lastOnline : new Date()}})
     res.redirect('/')
 })
 
@@ -60,9 +56,6 @@ router.get('/signup', (req, res, _next) => {
 })
 
 router.post('/signup', upload.single('picture'), async (req, res, _next) => {
-    console.log(req.body)
-    console.log(req.file)
-
     try {
         const user = await User.insert(req.body, req.file)
         res.status(200).send(user)
