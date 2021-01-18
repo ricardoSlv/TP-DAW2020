@@ -15,13 +15,14 @@ export function list() {
 export async function insert(user, pictureFile) {
     const newUser = new User(user)
     newUser.dateReg = new Date()
+    newUser.lastOnline = new Date()
 
     const duplicate = await checkDuplicate(newUser.name, newUser.email)
 
     if (duplicate)
         throw new Error(409)
 
-    const userDirectory = join(__dirname, 'public/files/', newUser._id.toString())
+    const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
     //uploads/random => public/id/picture.extension
@@ -49,6 +50,12 @@ export async function checkCredentials(email, password) {
         return user
     else
         throw new Error('401')
+}
+
+export function update(filter, query) {
+    return User
+        .update(filter,query)
+        .exec()
 }
 
 

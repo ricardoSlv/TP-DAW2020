@@ -8,12 +8,13 @@ import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
 router.post('/login', upload.none(), async (req, res, _next) => {
-    //TODO: Update last online
     try {
         const { email, password, remember } = req.body
         console.log(req.body)
 
         const user = await User.checkCredentials(email, password)
+
+        User.update({email},{$set:{lastOnline : new Date()}})
 
         const token = jwt.sign({
             _id: user._id,
@@ -47,11 +48,8 @@ router.get('/login', (req, res, _next) => {
 
 router.get('/logout', (_req, res, _next) => {
     res.clearCookie('JWT')
+    User.update({email},{$set:{lastOnline : new Date()}})
     res.redirect('/')
-})
-
-router.get('/logged', (req, res, _next) => {
-    res.status(200).jsonp({ Message: `Hello ${req.user?.name}` })
 })
 
 router.get('/signup', (req, res, _next) => {
