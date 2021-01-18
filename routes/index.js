@@ -4,11 +4,6 @@ const router = Router()
 
 import * as User from '../controllers/user.js'
 
-import fs from "fs"
-const fsPromises = fs.promises;
-import path, { join } from "path"
-const __dirname = path.resolve(path.dirname(''));
-
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
@@ -49,6 +44,7 @@ router.get('/login', (req, res, _next) => {
         res.render('login')
 })
 
+//TODO: Should be done in the browser
 router.post('/logout', (req, res, _next) => {
     const name = req.user?.name
     res.clearCookie('JWT')
