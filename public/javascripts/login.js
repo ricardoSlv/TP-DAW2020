@@ -24,7 +24,7 @@ form.addEventListener('submit', async e => {
 
         if(resp.status === 200) {
             alert('Login successfull! 😀')
-            window.location='/'
+            window.location.pathname='/'
         }
         else if(resp.status === 401)
             alert('Email or password wrong 😥')

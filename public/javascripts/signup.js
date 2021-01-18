@@ -34,7 +34,7 @@ form.addEventListener('submit', async e => {
 
         if(resp.status === 200) {
             alert('Signup successfull! 😀')
-            window.location='/login'
+            window.location.pathname='/login'
         }
         else if(resp.status === 409)
             alert('Name or Email already in use 😥')

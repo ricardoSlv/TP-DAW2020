@@ -21,6 +21,7 @@ import jwt from 'jsonwebtoken'
 import indexRouter from './routes/index.js'
 import usersRouter from './routes/users.js'
 
+//TODO: Cron Job para limpar os ficheiros perdidos no upload/
 const app = express()
 
 app.set('views', join(__dirname, 'views'))
@@ -43,7 +44,7 @@ app.use((req, _res, next) => {
 })
 
 app.use((req, _res, next) => {
-    console.log(req.cookies)
+    console.log(Object.keys(req.cookies))
     next()
 })
 app.use('/', indexRouter)
