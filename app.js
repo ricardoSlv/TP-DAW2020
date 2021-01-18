@@ -21,6 +21,8 @@ import jwt from 'jsonwebtoken'
 import authRouter from './routes/auth.js'
 import usersRouter from './routes/users.js'
 
+import * as User from './controllers/user.js'
+
 //TODO: Cron Job para limpar os ficheiros perdidos no upload/
 const app = express()
 
@@ -53,6 +55,7 @@ app.use((req, _res, next) => {
 })
 
 app.get('/',(req,res,_next)=>{
+    //TODO: Render news page if logged in
     res.render('landing',{user: req.user})
 })
 app.use('/', authRouter)
