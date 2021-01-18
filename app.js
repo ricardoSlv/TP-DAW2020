@@ -18,7 +18,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 import jwt from 'jsonwebtoken'
 
-import indexRouter from './routes/index.js'
+import authRouter from './routes/auth.js'
 import usersRouter from './routes/users.js'
 
 //TODO: Cron Job para limpar os ficheiros perdidos no upload/
@@ -38,16 +38,18 @@ app.use(express.static(join(__dirname, 'public')))
 app.use((req, _res, next) => {
     jwt.verify(req.cookies.JWT, process.env.JWTSECRET, (e, payload) => {
         if (!e)
-            req.user = {name: payload.name, level: payload.level}
+            req.user = {_id: payload._id, name: payload.name, level: payload.level}
     })
     next()
 })
 
 app.use((req, _res, next) => {
-    console.log(Object.keys(req.cookies))
+    console.log(req.cookies&&Object.keys(req.cookies))
+    console.log(req.user&&Object.entries(req.user))
+    console.log((req.user?.id))
     next()
 })
-app.use('/', indexRouter)
+app.use('/', authRouter)
 app.use('/users', usersRouter)
 
 // catch 404 and forward to error handler
@@ -63,7 +65,7 @@ app.use(function (err, req, res, _) {
 
     // render the error page
     res.status(err.status || 500)
-    res.render('error')
+    res.render('error',{user: req.user})
 })
 
 export default app

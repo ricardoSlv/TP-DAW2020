@@ -18,6 +18,7 @@ router.post('/login', upload.none(), async (req, res, _next) => {
         const token = jwt.sign({
             _id: user._id,
             name: user.name,
+            level: user.name,
             expiresIn: '1d'
         }, process.env.JWTSECRET)
 
@@ -38,17 +39,15 @@ router.post('/login', upload.none(), async (req, res, _next) => {
 })
 
 router.get('/login', (req, res, _next) => {
-    if (req.user?.name)
+    if (req.user)
         res.redirect('/')
     else
         res.render('login')
 })
 
-//TODO: Should be done in the browser
-router.post('/logout', (req, res, _next) => {
-    const name = req.user?.name
+router.get('/logout', (_req, res, _next) => {
     res.clearCookie('JWT')
-    res.status(200).jsonp({ Message: `Goodbye ${name}` })
+    res.redirect('/')
 })
 
 router.get('/logged', (req, res, _next) => {
@@ -56,7 +55,7 @@ router.get('/logged', (req, res, _next) => {
 })
 
 router.get('/signup', (req, res, _next) => {
-    if (req.user.username)
+    if (req.user)
         res.redirect('/')
     else
         res.render('signup')
