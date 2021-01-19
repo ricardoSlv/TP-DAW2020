@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const studentSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
@@ -10,8 +10,10 @@ const studentSchema = new mongoose.Schema({
     //ADMN,PROD,CONS
     level: String,
     dateReg: Date,
-    lastOnline: Date
-},{versionKey: false});
+    lastOnline: Date,
+    favouritesResources: [ObjectId],
+    favouritesPosts: [ObjectId]
+},{versionKey: false})
 
 
-export default mongoose.model('user', studentSchema)
+export default mongoose.model('user', userSchema)
