@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+const ObjectId = mongoose.ObjectId
 
 const resourceSchema = new mongoose.Schema({
     title: String,
