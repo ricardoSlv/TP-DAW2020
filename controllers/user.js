@@ -16,6 +16,8 @@ export async function insert(user, pictureFile) {
     const newUser = new User(user)
     newUser.dateReg = new Date()
     newUser.lastOnline = new Date()
+    newUser.favouritesPosts = []
+    newUser.favouritesResources = []
 
     const duplicate = await checkDuplicate(newUser.name, newUser.email)
 
