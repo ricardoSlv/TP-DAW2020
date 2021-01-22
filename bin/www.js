@@ -2,7 +2,7 @@
 
 /**
  * Module dependencies.
- */
+*/
 
 import app from '../app.js'
 //const debug = require('debug')('dawexpress:server')

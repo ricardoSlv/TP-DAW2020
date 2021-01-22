@@ -23,7 +23,13 @@ export async function insert(user, pictureFile) {
 
     if (duplicate)
         throw new Error(409)
-
+    
+    // In case user_files doesnt exist
+    const userFiles = join(__dirname, 'user_files/') 
+    if (!fs.existsSync(userFiles)) {
+        await fsPromises.mkdir(userFiles)
+    }
+    
     const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
