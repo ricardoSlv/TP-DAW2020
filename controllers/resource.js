@@ -1,1 +1,0 @@
-import Resource from "../models/resource.js";

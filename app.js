@@ -6,7 +6,7 @@ import logger from 'morgan'
 import createError from 'http-errors'
 
 import path, { join } from 'path'
-const __dirname = path.resolve(path.dirname(''));
+const __dirname = path.resolve(path.dirname(''))
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -19,7 +19,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 import jwt from 'jsonwebtoken'
 
 import authRouter from './routes/auth.js'
-import usersRouter from './routes/users.js'
+import uploadRouter from './routes/upload.js'
 
 import * as User from './controllers/user.js'
 
@@ -33,7 +33,7 @@ app.use(logger('dev'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cookieParser());
+app.use(cookieParser())
 
 app.use(express.static(join(__dirname, 'public')))
 
@@ -50,7 +50,7 @@ app.use((req, _res, next) => {
 app.use((req, _res, next) => {
     console.log(req.cookies&&Object.keys(req.cookies))
     console.log(req.user&&Object.entries(req.user))
-    console.log((req.user?.id))
+    console.log((req.user?._id, req.user?.name))
     next()
 })
 
@@ -59,7 +59,7 @@ app.get('/',(req,res,_next)=>{
     res.render('landing',{user: req.user})
 })
 app.use('/', authRouter)
-app.use('/users', usersRouter)
+app.use('/', uploadRouter)
 
 // catch 404 and forward to error handler
 app.use(function (_req, _res, next) {
