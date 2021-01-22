@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
     .row.py-5.px-4
@@ -8,8 +8,8 @@ block content
           .px-4.pt-0.pb-4.cover
             .media.align-items-end.profile-head
               .profile.mr-3
-                img.rounded.mb-2.img-thumbnail(src='https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80' alt='...' width='130')
-                a.btn.btn-outline-dark.btn-sm.btn-block(href='#') Edit profile
+                img.rounded.mb-2.img-thumbnail(src='/users/'+user._id+'/picture' alt='...' width='130')
+                a.btn.btn-outline-dark.btn-sm.btn-block.mx-3(href='#') Edit profile
               .media-body.mb-5.text-white
                 h4.mt-0.mb-0 #{user.name}
                 p.small.mb-4
@@ -37,12 +37,12 @@ block content
               p.font-italic.mb-0 Last Seen: #{user.lastOnline.toString().slice(4,16)}
               p.font-italic.mb-0
                 if(user.level=="CONS")
-                   | Consumer
+                  | Consumer
                 else
-                    if(user.level=="ADMN")
-                        | Administrator
-                    else
-                        | Producer
+                  if(user.level=="ADMN")
+                      | Administrator
+                  else
+                      | Producer
           .py-4.px-4
             .d-flex.align-items-center.justify-content-between.mb-3
               h5.mb-0 Recent photos

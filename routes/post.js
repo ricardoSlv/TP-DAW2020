@@ -6,7 +6,7 @@ import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
 router.get('/upload', (req, res, _next) => {
-    res.render('post',{user: req.user})
+    res.render('posts/upload',{user: req.user})
 })
 
 // Post a new post 

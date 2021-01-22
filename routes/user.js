@@ -4,15 +4,19 @@ const router = Router()
 import * as User from '../controllers/user.js'
 
 router.get('/profile', async (req, res, _next) => {
-    if (req.user){
-        const userFull = await User.findById(req.user._id)
-        console.log(userFull)
-        console.log(userFull.name)
-        console.log(userFull.position)
-        res.render('profile',{user:userFull})
-    }else
-        res.render('login')
+    const userFull = await User.findById(req.user?._id)
+
+    if (userFull)
+        res.render('users/profile',{user:userFull})
+    else
+        res.redirect('/login')
 })
 
+router.get('/:id/picture', async (req, res, _next) => {
+    if (req.user){
+        res.download('./user_files/'+req.params.id+'/picture')
+    }else
+        res.error(3232,{user:req.user})
+})
 
 export default router;

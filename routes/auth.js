@@ -44,7 +44,7 @@ router.get('/login', (req, res, _next) => {
     if (req.user)
         res.redirect('/')
     else
-        res.render('login')
+        res.render('auth/login')
 })
 
 router.get('/logout', (_req, res, _next) => {
@@ -56,7 +56,7 @@ router.get('/signup', (req, res, _next) => {
     if (req.user)
         res.redirect('/')
     else
-        res.render('signup')
+        res.render('auth/signup')
 })
 
 router.post('/signup', upload.single('picture'), async (req, res, _next) => {

@@ -7,7 +7,7 @@ import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
 router.get('/upload', (req, res, _next) => {
-    res.render('upload',{user: req.user})
+    res.render('resources/upload',{user: req.user})
 })
 
 router.post('/upload', upload.single('zip'), async (req, res, _next) => {
