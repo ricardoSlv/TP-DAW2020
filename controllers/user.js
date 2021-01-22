@@ -59,6 +59,3 @@ export function update(filter, query) {
         .update(filter,query)
         .exec()
 }
-
-
-

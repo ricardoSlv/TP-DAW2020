@@ -15,4 +15,4 @@ const resourceSchema = new mongoose.Schema({
 },{versionKey: false})
 
 
-export default mongoose.model('user', resourceSchema)
+export default mongoose.model('post', resourceSchema, 'posts')
