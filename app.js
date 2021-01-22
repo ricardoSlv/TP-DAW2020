@@ -27,7 +27,7 @@ db.once('open', function() {
 import jwt from 'jsonwebtoken'
 
 import authRouter from './routes/auth.js'
-import uploadRouter from './routes/upload.js'
+import resourcesRouter from './routes/resource.js'
 import postRouter from './routes/post.js'
 
 import * as User from './controllers/user.js'
@@ -43,12 +43,6 @@ app.use(logger('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
-
-/*
-// Just a fav icon =)
-import favicon from 'serve-favicon';
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
-*/
 
 app.use(express.static(join(__dirname, 'public')))
 
@@ -73,9 +67,9 @@ app.get('/',(req,res,_next)=>{
     //TODO: Render news page if logged in
     res.render('landing',{user: req.user})
 })
-  
+
 app.use('/', authRouter)
-app.use('/', uploadRouter)
+app.use('/resources', resourcesRouter)
 app.use('/posts', postRouter)
 
 // catch 404 and forward to error handler

@@ -29,11 +29,11 @@ export async function insert(user, pictureFile) {
     if (!fs.existsSync(userFiles)) 
         await fsPromises.mkdir(userFiles)
     
-    const userDirectory = join(__dirname, 'user_files/', newUser._id)
+    const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
     //uploads/random => public/id/picture.extension
-    const newPath = join(__dirname, 'user_files/', newUser._id, 'picture.' + pictureFile.originalname.split('.').pop())
+    const newPath = join(__dirname, 'user_files/', newUser._id.toString(), 'picture.' + pictureFile.originalname.split('.').pop())
     await fsPromises.rename(oldPath, newPath)
 
     return newUser.save()
