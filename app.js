@@ -28,7 +28,8 @@ import jwt from 'jsonwebtoken'
 
 import authRouter from './routes/auth.js'
 import uploadRouter from './routes/upload.js'
-import postRouter from './routes/post.js
+import postRouter from './routes/post.js'
+import userRouter from './routes/user.js'
 
 import * as User from './controllers/user.js'
 
@@ -77,6 +78,7 @@ app.get('/',(req,res,_next)=>{
 app.use('/', authRouter)
 app.use('/', uploadRouter)
 app.use('/post', postRouter)
+app.use('/users',userRouter)
 
 // catch 404 and forward to error handler
 app.use(function (_req, _res, next) {

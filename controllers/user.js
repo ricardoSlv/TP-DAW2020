@@ -18,6 +18,7 @@ export async function insert(user, pictureFile) {
     newUser.lastOnline = new Date()
     newUser.favouritesPosts = []
     newUser.favouritesResources = []
+    newUser.level = "CONS"
 
     const duplicate = await checkDuplicate(newUser.name, newUser.email)
 
@@ -29,7 +30,7 @@ export async function insert(user, pictureFile) {
     if (!fs.existsSync(userFiles)) 
         await fsPromises.mkdir(userFiles)
     
-    const userDirectory = join(__dirname, 'user_files/', newUser._id)
+    const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
     //uploads/random => public/id/picture.extension
@@ -73,5 +74,11 @@ export async function checkCredentials(email, password) {
 export function update(filter, query) {
     return User
         .update(filter,query)
+        .exec()
+}
+
+export function findById(id) {
+    return User
+        .findById(id)
         .exec()
 }
