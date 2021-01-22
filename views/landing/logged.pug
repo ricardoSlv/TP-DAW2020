@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.mt-3.text-center='Daw Docs'
+      .col-12.col-lg-6
+        h2.mt-3.text-center='Recent Posts'
+        table.table.text-center
+          th Title
+          th Themes
+          th Uploaded
+          th Producer
+          th Views
+          each p in recentPubs
+            tr
+              td 
+                a(href='/posts/'+p._id) #{p.title}
+              td #{p.themes.join(" ")}
+              td #{p.createdAt.toString().slice(4,16)}
+              td
+                .d-flex.justify-content-center
+                  a(href='/users/'+p.producer)
+                    img.rounded(src='/users/'+p.producer+'/picture' alt='...' style='height:30px')
+              td #{p.views}
+      .col-12.col-lg-6
+        h2.mt-3.text-center='Most Popular Posts'
+        table.table.text-center
+          th Title
+          th Themes
+          th Uploaded
+          th Producer
+          th Views
+          each p in popularPubs
+            tr
+              td 
+                a(href='/posts/'+p._id) #{p.title}
+              td #{p.themes.join(" ")}
+              td #{p.createdAt.toString().slice(4,16)}
+              td
+                .d-flex.justify-content-center
+                  a(href='/users/'+p.producer)
+                    img.rounded(src='/users/'+p.producer+'/picture' alt='...' style='height:30px')
+              td #{p.views}
+      

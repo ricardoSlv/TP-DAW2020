@@ -26,6 +26,7 @@ db.once('open', function() {
 
 import jwt from 'jsonwebtoken'
 
+import indexRouter from './routes/index.js'
 import authRouter from './routes/auth.js'
 import userRouter from './routes/user.js'
 import resourcesRouter from './routes/resource.js'
@@ -64,11 +65,7 @@ app.use((req, _res, next) => {
     next()
 })
 
-app.get('/',(req,res,_next)=>{
-    //TODO: Render news page if logged in
-    res.render('landing',{user: req.user})
-})
-
+app.use('/', indexRouter)
 app.use('/', authRouter)
 app.use('/users',userRouter)
 app.use('/resources', resourcesRouter)

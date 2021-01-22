@@ -14,7 +14,7 @@ section{
 main{
     /* Prevent overflow on grid https://css-tricks.com/preventing-a-grid-blowout/ */
     min-width: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 

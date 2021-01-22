@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.mt-3.text-center #{post.title}
+      h2.mt-3 #{post.subtitle}
+      img.rounded(src='/users/'+post.producer+'/picture' alt='...' style='height:60px')
+      ul
+        each t in post.themes
+          li #{t}
+      article #{post.content}
+      ul
+        each r in post.resources
+          a(href='/resources/'+r.id) #{r.name}

@@ -12,3 +12,23 @@ export async function upload(user, post) {
     newPost.createdAt = new Date()
     return newPost.save()
 }
+
+export function listRecent(size){
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
+        .sort({createdAt: -1})
+        .limit(size)
+        .exec()
+}
+
+export function listPopular(size){
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
+        .sort({views: -1})
+        .limit(size)
+        .exec()
+}
+
+export function findById(id) {
+    return Post
+        .findById(id)
+        .exec()
+}
