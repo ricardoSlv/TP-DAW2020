@@ -27,8 +27,9 @@ db.once('open', function() {
 import jwt from 'jsonwebtoken'
 
 import authRouter from './routes/auth.js'
+import uploadRouter from './routes/upload.js'
+import userRouter from './routes/user.js'
 import resourcesRouter from './routes/resource.js'
-import postRouter from './routes/post.js'
 
 import * as User from './controllers/user.js'
 
@@ -69,6 +70,7 @@ app.get('/',(req,res,_next)=>{
 })
 
 app.use('/', authRouter)
+app.use('/users',userRouter)
 app.use('/resources', resourcesRouter)
 app.use('/posts', postRouter)
 
