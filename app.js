@@ -6,7 +6,7 @@ import logger from 'morgan'
 import createError from 'http-errors'
 
 import path, { join } from 'path'
-const __dirname = path.resolve(path.dirname(''));
+const __dirname = path.resolve(path.dirname(''))
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -27,8 +27,8 @@ db.once('open', function() {
 import jwt from 'jsonwebtoken'
 
 import authRouter from './routes/auth.js'
-import usersRouter from './routes/users.js'
-import postRouter from './routes/post.js'
+import uploadRouter from './routes/upload.js'
+import postRouter from './routes/post.js
 
 import * as User from './controllers/user.js'
 
@@ -42,7 +42,7 @@ app.use(logger('dev'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cookieParser());
+app.use(cookieParser())
 
 /*
 // Just a fav icon =)
@@ -65,7 +65,7 @@ app.use((req, _res, next) => {
 app.use((req, _res, next) => {
     console.log(req.cookies&&Object.keys(req.cookies))
     console.log(req.user&&Object.entries(req.user))
-    console.log((req.user?.id))
+    console.log((req.user?._id, req.user?.name))
     next()
 })
 
@@ -73,8 +73,9 @@ app.get('/',(req,res,_next)=>{
     //TODO: Render news page if logged in
     res.render('landing',{user: req.user})
 })
+  
 app.use('/', authRouter)
-app.use('/users', usersRouter)
+app.use('/', uploadRouter)
 app.use('/post', postRouter)
 
 // catch 404 and forward to error handler

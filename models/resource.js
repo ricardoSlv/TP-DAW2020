@@ -5,12 +5,12 @@ const resourceSchema = new mongoose.Schema({
     title: String,
     subtitle: String,
     //REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB
-    tipe: String,
-    producer: String,
+    type: String,
+    producer: ObjectId,
     createdAt: Date,
     registedAt: Date,
     downloads: Number,
-    visibility: Boolean
+    public: Boolean
 },{versionKey: false})
 
 

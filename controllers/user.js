@@ -1,9 +1,9 @@
-import User from "../models/user.js";
+import User from "../models/user.js"
 
 import fs from "fs"
-const fsPromises = fs.promises;
+const fsPromises = fs.promises
 import path, { join } from "path"
-const __dirname = path.resolve(path.dirname(''));
+const __dirname = path.resolve(path.dirname(''))
 
 export function list() {
     return User
@@ -26,15 +26,14 @@ export async function insert(user, pictureFile) {
     
     // In case user_files doesnt exist
     const userFiles = join(__dirname, 'user_files/') 
-    if (!fs.existsSync(userFiles)) {
+    if (!fs.existsSync(userFiles)) 
         await fsPromises.mkdir(userFiles)
-    }
     
-    const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
+    const userDirectory = join(__dirname, 'user_files/', newUser._id)
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
     //uploads/random => public/id/picture.extension
-    const newPath = join(__dirname, 'user_files/', newUser._id.toString(), 'picture.' + pictureFile.originalname.split('.').pop())
+    const newPath = join(__dirname, 'user_files/', newUser._id, 'picture.' + pictureFile.originalname.split('.').pop())
     await fsPromises.rename(oldPath, newPath)
 
     return newUser.save()

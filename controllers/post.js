@@ -1,5 +1,4 @@
-import Post from "../models/post.js";
-import User from "../models/user.js";
+import Post from "../models/post.js"
 
 // Insert a new post
 export async function insert(post) {
