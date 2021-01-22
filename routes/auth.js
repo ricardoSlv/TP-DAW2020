@@ -27,7 +27,8 @@ router.post('/login', upload.none(), async (req, res, _next) => {
         res.cookie('JWT', token, cookieOptions)
 
         res.status(200).jsonp({ Message: `Welcome ${user.name}` })
-    } catch (e) {
+    } 
+    catch (e) {
         console.log(e)
         if (e.message === '401')
             res.status(401).send()
