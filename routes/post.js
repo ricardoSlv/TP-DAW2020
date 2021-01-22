@@ -5,8 +5,8 @@ import * as Post from '../controllers/post.js'
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
-router.get('/upload', (_req, res, _next) => {
-    res.render('post')
+router.get('/upload', (req, res, _next) => {
+    res.render('post',{user: req.user})
 })
 
 // Post a new post 

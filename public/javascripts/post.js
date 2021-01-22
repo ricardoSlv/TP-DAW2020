@@ -5,7 +5,7 @@ form.addEventListener('submit', async e => {
     e.preventDefault()
 
     const uploadForm = e.target
-    const { title, subtitle, themes} = uploadForm
+    const { title, subtitle, themes, content} = uploadForm
     const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
 
     const uploadFormData = new FormData()
@@ -13,6 +13,7 @@ form.addEventListener('submit', async e => {
     uploadFormData.append(title.name, title.value)
     uploadFormData.append(subtitle.name, subtitle.value)
     uploadFormData.append("themes", [...themes].filter(t => t.checked).map(t => t.value))
+    uploadFormData.append(content.name, content.value)
     console.table([...uploadFormData.entries()])
 
     try {

@@ -10,39 +10,41 @@ block content
         input#titleInput.mb-3.form-control(type='text' name='title' required)
 
         label.form-label(for='subtitleInput') Subtitle
-        input#subtitleInput.form-control(type='text' name='subtitle' required)
+        input#subtitleInput.mb-3.form-control(type='text' name='subtitle' required)
         
         label.form-label(for='themesCheckbox') Themes
-        
         br
         .form-check.form-check-inline
           input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='REPORT')
           label.form-check-label(for='themesCheckbox')
             | Report
         .form-check.form-check-inline
-          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='THESIS')
-          label.mb-3.form-check-label(for='themesCheckbox')
+          input#thesisCheckbox.form-check-input(type='checkbox' name='themes' value='THESIS')
+          label.mb-3.form-check-label(for='thesisCheckbox')
             | Thesis
         .form-check.form-check-inline
-          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='ARTICLE')
-          label.mb-3.form-check-label(for='themesCheckbox')
+          input#articleCheckbox.form-check-input(type='checkbox' name='themes' value='ARTICLE')
+          label.mb-3.form-check-label(for='articleCheckbox')
             | Article
         .form-check.form-check-inline
-          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
-          label.mb-3.form-check-label(for='themesCheckbox')
+          input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
+          label.mb-3.form-check-label(for='appCheckbox')
             | App
         .form-check.form-check-inline
-          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES')
-          label.mb-3.form-check-label(for='themesCheckbox')
+          input#slidesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES')
+          label.mb-3.form-check-label(for='slidesCheckbox')
             | Slides
         .form-check.form-check-inline
-          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
-          label.mb-3.form-check-label(for='themesCheckbox')
+          input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
+          label.mb-3.form-check-label(for='testCheckbox')
             | Test
         .form-check.form-check-inline
-          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB')
-          label.mb-3.form-check-label(for='themesCheckbox')
-            | SolvedProblem    
+          input#solvedproblemCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB')
+          label.mb-3.form-check-label(for='solvedproblemCheckbox')
+            | Solved Problem
+        .form-floating
+          textarea#contentTextarea.form-control(style="height:100px" name="content" )
+          label(for='contentTextarea') Describe your post    
         br
 
         button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Create

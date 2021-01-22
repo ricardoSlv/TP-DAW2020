@@ -6,6 +6,7 @@ const resourceSchema = new mongoose.Schema({
     subtitle: String,
     //REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB
     themes: [String],
+    content: String,
     views: Number,
     likes: Number,
     producer: ObjectId,
