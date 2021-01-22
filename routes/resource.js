@@ -6,7 +6,7 @@ import * as Resource from '../controllers/resource.js'
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
-router.get('/upload', (_req, res, _next) => {
+router.get('/upload', (req, res, _next) => {
     res.render('upload',{user: req.user})
 })
 
