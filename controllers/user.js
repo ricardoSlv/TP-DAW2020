@@ -49,6 +49,17 @@ export async function checkDuplicate(name, email) {
     return !!user
 }
 
+export async function checkExists(email) {
+    const user = await User
+        .findOne({ email })
+        .exec()
+
+    if (user)
+        return user
+    else
+        throw new Error('401')
+}
+
 export async function checkCredentials(email, password) {
     const user = await User
         .findOne({ email, password })

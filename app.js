@@ -16,10 +16,19 @@ const mongoDB = `mongodb://127.0.0.1:27017/tpdaw`
 //const mongoDB = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASS}@daw2020.akqj9.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
+// Check if connection was sucessful
+var db = mongoose.connection
+
+db.on('error', console.error.bind(console, 'MongoDB connection error...'));
+db.once('open', function() {
+    console.log("Conexão ao MongoDB realizada com sucesso...")
+});
+
 import jwt from 'jsonwebtoken'
 
 import authRouter from './routes/auth.js'
 import usersRouter from './routes/users.js'
+import postRouter from './routes/post.js'
 
 import * as User from './controllers/user.js'
 
@@ -34,6 +43,12 @@ app.use(logger('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser());
+
+/*
+// Just a fav icon =)
+import favicon from 'serve-favicon';
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+*/
 
 app.use(express.static(join(__dirname, 'public')))
 
@@ -60,6 +75,7 @@ app.get('/',(req,res,_next)=>{
 })
 app.use('/', authRouter)
 app.use('/users', usersRouter)
+app.use('/post', postRouter)
 
 // catch 404 and forward to error handler
 app.use(function (_req, _res, next) {
