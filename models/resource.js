@@ -10,7 +10,7 @@ const resourceSchema = new mongoose.Schema({
     createdAt: Date,
     registedAt: Date,
     downloads: Number,
-    visibility: Boolean
+    public: Boolean
 },{versionKey: false})
 
 

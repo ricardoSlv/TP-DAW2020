@@ -3,48 +3,56 @@ extends layout
 block content
   section.container
     .row.justify-content-center
-      h1.mt-3.text-center='Create Account'
-      form#signupform.col-lg-8(method="post" enctype="multipart/form-data")
+      h1.mt-3.text-center='Upload a Resource'
+      form#uploadform.col-lg-8(method="post" enctype="multipart/form-data")
 
         label.form-label(for='nameInput') Title
         input#nameInput.mb-3.form-control(type='text' name='title' required)
 
         label.form-label(for='nameInput') Subtitle
-        input#nameInput.mb-3.form-control(type='text' name='subtitle' required)
+        input#nameInput.mb-3.form-control(type='text' name='subtitle')
 
         label.form-label(for='studentRadio') Type
         br
         .form-check.form-check-inline
-          input#studentRadio.form-check-input(type='radio' name='type' value='REPORT' checked)
+          input#reportRadio.form-check-input(type='radio' name='type' value='REPORT' checked)
           label.form-check-label(for='studentRadio')
             | Report
         .form-check.form-check-inline
-          input#studentRadio.form-check-input(type='radio' name='type' value='THESIS' checked)
+          input#thesisRadio.form-check-input(type='radio' name='type' value='THESIS' checked)
           label.form-check-label(for='studentRadio')
             | Thesis
         .form-check.form-check-inline
-          input#studentRadio.form-check-input(type='radio' name='type' value='ARTICLE' checked)
+          input#articleRadio.form-check-input(type='radio' name='type' value='ARTICLE' checked)
           label.form-check-label(for='studentRadio')
             | Article
         .form-check.form-check-inline
-          input#studentRadio.form-check-input(type='radio' name='type' value='APP' checked)
+          input#appRadio.form-check-input(type='radio' name='type' value='APP' checked)
           label.form-check-label(for='studentRadio')
             | App
         .form-check.form-check-inline
-          input#studentRadio.form-check-input(type='radio' name='type' value='SLIDES' checked)
+          input#slidesRadio.form-check-input(type='radio' name='type' value='SLIDES' checked)
           label.form-check-label(for='studentRadio')
             | Slides
         .form-check.form-check-inline
-          input#studentRadio.form-check-input(type='radio' name='type' value='TEST' checked)
+          input#testRadio.form-check-input(type='radio' name='type' value='TEST' checked)
           label.form-check-label(for='studentRadio')
             | Tests
         .form-check.form-check-inline
-          input#teacherRadio.form-check-input(type='radio' name='type' value='SOLVEDPROB')
+          input#solvedprobRadio.form-check-input(type='radio' name='type' value='SOLVEDPROB')
           label.mb-3.form-check-label(for='teacherRadio')
             | Solved Problem
+        .form-check.form-check-inline
         br
+
+        label.form-label(for='creationDate') Creation Date
+        input#creationDate.mb-3.form-control(type="date" name="createdAt")
+
         label.form-label(for='pictureInput') Zip File
-        input#pictureInput.mb-3.form-control(type='file' name='zip' accept='.zip' required)
+        input#zipInput.mb-3.form-control(type='file' name='zip' accept='.zip' required)
+
+        input#visibility.form-check-input.me-2(type='checkbox' name='public')
+        label.form-check-label.mb-3(for='public' ) Public Resource
 
         button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Upload
 
