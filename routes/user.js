@@ -16,7 +16,7 @@ router.get('/:id/picture', async (req, res, _next) => {
     if (req.user){
         res.download('./user_files/'+req.params.id+'/picture')
     }else
-        res.error(3232,{user:req.user})
+        res.error(401,{user: req.user})
 })
 
 export default router;

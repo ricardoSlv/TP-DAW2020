@@ -9,7 +9,7 @@ router.get('/', async (req,res,_next)=>{
         const popularPubs = await Post.listPopular(10)
         res.render('landing/logged',{recentPubs, popularPubs, user: req.user})
     }else
-        res.render('landing/unlogged',{user: req.user})
+        res.render('landing/notlogged',{user: req.user})
 })
 
 export default router;
