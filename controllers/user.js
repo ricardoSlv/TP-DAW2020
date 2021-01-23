@@ -33,8 +33,9 @@ export async function insert(user, pictureFile) {
     const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
-    //uploads/random => public/id/picture.extension
-    const newPath = join(__dirname, 'user_files/', newUser._id.toString(), 'picture.' + pictureFile.originalname.split('.').pop())
+    //uploads/random => public/id/picture
+    //Without extension, let browser figure it out
+    const newPath = join(__dirname, 'user_files/', newUser._id.toString(), 'picture')
     await fsPromises.rename(oldPath, newPath)
 
     return newUser.save()
