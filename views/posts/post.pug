@@ -36,13 +36,14 @@ block content
                 textarea.form-control(rows='3' name='text' style='height: 6em;')
               button.btn.btn-primary.my-2(type='submit') Submit
         
-        each c in post.comments
-          .my-4.d-flex.align-items-start
-            img.d-flex.rounded-circle(src='/users/'+c.user._id+'/picture' alt='...' style='height:3em;')
-            .ps-3
-              .mb-2.d-flex.align-items-end
-                h5.me-2.my-0 #{c.user.name}
-                span.text-muted #{c.createdAt.toString().slice(4,21)}
-              | #{c.text}
+        .my-5
+          each c in post.comments
+            .my-4.d-flex.align-items-start
+              img.d-flex.rounded-circle(src='/users/'+c.user._id+'/picture' alt='...' style='height:3em;')
+              .ps-3
+                .mb-2.d-flex.align-items-end
+                  h5.me-2.my-0 #{c.user.name}
+                  span.text-muted #{c.createdAt.toString().slice(4,21)}
+                | #{c.text}
 
     script(src='/javascripts/posts/post.js')
