@@ -12,7 +12,7 @@ router.get('/upload', (req, res, _next) => {
 // Post a new post 
 router.post('/upload', upload.none(), async (req, res, _next) => {
     try {
-        const post = await Post.upload(req.user, req.body)
+        const post = await Post.insert(req.user, req.body)
         res.status(200).send(post)
     } 
     catch (e) {
@@ -27,7 +27,6 @@ router.post('/upload', upload.none(), async (req, res, _next) => {
 router.get('/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
-        console.log(post)
         res.render('posts/post',{user: req.user, post})
     } 
     catch (e) {
@@ -40,5 +39,17 @@ router.get('/:id', async (req, res, _next) => {
     }
 })
 
+router.post('/:id/comment', async (req, res, _next) => {
+    try {
+        await Post.addComment(req.params.id, req.user, req.body)
+        console.log(req.body)
+        const post = await Post.findById(req.params.id)
+        res.render('posts/post',{user: req.user, post})
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.status(500).send()
+    }
+})
 
 export default router;

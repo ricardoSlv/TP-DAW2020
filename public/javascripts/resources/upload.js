@@ -21,14 +21,14 @@ form.addEventListener('submit', async e => {
     console.table([...uploadFormData.entries()])
 
     try {
-        const resp = await fetch('/upload', {
+        const resp = await fetch('/resources/upload', {
             method: 'POST',
             body: uploadFormData,
         })
 
         if(resp.status === 200) {
             alert('Upload successfull! 😀')
-            window.location.pathname='/upload'
+            window.location.pathname='/resources/upload'
         }
         else
             alert('The server has encountered an error, please retry later 😥')

@@ -3,13 +3,46 @@ extends ../layout
 block content
   section.container
     .row.justify-content-center
-      h1.mt-3.text-center #{post.title}
-      h2.mt-3 #{post.subtitle}
-      img.rounded(src='/users/'+post.producer+'/picture' alt='...' style='height:60px')
-      ul
-        each t in post.themes
-          li #{t}
-      article #{post.content}
-      ul
-        each r in post.resources
-          a(href='/resources/'+r.id) #{r.name}
+      .col-lg-8
+        
+        h1.m-4.text-center #{post.title}
+        
+        h2.mb-3 #{post.subtitle}
+        
+        .mb-3.d-flex
+          span.me-2='by'
+          a.d-flex(href='/users/'+post.producer._id)
+            img.rounded.me-1(src='/users/'+post.producer._id+'/picture' alt='...' style='height:1.5em;')
+            | #{post.producer.name}
+        
+        ul
+          each t in post.themes
+            li #{t}
+        
+        article.mb-4 #{post.content}
+
+        if(post.resources && post.resources.length > 0)
+          h4 Resources:
+        ul.list-group
+          each r in post.resources
+            li.list-group-item
+              a(href='/resources/'+r._id) #{r.title}
+
+        .card.my-4
+          h5.card-header Leave a Comment:
+          .card-body
+            form#commentForm(action='/posts/'+post._id+'/comment/' method='post')
+              .form-group
+                textarea.form-control(rows='3' name='text' style='height: 6em;')
+              button.btn.btn-primary.my-2(type='submit') Submit
+        
+        each c in post.comments
+          .my-4.d-flex.align-items-start
+            img.d-flex.rounded-circle(src='/users/'+c.user._id+'/picture' alt='...' style='height:3em;')
+            .ps-3
+              .mb-2.d-flex.align-items-end
+                h5.me-2.my-0 #{c.user.name}
+                span.text-muted #{c.createdAt.toString().slice(4,21)}
+              | #{c.text}
+
+    script(src='/javascripts/posts/post.js')

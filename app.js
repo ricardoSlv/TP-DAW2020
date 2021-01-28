@@ -21,16 +21,16 @@ var db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'MongoDB connection error...'));
 db.once('open', function() {
-    console.log("Conexão ao MongoDB realizada com sucesso...")
+    console.log('MongoDB connection successfull...')
 });
 
 import jwt from 'jsonwebtoken'
 
 import indexRouter from './routes/index.js'
 import authRouter from './routes/auth.js'
-import userRouter from './routes/user.js'
-import resourcesRouter from './routes/resource.js'
-import postRouter from './routes/post.js'
+import userRouter from './routes/users.js'
+import resourcesRouter from './routes/resources.js'
+import postRouter from './routes/posts.js'
 
 import * as User from './controllers/user.js'
 
@@ -58,12 +58,12 @@ app.use((req, _res, next) => {
     next()
 })
 
-app.use((req, _res, next) => {
-    console.log(req.cookies&&Object.keys(req.cookies))
-    console.log(req.user&&Object.entries(req.user))
-    console.log((req.user?._id, req.user?.name))
-    next()
-})
+// app.use((req, _res, next) => {
+//     console.log(req.cookies&&Object.keys(req.cookies))
+//     console.log(req.user&&Object.entries(req.user))
+//     console.log((req.user?._id, req.user?.name))
+//     next()
+// })
 
 app.use('/', indexRouter)
 app.use('/', authRouter)

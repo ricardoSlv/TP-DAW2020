@@ -9,9 +9,9 @@ const resourceSchema = new mongoose.Schema({
     content: String,
     views: Number,
     likes: Number,
-    producer: ObjectId,
-    resources:[ObjectId],
-    comments:[{user: ObjectId, text: String}],
+    producer: {_id: ObjectId, name: String},
+    resources:[{_id: ObjectId, title: String}],
+    comments:[{user: {_id: ObjectId, name: String}, text: String, createdAt: Date}],
     createdAt: Date,
 },{versionKey: false})
 
