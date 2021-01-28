@@ -20,8 +20,8 @@ block content
               td #{p.createdAt.toString().slice(4,16)}
               td
                 .d-flex.justify-content-center
-                  a(href='/users/'+p.producer)
-                    img.rounded(src='/users/'+p.producer+'/picture' alt='...' style='height:30px')
+                  a(href='/users/'+p.producer._id)
+                    img.rounded(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
               td #{p.views}
       .col-12.col-lg-6
         h2.mt-3.text-center='Most Popular Posts'
@@ -39,7 +39,7 @@ block content
               td #{p.createdAt.toString().slice(4,16)}
               td
                 .d-flex.justify-content-center
-                  a(href='/users/'+p.producer)
-                    img.rounded(src='/users/'+p.producer+'/picture' alt='...' style='height:30px')
+                  a(href='/users/'+p.producer._id)
+                    img.rounded(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
               td #{p.views}
       

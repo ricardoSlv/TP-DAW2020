@@ -1,11 +1,11 @@
 import Post from "../models/post.js"
 
 // Insert a new post
-export async function upload(user, post) {
-    console.log(`Entrei e o body = ${JSON.stringify(post)}`)
+export async function insert(user, post) {
+    //TODO: Mudar para producer se ainda n for
     const newPost = new Post(post)
     newPost.themes = newPost.themes[0].split(',')
-    newPost.producer = user._id
+    newPost.producer = {_id: user._id, name: user.name}
     newPost.views = 0
     newPost.likes = 0
     newPost.comments = []
@@ -31,4 +31,17 @@ export function findById(id) {
     return Post
         .findById(id)
         .exec()
+}
+
+export function addComment(id,user,comment) {
+    return Post
+        .updateOne({_id: id},{$push: {
+            comments: {
+                user: {
+                    _id: user._id, 
+                    name: user.name}, 
+                text: comment.text, 
+                createdAt: new Date(),
+            }
+        }})
 }

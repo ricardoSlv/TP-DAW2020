@@ -9,7 +9,7 @@ const __dirname = path.resolve(path.dirname(''))
 export async function insert(user, resource, zipFile) {
 
     const newResource = new Resource(resource)
-    newResource.producer = user._id
+    newResource.producer = {_id: user._id, name: user.name}
     newResource.registeredAt = new Date()
 
     try {

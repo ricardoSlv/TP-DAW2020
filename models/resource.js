@@ -6,7 +6,7 @@ const resourceSchema = new mongoose.Schema({
     subtitle: String,
     //REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB
     type: String,
-    producer: ObjectId,
+    producer: {_id: ObjectId, name: String},
     createdAt: Date,
     registedAt: Date,
     downloads: Number,
