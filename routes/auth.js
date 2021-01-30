@@ -7,7 +7,26 @@ import * as User from '../controllers/user.js'
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
-router.post('/login', upload.none(), async (req, res, _next) => {
+router.get('/login', (req, res, _next) => {
+    if (req.user)
+        res.redirect('/')
+    else
+        res.render('auth/login')
+})
+
+router.get('/logout', (_req, res, _next) => {
+    res.clearCookie('JWT')
+    res.redirect('/')
+})
+
+router.get('/signup', (req, res, _next) => {
+    if (req.user)
+        res.redirect('/')
+    else
+        res.render('auth/signup')
+})
+
+router.post('/login', async (req, res, _next) => {
     try {
         const { email, password, remember } = req.body
 
@@ -34,29 +53,6 @@ router.post('/login', upload.none(), async (req, res, _next) => {
         else
             res.status(500).send()
     }
-})
-
-// É para tirar daqui, mas deu bosta ao colocar e preciso de testar x)
-
-
-
-router.get('/login', (req, res, _next) => {
-    if (req.user)
-        res.redirect('/')
-    else
-        res.render('auth/login')
-})
-
-router.get('/logout', (_req, res, _next) => {
-    res.clearCookie('JWT')
-    res.redirect('/')
-})
-
-router.get('/signup', (req, res, _next) => {
-    if (req.user)
-        res.redirect('/')
-    else
-        res.render('auth/signup')
 })
 
 router.post('/signup', upload.single('picture'), async (req, res, _next) => {
