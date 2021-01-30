@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.my-3.text-center='Posts'
+      .col-12.col-lg-8
+        table.table.text-center
+          th Title
+          th Themes
+          th Created
+          th Producer
+          th Views
+          each p in posts
+            tr
+              td 
+                a(href='/posts/'+p._id) #{p.title}
+              td #{p.themes && p.themes.join(" ")}
+              td #{p.createdAt && p.createdAt.toString().slice(4,16)}
+              td
+                .d-flex.justify-content-center
+                  a(href='/users/'+p.producer._id)
+                    img.rounded(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+              td #{p.views}
+        
+        a.btn.btn-primary.w-100(href='/posts/upload') New Post

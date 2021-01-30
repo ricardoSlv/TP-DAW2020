@@ -6,10 +6,14 @@ import path, { join } from "path"
 const __dirname = path.resolve(path.dirname(''))
 
 export function list() {
-    return User
-        .find()
-        .sort({ name: 1 })
-        .exec()
+    return User.find({},{
+            name: 1,
+            position: 1,
+            course: 1,
+            level: 1,
+            dateReg: 1,
+            lastOnline: 1
+        }).exec()
 }
 
 export async function insert(user, pictureFile) {
@@ -24,12 +28,12 @@ export async function insert(user, pictureFile) {
 
     if (duplicate)
         throw new Error(409)
-    
+
     // In case user_files doesnt exist
-    const userFiles = join(__dirname, 'user_files/') 
-    if (!fs.existsSync(userFiles)) 
+    const userFiles = join(__dirname, 'user_files/')
+    if (!fs.existsSync(userFiles))
         await fsPromises.mkdir(userFiles)
-    
+
     const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
@@ -74,7 +78,7 @@ export async function checkCredentials(email, password) {
 
 export function update(filter, query) {
     return User
-        .updateOne(filter,query)
+        .updateOne(filter, query)
         .exec()
 }
 

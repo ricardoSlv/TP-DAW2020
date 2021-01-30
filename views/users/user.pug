@@ -9,7 +9,6 @@ block content
           .media.align-items-end.profile-head
             .profile.mr-3
               img.rounded.mb-2.img-thumbnail(src='/users/'+user._id+'/picture' alt='...' width='130')
-              a.btn.btn-outline-dark.btn-sm.btn-block.mx-3(href='#') Edit profile
             .media-body.mb-5.text-white
               h4.mt-0.mb-0 #{user.name}
               p.small.mb-4
@@ -50,8 +49,6 @@ block content
             th Created
             th Registered
             th Downloads
-            th
-            th
             each r in resources
               tr
                 td 
@@ -60,10 +57,6 @@ block content
                 td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                 td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
                 td #{r.downloads}
-                td 
-                  button.btn.btn-primary(onclick=`setResourceVisibility("${r._id}",${!r.public})`) #{r.public ? 'Hide':'Show'}
-                td 
-                  button.btn.btn-danger(onclick=`deleteResource("${r._id}")`) Delete
 
           h1.my-3.text-center='Posts'
           table.table.text-center
@@ -71,7 +64,6 @@ block content
             th Themes
             th Created
             th Views
-            th
             each p in posts
               tr
                 td 
@@ -79,8 +71,4 @@ block content
                 td #{p.themes && p.themes.join(" ")}
                 td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                 td #{p.views}
-                td 
-                  button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
-
-    script(src='/javascripts/users/profile.js')
 

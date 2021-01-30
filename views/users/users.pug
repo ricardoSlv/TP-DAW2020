@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.my-3.text-center Users
+      .col-12.col-lg-8
+        table.table.text-center
+          th Name
+          th Position
+          th Course
+          th Level
+          th Joined
+          th Last Seen
+          each u in users
+            tr
+              td 
+                .d-flex.justify-content-start
+                  a(href='/users/'+u._id)
+                    img.ms-5.me-2.rounded(src='/users/'+u._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                    | #{u.name}
+              td #{u.position}
+              td #{u.course}
+              td #{u.level}
+              td #{u.dateReg && u.dateReg.toString().slice(4,16)}
+              td #{u.lastOnline && u.lastOnline.toString().slice(4,16)}
