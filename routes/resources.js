@@ -24,4 +24,18 @@ router.post('/upload', upload.single('zip'), async (req, res, _next) => {
     }
 })
 
-export default router;
+router.get('/:id', async (req, res, _next) => {
+    
+    try {
+        const resource = await Resource.findById(req.params.id)
+        res.render('resources/resource',{user: req.user, resource: resource})
+    } catch (e) {
+        console.log(e)
+        if (e.message === '404')
+            res.status(409).send()
+        else
+            res.status(500).send()
+    }
+})
+
+export default router

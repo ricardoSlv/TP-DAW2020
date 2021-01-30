@@ -4,7 +4,7 @@ block content
   section.container
     .row.justify-content-center
       h1.mt-3.text-center='Create Post'
-      form#postForm.col-lg-8(method='post' enctype='multipart/form-data')
+      form#postForm.col-lg-8(method='post')
 
         label.form-label(for='titleInput') Title
         input#titleInput.mb-3.form-control(type='text' name='title' required)
@@ -43,10 +43,29 @@ block content
           label.mb-3.form-check-label(for='solvedproblemCheckbox')
             | Solved Problem
         .form-floating
-          textarea#contentTextarea.form-control(style='height:6em' name='content')
-          label(for='contentTextarea') Describe your post    
-        br
+          textarea#contentTextarea.form-control.mb-3(style='height:6em' name='content')
+          label(for='contentTextarea') Describe your post
+        
+        label.form-label(for='resourceList') Resources
+        ul#addedResourceList.w-50(name='resources' style='min-width:10px')
+          
+        button#addButton.my-1.btn.btn-primary.btn-block(type='button' data-bs-toggle='modal' data-bs-target='#resourceModal') Add Resources
 
         button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Create
 
-  script(src='/javascripts/posts/newpost.js')
+      #resourceModal.modal.fade(tabindex="-1" aria-labelledby="resourceModal" aria-hidden="true")
+        .modal-dialog.modal-dialog-scrollable
+          .modal-content
+            .modal-header
+              h5#staticBackdropLabel.modal-title Add resources
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+              ul#resourceList.list-group
+                each r in resources
+                  li.list-group-item.d-flex.justify-content-between.align-items-center
+                    a(href='/resources/'+r.id) #{r.title} 
+                    button.btn.btn-primary.mx-4(id='btnadd'+r.id type='button' onclick=`addResource("${r.id}","${r.title}")`)='Add'
+            .modal-footer
+              button.btn.btn-primary(type='button' data-bs-dismiss='modal') Done
+
+    script(src='/javascripts/posts/newpost.js')

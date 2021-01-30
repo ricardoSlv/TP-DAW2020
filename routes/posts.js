@@ -2,16 +2,17 @@ import { Router } from 'express'
 const router = Router()
 
 import * as Post from '../controllers/post.js'
-import multer from 'multer'
-const upload = multer({ dest: 'uploads/' })
+import * as Resource from '../controllers/resource.js'
 
-router.get('/upload', (req, res, _next) => {
-    res.render('posts/upload',{user: req.user})
+router.get('/upload', async (req, res, _next) => {
+    const resources = await Resource.listPublic()
+    res.render('posts/upload',{user: req.user, resources: resources})
 })
 
 // Post a new post 
-router.post('/upload', upload.none(), async (req, res, _next) => {
+router.post('/upload', async (req, res, _next) => {
     try {
+        console.log(req.body)
         const post = await Post.insert(req.user, req.body)
         res.status(200).send(post)
     } 
@@ -52,4 +53,4 @@ router.post('/:id/comment', async (req, res, _next) => {
     }
 })
 
-export default router;
+export default router

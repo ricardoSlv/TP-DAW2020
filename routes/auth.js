@@ -72,4 +72,4 @@ router.post('/signup', upload.single('picture'), async (req, res, _next) => {
     }
 })
 
-export default router;
+export default router

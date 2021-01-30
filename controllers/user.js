@@ -74,7 +74,7 @@ export async function checkCredentials(email, password) {
 
 export function update(filter, query) {
     return User
-        .update(filter,query)
+        .updateOne(filter,query)
         .exec()
 }
 

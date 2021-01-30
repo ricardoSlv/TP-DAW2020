@@ -12,4 +12,4 @@ router.get('/', async (req,res,_next)=>{
         res.render('landing/notlogged',{user: req.user})
 })
 
-export default router;
+export default router
