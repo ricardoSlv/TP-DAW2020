@@ -8,18 +8,19 @@ form.addEventListener('submit', async e => {
     const loginForm = e.target
     const { email, password, remember } = loginForm
 
-    const loginFormData = new FormData()
+    const loginData = {}
 
-    loginFormData.append(email.name, email.value)
-    loginFormData.append(password.name, password.value)
-    loginFormData.append(remember.name, remember.checked)
+    loginData[email.name] = email.value
+    loginData[password.name] = password.value
+    loginData[remember.name] = remember.checked
 
-    console.table([...loginFormData.entries()])
+    console.table(loginData)
 
     try {
         const resp = await fetch('/login', {
             method: 'POST',
-            body: loginFormData,
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(loginData),
         })
 
         if(resp.status === 200) {

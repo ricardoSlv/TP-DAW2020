@@ -4,7 +4,6 @@ import Post from "../models/post.js"
 export async function insert(user, post) {
     //TODO: Mudar para producer se ainda n for
     const newPost = new Post(post)
-    newPost.themes = newPost.themes[0].split(',')
     newPost.producer = {_id: user._id, name: user.name}
     newPost.views = 0
     newPost.likes = 0
@@ -39,7 +38,8 @@ export function addComment(id,user,comment) {
             comments: {
                 user: {
                     _id: user._id, 
-                    name: user.name}, 
+                    name: user.name
+                }, 
                 text: comment.text, 
                 createdAt: new Date(),
             }

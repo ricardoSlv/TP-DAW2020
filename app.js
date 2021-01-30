@@ -19,10 +19,10 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 // Check if connection was sucessful
 var db = mongoose.connection
 
-db.on('error', console.error.bind(console, 'MongoDB connection error...'));
+db.on('error', console.error.bind(console, 'MongoDB connection error...'))
 db.once('open', function() {
     console.log('MongoDB connection successfull...')
-});
+})
 
 import jwt from 'jsonwebtoken'
 

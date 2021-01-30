@@ -28,3 +28,14 @@ export async function insert(user, resource, zipFile) {
 
     return newResource.save()
 }
+
+export function findById(id) {
+    return Resource
+        .findById(id)
+        .exec()
+}
+
+export function listPublic(){
+    return Resource.find({public: true},{title:1, producer: 1, views: 1, createdAt: 1})
+        .exec()
+}

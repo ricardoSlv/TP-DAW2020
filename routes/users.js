@@ -19,4 +19,4 @@ router.get('/:id/picture', async (req, res, _next) => {
         res.error(401,{user: req.user})
 })
 
-export default router;
+export default router
