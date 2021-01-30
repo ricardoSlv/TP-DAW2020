@@ -8,7 +8,7 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     producer: {_id: ObjectId, name: String},
     createdAt: Date,
-    registedAt: Date,
+    registeredAt: Date,
     downloads: Number,
     public: Boolean
 },{versionKey: false})

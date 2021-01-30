@@ -23,32 +23,32 @@ html
               li.nav-item
                 a.nav-link.d-flex.align-items-center.mb-0(href='/')
                   ion-icon.px-1(name='home-outline')
-                  h5.mb-0='Home' 
+                  h5.mb-0 Home 
               li.nav-item
                 a.nav-link.d-flex.align-items-center.mb-0(href='https://github.com/ricardoSlv/TP-DAW2020')
                   ion-icon.px-1(name='logo-github')
-                  h5.mb-0='Github' 
+                  h5.mb-0 Github 
               if(user)
                 li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/search')
-                    ion-icon.px-1(name='search')
-                    h5.mb-0='Search'
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/users')
+                    ion-icon.px-1(name='people-circle')
+                    h5.mb-0 Users
                 li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/posts/upload')
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/posts/')
                     ion-icon.px-1(name='document-text')
-                    h5.mb-0='Post'
+                    h5.mb-0 Posts
                 li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/resources/upload')
-                  ion-icon.px-1(name='cloud-upload')
-                  h5.mb-0='Upload'
+                a.nav-link.d-flex.align-items-center.mb-0(href='/resources/')
+                  ion-icon.px-1(name='folder')
+                  h5.mb-0 Resources
                 li.nav-item
                 a.nav-link.d-flex.align-items-center.mb-0(href='/users/profile')
                   ion-icon.px-1(name='person-circle')
-                  h5.mb-0='Profile'
+                  h5.mb-0 Profile
                 li.nav-item
                 a.nav-link.d-flex.align-items-center.mb-0(href='/logout')
                   ion-icon.px-1(name='log-out')
-                  h5.mb-0='Logout'
+                  h5.mb-0 Logout
               else
                 li.nav-item
                 a.nav-link.d-flex.align-items-center.mb-0(href='/login')

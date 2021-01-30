@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.my-3.text-center='Resources'
+      .col-12.col-lg-8
+        table.table.text-center
+          th Title
+          th Type
+          th Created
+          th Registered
+          th Producer
+          th Downloads
+          each r in resources
+            tr
+              td 
+                a(href='/resources/'+r._id) #{r.title}
+              td #{r.type}
+              td #{r.createdAt && r.createdAt.toString().slice(4,16)}
+              td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
+              td
+                .d-flex.justify-content-center
+                  a(href='/users/'+r.producer._id)
+                    img.rounded(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+              td #{r.downloads}
+        
+        a.btn.btn-primary.w-100(href='/resources/upload') Upload

@@ -12,6 +12,12 @@ export async function insert(user, post) {
     return newPost.save()
 }
 
+export function list(){
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
+        .sort({createdAt: -1})
+        .exec()
+}
+
 export function listRecent(size){
     return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
         .sort({createdAt: -1})
@@ -30,6 +36,21 @@ export function findById(id) {
     return Post
         .findById(id)
         .exec()
+}
+
+export function deleteById(id) {
+    return Post
+        .findByIdAndDelete(id)
+        .exec()
+}
+
+export function filterByProducer(prodId) {
+
+    return Post
+        .find(
+            { "producer._id": prodId },
+            {title:1, themes:1 , producer: 1, views: 1, createdAt: 1}
+        ).exec()
 }
 
 export function addComment(id,user,comment) {
