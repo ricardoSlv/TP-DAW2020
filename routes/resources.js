@@ -67,4 +67,14 @@ router.patch('/:id', async (req, res, _next) => {
     }
 })
 
+//TODO: Update quando fizermos unzip
+router.get('/:id/download', async (req, res, _next) => {
+    if (req.user){
+        const resource = await Resource.findById(req.params.id)
+        Resource.addDownload(req.params.id)
+        res.download(`./user_files/${resource.producer._id.toString()}/${resource.id}.zip`)
+    }else
+        res.error(401,{user: req.user})
+})
+
 export default router

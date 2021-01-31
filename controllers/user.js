@@ -87,3 +87,22 @@ export function findById(id) {
         .findById(id)
         .exec()
 }
+
+export function addfavPost(id,title) {
+    return User
+        .updateOne({_id: id},{$push: {
+            favouritesPosts: {
+                _id: id, 
+                title: title,
+            }
+        }}).exec()
+}
+
+export function remfavPost(id,postId) {
+    return User
+        .updateOne({_id: id},{$pull: {
+            favouritesPosts: {
+                _id: postId
+            }
+        }}).exec()
+}

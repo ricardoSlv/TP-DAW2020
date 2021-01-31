@@ -7,8 +7,12 @@ block content
         
         h1.m-4.text-center #{post.title}
         
-        h2.mb-3 #{post.subtitle}
-        
+        .d-flex.justify-content-between
+          h2.mb-3 #{post.subtitle}
+          button.btn.btn-warning(onclick=`switchFavourite("${user._id}","${post._id}",${user.favouritesPosts.some(p=>p._id===post._id)},"${post.title}")`)
+            | #{user.favouritesPosts.some(p=>p._id===post._id) ? 'Remove Favourite' : 'Favourite'}
+
+        p #{post.views} views
         .mb-3.d-flex
           span.me-2='by'
           a.d-flex(href='/users/'+post.producer._id)

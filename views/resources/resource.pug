@@ -8,3 +8,8 @@ block content
         h1.m-4.text-center #{resource.title}
         
         h2.mb-3 #{resource.subtitle}
+
+        p #{resource.downloads} downloads
+
+        a.btn.btn-primary.w-100(href=`/resources/${resource._id}/download`) Download
+
