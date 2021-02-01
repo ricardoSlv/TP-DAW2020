@@ -64,5 +64,11 @@ export function addComment(id,user,comment) {
                 text: comment.text, 
                 createdAt: new Date(),
             }
-        }})
+        }}).exec()
+}
+
+export function addView(id) {
+    return Post
+        .updateOne({_id: id},{$inc: { views: 1}})
+        .exec()
 }

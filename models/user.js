@@ -12,8 +12,8 @@ const userSchema = new mongoose.Schema({
     level: String,
     dateReg: Date,
     lastOnline: Date,
-    favouritesResources: [{_id: ObjectId, title: String}],
-    favouritesPosts: [{_id: ObjectId, title: String}]
+    favouriteResources: [{_id: ObjectId, title: String}],
+    favouritePosts: [{_id: ObjectId, title: String}]
 },{versionKey: false})
 
 

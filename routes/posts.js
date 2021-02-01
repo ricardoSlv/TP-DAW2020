@@ -1,6 +1,7 @@
 import { Router } from 'express'
 const router = Router()
 
+import * as User from '../controllers/user.js'
 import * as Post from '../controllers/post.js'
 import * as Resource from '../controllers/resource.js'
 
@@ -35,7 +36,9 @@ router.post('/upload', async (req, res, _next) => {
 router.get('/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
-        res.render('posts/post',{user: req.user, post})
+        const user = await User.findById(req.user._id)
+        Post.addView(req.params.id)
+        res.render('posts/post',{user, post})
     } 
     catch (e) {
         console.log(e)

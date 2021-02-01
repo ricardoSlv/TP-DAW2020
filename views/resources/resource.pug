@@ -7,4 +7,15 @@ block content
         
         h1.m-4.text-center #{resource.title}
         
-        h2.mb-3 #{resource.subtitle}
+        .d-flex.justify-content-between
+          h2.mb-3 #{resource.subtitle}
+          button.btn.btn-warning(onclick=`switchFavourite("${user._id}","${resource._id}",${user.favouriteResources.some(r=>r._id.toString()===resource._id.toString())},"${resource.title}")`)
+            | #{user.favouriteResources.some(r=>r._id.toString()===resource._id.toString()) ? 'Remove Favourite' : 'Favourite'}
+
+        p #{resource.downloads} downloads
+
+        a.btn.btn-primary.w-100(href=`/resources/${resource._id}/download`) Download
+  
+    script(src='/javascripts/resources/resource.js')
+
+

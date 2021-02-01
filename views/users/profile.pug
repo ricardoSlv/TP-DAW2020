@@ -30,7 +30,7 @@ block content
               small.text-muted
                 i.fas.fa-user.mr-1
                 | Posts
-        .px-4.py-3
+        .p-4
           h5.mb-0 About
           .p-4.rounded.shadow-sm.bg-light
             p.font-italic.mb-0 Register Date: #{user.dateReg.toString().slice(4,16)}
@@ -42,7 +42,23 @@ block content
               | Administrator
             else
               | Producer
-        .py-4.px-4
+
+        .p-4.row 
+          h1.text-center Favourites
+          .col-12.col-lg-6
+            h2.mt-3.text-center='Resources'
+            ul.list-group
+              each r in user.favouriteResources
+                li.list-group-item 
+                  a(href=`/resources/${r._id}`) #{r.title}
+          .col-12.col-lg-6
+            h2.mt-3.text-center='Posts'
+            ul.list-group
+              each p in user.favouritePosts
+                li.list-group-item 
+                  a(href=`/posts/${p._id}`) #{p.title}
+
+        .p-4
           h1.my-3.text-center='Resources'
           table.table.text-center
             th Title  
@@ -61,7 +77,7 @@ block content
                 td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
                 td #{r.downloads}
                 td 
-                  button.btn.btn-primary(onclick=`setResourceVisibility("${r._id}",${!r.public})`) #{r.public ? 'Hide':'Show'}
+                  button.btn.btn-primary(onclick=`setResourceVisibility("${r._id}",${!r.public})`) #{r.public ? 'Set to private' : 'Set to public'}
                 td 
                   button.btn.btn-danger(onclick=`deleteResource("${r._id}")`) Delete
 

@@ -43,4 +43,48 @@ router.get('/:id/picture', async (req, res, _next) => {
         res.error(401,{user: req.user})
 })
 
+router.post('/:id/favouritesPosts/', async (req, res, _next) => {
+    try {
+        await User.addfavPost(req.params.id,req.body._id,req.body.title)
+        res.sendStatus(201)
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.sendStatus(500)
+    }
+})
+
+router.delete('/:id/favouritesPosts/:postid', async (req, res, _next) => {
+    try {
+        await User.remfavPost(req.params.id,req.params.postid)
+        res.sendStatus(200)
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.sendStatus(500)
+    }
+})
+
+router.post('/:id/favouritesResources/', async (req, res, _next) => {
+    try {
+        await User.addfavRes(req.params.id,req.body._id,req.body.title)
+        res.sendStatus(201)
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.sendStatus(500)
+    }
+})
+
+router.delete('/:id/favouritesResources/:resid', async (req, res, _next) => {
+    try {
+        await User.remfavRes(req.params.id,req.params.resid)
+        res.sendStatus(200)
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.sendStatus(500)
+    }
+})
+
 export default router

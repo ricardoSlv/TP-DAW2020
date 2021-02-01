@@ -2,6 +2,7 @@ import { Router } from 'express'
 const router = Router()
 
 import * as Resource from '../controllers/resource.js'
+import * as User from '../controllers/user.js'
 
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
@@ -35,7 +36,8 @@ router.get('/:id', async (req, res, _next) => {
     
     try {
         const resource = await Resource.findById(req.params.id)
-        res.render('resources/resource',{user: req.user, resource})
+        const user = await User.findById(req.user._id)
+        res.render('resources/resource',{user, resource})
     } catch (e) {
         console.log(e)
         if (e.message === '404')
@@ -65,6 +67,16 @@ router.patch('/:id', async (req, res, _next) => {
         console.log('e', e)
         res.sendStatus(500)
     }
+})
+
+//TODO: Update quando fizermos unzip
+router.get('/:id/download', async (req, res, _next) => {
+    if (req.user){
+        const resource = await Resource.findById(req.params.id)
+        Resource.addDownload(req.params.id)
+        res.download(`./user_files/${resource.producer._id.toString()}/${resource.id}.zip`)
+    }else
+        res.error(401,{user: req.user})
 })
 
 export default router
