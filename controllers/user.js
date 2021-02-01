@@ -88,11 +88,11 @@ export function findById(id) {
         .exec()
 }
 
-export function addfavPost(id,title) {
+export function addfavPost(id,postId,title) {
     return User
         .updateOne({_id: id},{$push: {
-            favouritesPosts: {
-                _id: id, 
+            favouritePosts: {
+                _id: postId, 
                 title: title,
             }
         }}).exec()
@@ -101,8 +101,27 @@ export function addfavPost(id,title) {
 export function remfavPost(id,postId) {
     return User
         .updateOne({_id: id},{$pull: {
-            favouritesPosts: {
+            favouritePosts: {
                 _id: postId
+            }
+        }}).exec()
+}
+
+export function addfavRes(id,resId,title) {
+    return User
+        .updateOne({_id: id},{$push: {
+            favouriteResources: {
+                _id: resId, 
+                title: title,
+            }
+        }}).exec()
+}
+
+export function remfavRes(id,resId) {
+    return User
+        .updateOne({_id: id},{$pull: {
+            favouriteResources: {
+                _id: resId
             }
         }}).exec()
 }

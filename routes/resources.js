@@ -2,6 +2,7 @@ import { Router } from 'express'
 const router = Router()
 
 import * as Resource from '../controllers/resource.js'
+import * as User from '../controllers/user.js'
 
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
@@ -35,7 +36,8 @@ router.get('/:id', async (req, res, _next) => {
     
     try {
         const resource = await Resource.findById(req.params.id)
-        res.render('resources/resource',{user: req.user, resource})
+        const user = await User.findById(req.user._id)
+        res.render('resources/resource',{user, resource})
     } catch (e) {
         console.log(e)
         if (e.message === '404')
