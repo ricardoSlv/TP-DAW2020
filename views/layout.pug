@@ -27,7 +27,8 @@ html
               li.nav-item
                 a.nav-link.d-flex.align-items-center.mb-0(href='https://github.com/ricardoSlv/TP-DAW2020')
                   ion-icon.px-1(name='logo-github')
-                  h5.mb-0 Github 
+                  h5.mb-0 Github
+
               if(user)
                 li.nav-item
                   a.nav-link.d-flex.align-items-center.mb-0(href='/users')
@@ -38,26 +39,32 @@ html
                     ion-icon.px-1(name='document-text')
                     h5.mb-0 Posts
                 li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/resources/')
-                  ion-icon.px-1(name='folder')
-                  h5.mb-0 Resources
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/resources/')
+                    ion-icon.px-1(name='folder')
+                    h5.mb-0 Resources
                 li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/users/profile')
-                  ion-icon.px-1(name='person-circle')
-                  h5.mb-0 Profile
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/users/profile')
+                    ion-icon.px-1(name='person-circle')
+                    h5.mb-0 Profile
                 li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/logout')
-                  ion-icon.px-1(name='log-out')
-                  h5.mb-0 Logout
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/logout')
+                    ion-icon.px-1(name='log-out')
+                    h5.mb-0 Logout
+                if(user.level.localeCompare('ADMN')==0)
+                  li.nav-item
+                    a.nav-link.d-flex.align-items-center.mb-0(href='/admin')
+                      ion-icon.px-1(name='shield-half')
+                      h5.mb-0 Admin
+
               else
                 li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/login')
-                  ion-icon.px-1(name='log-in')
-                  h5.mb-0='Login'
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/login')
+                    ion-icon.px-1(name='log-in')
+                    h5.mb-0='Login'
                 li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/signup')
-                  ion-icon.px-1(name='person-add')
-                  h5.mb-0='Signup'
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/signup')
+                    ion-icon.px-1(name='person-add')
+                    h5.mb-0='Signup'
 
             span.navbar-text.h5.mb-0
               | DAW 2020
