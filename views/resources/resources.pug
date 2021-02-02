@@ -4,7 +4,28 @@ block content
   section.container
     .row.justify-content-center
       h1.my-3.text-center='Resources'
+      
       .col-12.col-lg-8
+        //Does a GET on resources/?filterType="filterType"&filter="filter"&sortType="sortType" by default
+        form#searchform.my-4.d-flex.align-items-center
+            select.mx-1#filtertype.form-select(name='filterType')
+              option(selected='' value='') Select filter type
+              option(value='title') Title
+              option(value='producer') Producer
+            
+            input.mx-1#filter.form-control(type='text' name='filter' defaultValue='' placeholder='Filter')
+
+            select.mx-1#sorttype.form-select(name='sortType')
+              option(selected='' value='') Select sort type
+              option(value='title') Title
+              option(value='type') Type
+              option(value='downloads') Downloads
+              option(value='producer') Producer
+              option(value='createdAt') Creation Date
+              option(value='registeredAt') Register Date
+          
+            button.mx-1.btn.btn-primary.btn-block(type='submit') Search
+      
         table.table.text-center
           th Title
           th Type
@@ -26,3 +47,6 @@ block content
               td #{r.downloads}
         
         a.btn.btn-primary.w-100(href='/resources/upload') Upload
+
+    script(src='/javascripts/resources/resource.js')
+
