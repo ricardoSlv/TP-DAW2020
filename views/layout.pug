@@ -50,7 +50,7 @@ html
                   a.nav-link.d-flex.align-items-center.mb-0(href='/logout')
                     ion-icon.px-1(name='log-out')
                     h5.mb-0 Logout
-                if(user.level.localeCompare('ADMN')==0)
+                if(user.level && user.level.localeCompare('ADMN')==0)
                   li.nav-item
                     a.nav-link.d-flex.align-items-center.mb-0(href='/admin')
                       ion-icon.px-1(name='shield-half')
