@@ -10,7 +10,27 @@ const upload = multer({ dest: 'uploads/' })
 //TODO: Proteger as rotas
 
 router.get('/', async (req, res, _next) => {
-    const resources = await Resource.listPublic()
+    //TODO: Optimize by querying on mongodb
+    let resources = await Resource.listPublic()
+
+    if(req.query.filterType==='title')
+        resources = resources.filter(r=>(new RegExp(req.query.filter)).test(r.title))
+    else if ((req.query.filterType==='producer'))
+        resources = resources.filter(r=>(new RegExp(req.query.filter)).test(r.producer.name))
+    
+    if (req.query.sortType=='title')
+        resources.sort((r1,r2)=>r1.title.localeCompare(r2.title))
+    else if (req.query.sortType=='type')
+        resources.sort((r1,r2)=>r1.type.localeCompare(r2.type))
+    else if (req.query.sortType=='createdAt')
+        resources.sort((r1,r2)=>r2.createdAt.getTime()-r1.createdAt.getTime())
+    else if (req.query.sortType=='registeredAt')
+        resources.sort((r1,r2)=>r2.registeredAt.getTime()-r1.registeredAt.getTime())
+    else if(req.query.sortType=='producer')
+        resources.sort((r1,r2)=>r1.producer.name.localeCompare(r2.producer.name))
+    else if (req.query.sortType=='downloads')
+        resources.sort((r1,r2)=>r2.downloads-r1.downloads)
+
     res.render('resources/resources',{user: req.user, resources})
 })
 

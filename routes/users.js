@@ -8,7 +8,8 @@ import * as Post from '../controllers/post.js'
 //TODO: Proteger as rotas, error handling
 
 router.get('/', async (req, res, _next) => {
-    const users = await User.list()
+    let users = await User.list()
+    users = users.sort((u1,u2)=>u1.name.toLowerCase().localeCompare(u2.name.toLowerCase))
     res.render('users/users',{user: req.user, users})
 })
 

@@ -8,7 +8,26 @@ import * as Resource from '../controllers/resource.js'
 //TODO: Proteger as rotas
 
 router.get('/', async (req, res, _next) => {
-    const posts = await Post.list()
+    //TODO: Optimize by querying on mongodb
+    let posts = await Post.list()
+
+    if(req.query.filterType==='title')
+        posts = posts.filter(p=>(new RegExp(req.query.filter)).test(p.title))
+    else if ((req.query.filterType==='producer'))
+        posts = posts.filter(p=>(new RegExp(req.query.filter)).test(p.producer.name))
+
+    if (req.query.sortType=='title')
+        posts.sort((p1,p2)=>p1.title.localeCompare(p2.title))
+    else if (req.query.sortType=='themes'){
+        posts.sort((p1,p2)=>p1.themes.sort().join('').localeCompare(p2.themes.sort().join('')))
+    } else if (req.query.sortType=='createdAt')
+        posts.sort((p1,p2)=>p2.createdAt.getTime()-p1.createdAt.getTime())
+    //TODO: Ver se funciona com posts novos
+    else if(req.query.sortType=='producer')
+        posts.sort((p1,p2)=>p1.producer.name.localeCompare(p2.producer.name))
+    else if (req.query.sortType=='views')
+        posts.sort((p1,p2)=>p2.views-p1.views)
+
     res.render('posts/posts',{user: req.user, posts: posts})
 })
 
