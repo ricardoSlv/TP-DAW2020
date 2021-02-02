@@ -58,7 +58,12 @@ router.get('/:id', async (req, res, _next) => {
     try {
         const resource = await Resource.findById(req.params.id)
         const user = await User.findById(req.user._id)
-        res.render('resources/resource',{user, resource})
+
+        if(resource.public===false&&resource.producer._id.toString()!=user._id.toString()){
+            res.status(401)
+            res.render('error',{user: req.user,error: {status: 401, stack:'This resource has been set to private'}})
+        } else
+            res.render('resources/resource',{user, resource})
     } catch (e) {
         console.log(e)
         if (e.message === '404')
@@ -96,8 +101,10 @@ router.get('/:id/download', async (req, res, _next) => {
         const resource = await Resource.findById(req.params.id)
         Resource.addDownload(req.params.id)
         res.download(`./user_files/${resource.producer._id.toString()}/${resource.id}.zip`)
-    }else
-        res.error(401,{user: req.user})
+    }else{
+        res.status(401)
+        res.render('error',{user: req.user, error: {status:401, stack:'You must be logged in to download any resource'}})
+    }
 })
 
 export default router
