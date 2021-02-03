@@ -7,8 +7,8 @@ form.addEventListener('submit', async e => {
     console.log('entrei')
     e.preventDefault()
     const editForm = e.target
-    const { id, title, subtitle, content /* themes */ } = editForm
-    //const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
+    const { id, title, subtitle, content, themes} = editForm
+    const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
 
     const postData = {}
 
@@ -16,7 +16,7 @@ form.addEventListener('submit', async e => {
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
-    //postData['themes'] = [...themes].filter(t => t.checked).map(t => t.value)
+    postData['themes'] = [...themes].filter(t => t.checked).map(t => t.value)
     postData[content.name] = content.value
     //postData['resources'] = resourceList
 

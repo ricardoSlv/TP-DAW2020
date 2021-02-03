@@ -14,6 +14,78 @@ block content
         label.form-label(for='subtitleInput') Subtitle
         input#subtitleInput.mb-3.form-control(type='text' name='subtitle' value=post.subtitle)
 
+        label.form-label(for='themesCheckbox') Themes
+        br
+        if (post.themes.includes('REPORT'))
+          .form-check.form-check-inline
+            input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='REPORT' checked)
+            label.form-check-label(for='themesCheckbox')
+              | Report
+        else
+          .form-check.form-check-inline
+            input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='REPORT')
+            label.form-check-label(for='themesCheckbox')
+              | Report
+        if (post.themes.includes('THESIS'))
+          .form-check.form-check-inline
+            input#thesisCheckbox.form-check-input(type='checkbox' name='themes' value='THESIS' checked)
+            label.mb-3.form-check-label(for='thesisCheckbox')
+              | Thesis
+        else
+          .form-check.form-check-inline
+            input#thesisCheckbox.form-check-input(type='checkbox' name='themes' value='THESIS')
+            label.mb-3.form-check-label(for='thesisCheckbox')
+              | Thesis
+        if (post.themes.includes('ARTICLE'))
+          .form-check.form-check-inline
+            input#articleCheckbox.form-check-input(type='checkbox' name='themes' value='ARTICLE' checked)
+            label.mb-3.form-check-label(for='articleCheckbox')
+              | Article
+        else 
+          .form-check.form-check-inline
+            input#articleCheckbox.form-check-input(type='checkbox' name='themes' value='ARTICLE')
+            label.mb-3.form-check-label(for='articleCheckbox')
+              | Article
+        if (post.themes.includes('APP'))
+          .form-check.form-check-inline
+            input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP' checked)
+            label.mb-3.form-check-label(for='appCheckbox')
+              | App
+        else 
+           .form-check.form-check-inline
+            input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
+            label.mb-3.form-check-label(for='appCheckbox')
+              | App
+        if (post.themes.includes('SLIDES'))
+          .form-check.form-check-inline
+            input#slidesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES' checked)
+            label.mb-3.form-check-label(for='slidesCheckbox')
+              | Slides
+        else 
+          .form-check.form-check-inline
+            input#slidesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES')
+            label.mb-3.form-check-label(for='slidesCheckbox')
+              | Slides
+        if (post.themes.includes('TEST'))
+          .form-check.form-check-inline
+            input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST' checked)
+            label.mb-3.form-check-label(for='testCheckbox')
+              | Test
+        else
+           .form-check.form-check-inline
+            input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
+            label.mb-3.form-check-label(for='testCheckbox')
+              | Test
+        if (post.themes.includes('SOLVEDPROB'))
+          .form-check.form-check-inline
+            input#solvedproblemCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB' checked)
+            label.mb-3.form-check-label(for='solvedproblemCheckbox')
+              | Solved Problem
+        else
+          .form-check.form-check-inline
+            input#solvedproblemCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB')
+            label.mb-3.form-check-label(for='solvedproblemCheckbox')
+              | Solved Problem
         .form-floating
           textarea#contentTextarea.form-control.mb-3(style='height:6em' name='content')=post.content
           label(for='contentTextarea') Describe your post
