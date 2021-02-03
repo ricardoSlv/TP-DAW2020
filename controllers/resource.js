@@ -68,6 +68,13 @@ export function listPublic(){
         ).exec()
 }
 
+export function list(){
+    return Resource.find(
+        {},
+        {title:1, producer: 1, type: 1, downloads: 1, public: 1, registeredAt: 1, createdAt: 1}
+        ).exec()
+}
+
 export function addDownload(id) {
     return Resource
         .updateOne({_id: id},{$inc: { downloads: 1}})
