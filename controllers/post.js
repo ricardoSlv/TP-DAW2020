@@ -41,7 +41,7 @@ export function findById(id) {
 
 export function editById(id, title, subtitle, content) {
     return Post
-    .updateOne({_id: id},{$push: {
+    .updateOne({_id: id},{$set: {
         title: title,
         subtitle: subtitle,
         content: content

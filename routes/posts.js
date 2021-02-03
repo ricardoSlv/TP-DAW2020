@@ -55,7 +55,7 @@ router.post('/upload', async (req, res, _next) => {
 // Edit some post
 router.post('/edit/:id', async (req, res, _next) => {
     try {
-        await Post.editById(req.params.id)
+        await Post.editById(req.params.id, req.body.title, req.body.subtitle, req.body.content)
         res.sendStatus(200)
     } 
     catch (e) {
@@ -84,9 +84,9 @@ router.get('/:id', async (req, res, _next) => {
 router.get('/mine/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
-        // const user = await User.findById(req.user._id)
+        const user = await User.findById(req.user._id)
         // Post.addView(req.params.id)
-        res.render('posts/edit',{post})
+        res.render('posts/edit',{user, post})
     } 
     catch (e) {
         console.log(e)

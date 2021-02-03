@@ -4,15 +4,15 @@ const form = document.querySelector('#postEdit')
 
 form.addEventListener('submit', async e => {
 
+    console.log('entrei')
     e.preventDefault()
-    console.log('Entrei')
-    const uploadForm = e.target
-    const { id, title, subtitle, content /*, themes */ } = uploadForm
+    const editForm = e.target
+    const { id, title, subtitle, content /* themes */ } = editForm
     //const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
 
     const postData = {}
 
-    console.log(resourceList)
+    //console.log(resourceList)
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
@@ -29,8 +29,8 @@ form.addEventListener('submit', async e => {
             body: JSON.stringify(postData),
         })
         if(resp.status === 200) {
-            alert('Post creation successfull! 😀')
-            window.location.pathname='/posts/upload'
+            alert('Post edition successfull! 😀')
+            //window.location.pathname='/posts/mine'
         }
         else
             alert('The server has encountered an error, please retry later 😥')
