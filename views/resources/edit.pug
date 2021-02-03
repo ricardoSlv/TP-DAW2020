@@ -1,0 +1,91 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.mt-3.text-center='Edit Resource'
+      form#resourceEdit.col-lg-8(method='post')
+
+        input#idInput(type='hidden' name='id' value=resource._id)
+
+        label.form-label(for='titleInput') Title
+        input#titleInput.mb-3.form-control(type='text' name='title' value=resource.title required)
+
+        label.form-label(for='subtitleInput') Subtitle
+        input#subtitleInput.mb-3.form-control(type='text' name='subtitle' value=resource.subtitle)
+
+        label.form-label(for='themesRadio') Type
+        br
+        if (resource.type ==('REPORT'))
+          .form-check.form-check-inline
+            input#themesRadio.form-check-input(type='radio' name='type' value='REPORT' checked)
+            label.form-check-label(for='themesRadio')
+              | Report
+        else
+          .form-check.form-check-inline
+            input#themesRadio.form-check-input(type='radio' name='type' value='REPORT')
+            label.form-check-label(for='themesRadio')
+              | Report
+        if (resource.type ==('THESIS'))
+          .form-check.form-check-inline
+            input#thesisRadio.form-check-input(type='radio' name='type' value='THESIS' checked)
+            label.mb-3.form-check-label(for='thesisRadio')
+              | Thesis
+        else
+          .form-check.form-check-inline
+            input#thesisRadio.form-check-input(type='radio' name='type' value='THESIS')
+            label.mb-3.form-check-label(for='thesisRadio')
+              | Thesis
+        if (resource.type ==('ARTICLE'))
+          .form-check.form-check-inline
+            input#articleRadio.form-check-input(type='radio' name='type' value='ARTICLE' checked)
+            label.mb-3.form-check-label(for='articleRadio')
+              | Article
+        else 
+          .form-check.form-check-inline
+            input#articleRadio.form-check-input(type='radio' name='type' value='ARTICLE')
+            label.mb-3.form-check-label(for='articleRadio')
+              | Article
+        if (resource.type ==('APP'))
+          .form-check.form-check-inline
+            input#appRadio.form-check-input(type='radio' name='type' value='APP' checked)
+            label.mb-3.form-check-label(for='appRadio')
+              | App
+        else 
+           .form-check.form-check-inline
+            input#appRadio.form-check-input(type='radio' name='type' value='APP')
+            label.mb-3.form-check-label(for='appRadio')
+              | App
+        if (resource.type ==('SLIDES'))
+          .form-check.form-check-inline
+            input#slidesRadio.form-check-input(type='radio' name='type' value='SLIDES' checked)
+            label.mb-3.form-check-label(for='slidesRadio')
+              | Slides
+        else 
+          .form-check.form-check-inline
+            input#slidesRadio.form-check-input(type='radio' name='type' value='SLIDES')
+            label.mb-3.form-check-label(for='slidesRadio')
+              | Slides
+        if (resource.type ==('TEST'))
+          .form-check.form-check-inline
+            input#testRadio.form-check-input(type='radio' name='type' value='TEST' checked)
+            label.mb-3.form-check-label(for='testRadio')
+              | Test
+        else
+           .form-check.form-check-inline
+            input#testRadio.form-check-input(type='radio' name='type' value='TEST')
+            label.mb-3.form-check-label(for='testRadio')
+              | Test
+        if (resource.type ==('SOLVEDPROB'))
+          .form-check.form-check-inline
+            input#solvedproblemRadio.form-check-input(type='radio' name='type' value='SOLVEDPROB' checked)
+            label.mb-3.form-check-label(for='solvedproblemRadio')
+              | Solved Problem
+        else
+          .form-check.form-check-inline
+            input#solvedproblemRadio.form-check-input(type='radio' name='type' value='SOLVEDPROB')
+            label.mb-3.form-check-label(for='solvedproblemRadio')
+              | Solved Problem
+        
+        button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Confirm
+    script(src='/javascripts/resources/editresource.js')

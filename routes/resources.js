@@ -53,6 +53,18 @@ router.post('/upload', upload.single('zip'), async (req, res, _next) => {
     }
 })
 
+// Edit some post
+router.post('/edit/:id', async (req, res, _next) => {
+    try {
+        await Resource.editById(req.params.id, req.body.title, req.body.subtitle, req.body.type)
+        res.sendStatus(200)
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.sendStatus(500)
+    }
+})
+
 router.get('/:id', async (req, res, _next) => {
     
     try {
@@ -70,6 +82,23 @@ router.get('/:id', async (req, res, _next) => {
             res.status(409).send()
         else
             res.status(500).send()
+    }
+})
+
+router.get('/mine/:id', async (req, res, _next) => {
+    try {
+        const resource = await Resource.findById(req.params.id)
+        const user = await User.findById(req.user._id)
+        // Post.addView(req.params.id)
+        res.render('resources/edit',{user, resource})
+    } 
+    catch (e) {
+        console.log(e)
+        //TODO 404
+        if (e.message === '401')
+            res.sendStatus(401)
+        else
+            res.sendStatus(500)
     }
 })
 

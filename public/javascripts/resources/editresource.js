@@ -1,4 +1,4 @@
-const form = document.querySelector('#postEdit')
+const form = document.querySelector('#resourceEdit')
 
 //const resourceList = []
 
@@ -7,8 +7,8 @@ form.addEventListener('submit', async e => {
     console.log('entrei')
     e.preventDefault()
     const editForm = e.target
-    const { id, title, subtitle, content, themes} = editForm
-    const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
+    const { id, title, subtitle, type} = editForm
+    //const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
 
     const postData = {}
 
@@ -16,20 +16,18 @@ form.addEventListener('submit', async e => {
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
-    postData['themes'] = [...themes].filter(t => t.checked).map(t => t.value)
-    postData[content.name] = content.value
-    //postData['resources'] = resourceList
-
+    postData['type'] = type.value
+    
     console.table(postData)
 
     try {
-        const resp = await fetch('/posts/edit/' + id.value, {
+        const resp = await fetch('/resources/edit/' + id.value, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(postData),
         })
         if(resp.status === 200) {
-            alert('Post edition successfull! 😀')
+            alert('Resource edition successfull! 😀')
             window.location.pathname='/users/profile'
         }
         else
