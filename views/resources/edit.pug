@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+  section.container
+    .row.justify-content-center
+      h1.mt-3.text-center='Edit Resource'
+      form#resourceEdit.col-lg-8(method='post')
+
+        input#idInput(type='hidden' name='id' value=resource._id)
+
+        label.form-label(for='titleInput') Title
+        input#titleInput.mb-3.form-control(type='text' name='title' value=resource.title required)
+
+        label.form-label(for='subtitleInput') Subtitle
+        input#subtitleInput.mb-3.form-control(type='text' name='subtitle' value=resource.subtitle)
+
+        label.form-label(for='themesCheckbox') Themes
+        br
+        .form-check.form-check-inline
+          input#themesCheckbox.form-check-input(type='checkbox' name='themes' value='REPORT')
+          label.form-check-label(for='themesCheckbox')
+            | Report
+        .form-check.form-check-inline
+          input#thesisCheckbox.form-check-input(type='checkbox' name='themes' value='THESIS')
+          label.mb-3.form-check-label(for='thesisCheckbox')
+            | Thesis
+        .form-check.form-check-inline
+          input#articleCheckbox.form-check-input(type='checkbox' name='themes' value='ARTICLE')
+          label.mb-3.form-check-label(for='articleCheckbox')
+            | Article
+        .form-check.form-check-inline
+          input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
+          label.mb-3.form-check-label(for='appCheckbox')
+            | App
+        .form-check.form-check-inline
+          input#slidesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES')
+          label.mb-3.form-check-label(for='slidesCheckbox')
+            | Slides
+        .form-check.form-check-inline
+          input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
+          label.mb-3.form-check-label(for='testCheckbox')
+            | Test
+        .form-check.form-check-inline
+          input#solvedproblemCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB')
+          label.mb-3.form-check-label(for='solvedproblemCheckbox')
+            | Solved Problem
+        
+        button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Confirm
+    script(src='/javascripts/resources/editresource.js')
