@@ -38,6 +38,33 @@ router.get('/admin', async (req, res, _next) => {
         res.redirect('/login')
 })
 
+router.get('/edit/:id', async (req, res, _next) => {
+    const user = await User.findById(req.params.id)
+
+    if (user){
+        console.log(user)
+        res.render('users/edit', {user} )
+    }
+    else{
+        res.status(401)
+        res.render('error',{user: req.user,error: {status: 401, stack:'This page is only acessible to admins'}})
+    }
+})
+
+router.post('/edit/:id', async (req, res, _next) => {
+    console.log("ISTO " +  req.body)
+    const user = await User.editById(req.params.id, req.body.password, req.body.position, req.body.course)
+    if (user){
+        console.log('bem')
+        res.sendStatus(200)
+    }
+    else{
+        console.log('mal')
+        res.status(401)
+        res.render('error',{user: req.user,error: {status: 401, stack:'This page is only acessible to admins'}})
+    }
+})
+
 router.get('/:id', async (req, res, _next) => {
     const user = await User.findById(req.params.id)
 

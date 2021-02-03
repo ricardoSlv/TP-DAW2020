@@ -1,4 +1,3 @@
-
 const form = document.querySelector('#signupform')
 
 form.addEventListener('submit', async e => {

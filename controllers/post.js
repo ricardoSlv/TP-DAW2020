@@ -41,12 +41,12 @@ export function findById(id) {
 
 export function editById(id, title, subtitle, content, themes) {
     return Post
-    .updateOne({_id: id},{$set: {
-        title: title,
-        subtitle: subtitle,
-        content: content, 
-        themes: themes
-    }}).exec()
+        .updateOne({_id: id},{$set: {
+            title: title,
+            subtitle: subtitle,
+            content: content, 
+            themes: themes
+        }}).exec()
 }
 
 export function deleteById(id) {

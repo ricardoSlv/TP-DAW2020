@@ -82,6 +82,16 @@ export function update(filter, query) {
         .exec()
 }
 
+export function editById(id, password, position, course) {
+    return User
+        .updateOne({_id: id},{$set: {
+            password: password,
+            position: position,
+            course: course
+        }})
+        .exec()
+}
+
 export function findById(id) {
     return User
         .findById(id)

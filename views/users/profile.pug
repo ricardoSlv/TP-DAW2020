@@ -9,7 +9,7 @@ block content
           .media.align-items-end.profile-head
             .profile.mr-3
               img.rounded.mb-2.img-thumbnail(src='/users/'+user._id+'/picture' alt='...' width='130')
-              a.btn.btn-outline-dark.btn-sm.btn-block.mx-3(href='#') Edit profile
+              a.btn.btn-outline-light.btn-sm.btn-block.mx-3(href='/users/edit/' + user._id) Edit profile
             .media-body.mb-5.text-white
               h4.mt-0.mb-0 #{user.name}
               p.small.mb-4
@@ -71,7 +71,7 @@ block content
             each r in resources
               tr
                 td 
-                  a(href='/resources/'+r._id) #{r.title}
+                  a(href='/resources/mine/'+r._id) #{r.title}
                 td #{r.type}
                 td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                 td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
@@ -99,4 +99,3 @@ block content
                   button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
 
     script(src='/javascripts/users/profile.js')
-
