@@ -58,6 +58,17 @@ app.use((req, _res, next) => {
     next()
 })
 
+// Protect routes
+const isLoggedIn = (req,res,next) => {
+    if (req.user){
+        next();
+    }
+    else {
+        res.status(401)
+        res.send()
+    }
+}
+
 // app.use((req, _res, next) => {
 //     console.log(req.cookies&&Object.keys(req.cookies))
 //     console.log(req.user&&Object.entries(req.user))
@@ -67,9 +78,9 @@ app.use((req, _res, next) => {
 
 app.use('/', indexRouter)
 app.use('/', authRouter)
-app.use('/users',userRouter)
-app.use('/resources', resourcesRouter)
-app.use('/posts', postRouter)
+app.use('/users', isLoggedIn, userRouter)
+app.use('/resources', isLoggedIn, resourcesRouter)
+app.use('/posts', isLoggedIn, postRouter)
 
 // catch 404 and forward to error handler
 app.use(function (_req, _res, next) {
