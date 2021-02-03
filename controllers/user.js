@@ -88,6 +88,12 @@ export function findById(id) {
         .exec()
 }
 
+export function deleteById(id) {
+    return User
+        .findByIdAndDelete(id)
+        .exec()
+}
+
 export function addfavPost(id,postId,title) {
     return User
         .updateOne({_id: id},{$push: {

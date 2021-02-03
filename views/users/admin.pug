@@ -1,0 +1,85 @@
+extends ../layout
+
+block content
+  .row.py-5.px-4.justify-content-center
+    .col-xl-9.col-xxl-8
+      .bg-white.shadow.rounded.overflow-hidden
+      
+        h1.text-center Admin Page
+
+        .p-4
+          h1.my-3.text-center='Users'
+          table.table.text-center
+            th Name
+            th Position
+            th Course
+            th Level
+            th DateReg
+            th LastOnline
+            th
+            each u in users
+              tr
+                td
+                  .d-flex.justify-content-center
+                    a(href='/users/'+u._id)
+                      img.rounded.me-1(src='/users/'+u._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                      | #{u.name}
+                td #{u.position}
+                td #{u.course}
+                td #{u.level}
+                td #{u.dateReg && u.dateReg.toString().slice(4,16)}
+                td #{u.lastOnline && u.lastOnline.toString().slice(4,16)}
+                td 
+                  button.btn.btn-danger(onclick=`deleteUser("${u._id}")`) Delete
+
+        .p-4
+          h1.my-3.text-center='Resources'
+          table.table.text-center
+            th Title  
+            th Type
+            th Producer
+            th Created
+            th Registered
+            th Downloads
+            th
+            each r in resources
+              tr
+                td 
+                  a(href='/resources/'+r._id) #{r.title}
+                td #{r.type}
+                td
+                  .d-flex.justify-content-center
+                    a(href='/users/'+r.producer._id)
+                      img.rounded.me-1(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                      | #{r.producer.name}
+                td #{r.createdAt && r.createdAt.toString().slice(4,16)}
+                td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
+                td #{r.downloads}
+                td 
+                  button.btn.btn-danger(onclick=`deleteResource("${r._id}")`) Delete
+
+          h1.my-3.text-center='Posts'
+          table.table.text-center
+            th Title
+            th Themes
+            th Producer
+            th Created
+            th Views
+            th
+            each p in posts
+              tr
+                td 
+                  a(href='/posts/mine/' + p._id) #{p.title}
+                td #{p.themes && p.themes.join(" ")}
+                td
+                  .d-flex.justify-content-center
+                    a(href='/users/'+p.producer._id)
+                      img.rounded.me-1(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                      | #{p.producer.name}
+                td #{p.createdAt && p.createdAt.toString().slice(4,16)}
+                td #{p.views}
+                td 
+                  button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
+
+    script(src='/javascripts/users/admin.js')
+
