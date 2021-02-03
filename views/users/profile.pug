@@ -71,7 +71,7 @@ block content
             each r in resources
               tr
                 td 
-                  a(href='/resources/'+r._id) #{r.title}
+                  a(href='/resources/mine/'+r._id) #{r.title}
                 td #{r.type}
                 td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                 td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}

@@ -36,6 +36,15 @@ export function findById(id) {
         .exec()
 }
 
+export function editById(id, title, subtitle, type) {
+    return Resource
+    .updateOne({_id: id},{$set: {
+        title: title,
+        subtitle: subtitle,
+        type: type
+    }}).exec()
+}
+
 export function deleteById(id) {
     return Resource
         .findByIdAndDelete(id)
