@@ -1,3 +1,4 @@
+import { title } from "process"
 import Post from "../models/post.js"
 
 // Insert a new post
@@ -36,6 +37,15 @@ export function findById(id) {
     return Post
         .findById(id)
         .exec()
+}
+
+export function editById(id, title, subtitle, content) {
+    return Post
+    .updateOne({_id: id},{$push: {
+        title: title,
+        subtitle: subtitle,
+        content: content
+    }}).exec()
 }
 
 export function deleteById(id) {

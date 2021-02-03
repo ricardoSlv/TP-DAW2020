@@ -52,12 +52,41 @@ router.post('/upload', async (req, res, _next) => {
     }
 })
 
+// Edit some post
+router.post('/edit/:id', async (req, res, _next) => {
+    try {
+        await Post.editById(req.params.id)
+        res.sendStatus(200)
+    } 
+    catch (e) {
+        console.log('e', e)
+        res.sendStatus(500)
+    }
+})
+
 router.get('/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
         const user = await User.findById(req.user._id)
         Post.addView(req.params.id)
         res.render('posts/post',{user, post})
+    } 
+    catch (e) {
+        console.log(e)
+        //TODO 404
+        if (e.message === '401')
+            res.sendStatus(401)
+        else
+            res.sendStatus(500)
+    }
+})
+
+router.get('/mine/:id', async (req, res, _next) => {
+    try {
+        const post = await Post.findById(req.params.id)
+        // const user = await User.findById(req.user._id)
+        // Post.addView(req.params.id)
+        res.render('posts/edit',{post})
     } 
     catch (e) {
         console.log(e)

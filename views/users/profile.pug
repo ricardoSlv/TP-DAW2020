@@ -91,7 +91,7 @@ block content
             each p in posts
               tr
                 td 
-                  a(href='/posts/'+p._id) #{p.title}
+                  a(href='/posts/mine/' + p._id) #{p.title}
                 td #{p.themes && p.themes.join(" ")}
                 td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                 td #{p.views}
