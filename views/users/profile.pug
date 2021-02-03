@@ -35,6 +35,7 @@ block content
           .p-4.rounded.shadow-sm.bg-light
             p.font-italic.mb-0 Register Date: #{user.dateReg.toString().slice(4,16)}
             p.font-italic.mb-0 Last Seen: #{user.lastOnline.toString().slice(4,16)}
+            p.font-italic.mb-0 Course: #{user.course}
             p.font-italic.mb-0
             if(user.level==="CONS")
               | Consumer
@@ -42,7 +43,6 @@ block content
               | Administrator
             else
               | Producer
-
         .p-4.row 
           h1.text-center Favourites
           .col-12.col-lg-6
