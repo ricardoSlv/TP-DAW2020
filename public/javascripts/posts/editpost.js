@@ -30,7 +30,7 @@ form.addEventListener('submit', async e => {
         })
         if(resp.status === 200) {
             alert('Post edition successfull! 😀')
-            //window.location.pathname='/posts/mine'
+            window.location.pathname='/users/profile'
         }
         else
             alert('The server has encountered an error, please retry later 😥')

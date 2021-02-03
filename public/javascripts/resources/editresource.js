@@ -16,7 +16,7 @@ form.addEventListener('submit', async e => {
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
-    postData[type.name] = type.value
+    postData['type'] = type.value
     
     console.table(postData)
 
@@ -28,7 +28,7 @@ form.addEventListener('submit', async e => {
         })
         if(resp.status === 200) {
             alert('Resource edition successfull! 😀')
-            //window.location.pathname='/posts/mine'
+            window.location.pathname='/users/profile'
         }
         else
             alert('The server has encountered an error, please retry later 😥')
