@@ -52,14 +52,11 @@ router.get('/edit/:id', async (req, res, _next) => {
 })
 
 router.post('/edit/:id', async (req, res, _next) => {
-    console.log("ISTO " +  req.body)
     const user = await User.editById(req.params.id, req.body.password, req.body.position, req.body.course)
     if (user){
-        console.log('bem')
         res.sendStatus(200)
     }
     else{
-        console.log('mal')
         res.status(401)
         res.render('error',{user: req.user,error: {status: 401, stack:'This page is only acessible to admins'}})
     }

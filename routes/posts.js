@@ -85,7 +85,6 @@ router.get('/mine/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
         const user = await User.findById(req.user._id)
-        console.log(post)
         res.render('posts/edit',{user, post})
     } 
     catch (e) {
