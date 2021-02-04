@@ -6,25 +6,31 @@ block content
       .col-lg-8
         
         h1.m-4.text-center #{post.title}
-        
+        h2.m-4.text-center #{post.subtitle}
         .d-flex.justify-content-between
-          h2.mb-3 #{post.subtitle}
-          
-          button.btn.btn-warning(onclick=`switchFavourite("${user._id}","${post._id}",${user.favouritePosts.some(p=>p._id.toString()===post._id.toString())},"${post.title}")`)
-            | #{user.favouritePosts.some(p=>p._id.toString()===post._id.toString()) ? 'Remove Favourite' : 'Favourite'}
-
-        p #{post.views} views
-        .mb-3.d-flex
-          span.me-2='by'
           a.d-flex(href='/users/'+post.producer._id)
             img.rounded.me-1(src='/users/'+post.producer._id+'/picture' alt='...' style='height:1.5em;')
             | #{post.producer.name}
+          button.btn.btn-warning(onclick=`switchFavourite("${user._id}","${post._id}",${user.favouritePosts.some(p=>p._id.toString()===post._id.toString())},"${post.title}")`)
+            | #{user.favouritePosts.some(p=>p._id.toString()===post._id.toString()) ? 'Remove Favourite' : 'Favourite'}
+        br
+        .d-flex.justify-content-between
+          p #{post.views} Views
+          if( post.favs > 0)
+            p #{post.favs} Favourites
+          else
+            p 0 Favourites
         
-        ul
+          
+        
+        h4 Themes:
+        ul.list-group
           each t in post.themes
-            li #{t}
-        
-        article.mb-4 #{post.content}
+            li.list-group-item #{t}
+        br
+        ul.list-group
+          li.list-group-item
+            article.mb-4 #{post.content}
 
         if(post.resources && post.resources.length > 0)
           h4 Resources:
