@@ -30,6 +30,8 @@ router.get('/', async (req, res, _next) => {
         resources.sort((r1,r2)=>r1.producer.name.localeCompare(r2.producer.name))
     else if (req.query.sortType=='downloads')
         resources.sort((r1,r2)=>r2.downloads-r1.downloads)
+    else if (req.query.sortType=='favourites')
+        resources.sort((r1,r2)=>r2.favs-r1.favs)
 
     res.render('resources/resources',{user: req.user, resources})
 })

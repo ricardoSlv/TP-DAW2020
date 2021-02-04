@@ -7,7 +7,7 @@ import * as Post from '../controllers/post.js'
 
 //TODO: Proteger as rotas, error handling
 router.get('/', async (req, res, _next) => {
-    //TODO: Optimize by querying on mongodb
+
     let users = await User.list()
 
     // Filter
@@ -120,9 +120,13 @@ router.post('/:id/favouritesPosts/', async (req, res, _next) => {
     }
 })
 
+// Add resource to favourites
 router.post('/:id/favouritesResources/', async (req, res, _next) => {
     try {
+        const idUser = await Resource.getProducerById(req.body._id)
         await User.addfavRes(req.params.id,req.body._id,req.body.title)
+        await User.addFav(idUser.producer._id)
+        await Resource.addFav(req.body._id)
         res.sendStatus(201)
     } 
     catch (e) {
@@ -135,7 +139,6 @@ router.post('/:id/favouritesResources/', async (req, res, _next) => {
 router.delete('/:id/favouritesPosts/:postid', async (req, res, _next) => {
     try {
         const idUser = await Post.getProducerById(req.params.postid)
-        console.log("Debug =" + idUser)
         await User.remfavPost(req.params.id,req.params.postid)
         await User.remFav(idUser.producer._id)
         await Post.remFav(req.params.postid)
@@ -147,10 +150,13 @@ router.delete('/:id/favouritesPosts/:postid', async (req, res, _next) => {
     }
 })
 
-
+// Remove resource from favourites
 router.delete('/:id/favouritesResources/:resid', async (req, res, _next) => {
     try {
+        const idUser = await Resource.getProducerById(req.params.resid)
         await User.remfavRes(req.params.id,req.params.resid)
+        await User.remFav(idUser.producer._id)
+        await Resource.remFav(req.params.resid)
         res.sendStatus(200)
     } 
     catch (e) {
