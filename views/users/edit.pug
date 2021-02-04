@@ -1,51 +1,51 @@
 extends ../layout
 
 block content
-  section.container
-    .row.justify-content-center
-      h1.mt-3.text-center='Edit Account'
-      form#edituserform.col-lg-8(method="post" enctype="multipart/form-data")
+    section.container
+        .row.justify-content-center
+            h1.mt-3.text-center='Edit Account'
+            form#edituserform.col-lg-8(method="post" enctype="multipart/form-data")
 
-        input#idInput(type='hidden' name='id' value=user._id)
+                input#idInput(type='hidden' name='id' value=user._id)
 
-        label.form-label(for='pictureInput') Profile picture
-        input#pictureInput.mb-3.form-control(type='file' name='picture' accept='image/*')
+                label.form-label(for='pictureInput') Profile picture
+                input#pictureInput.mb-3.form-control(type='file' name='picture' accept='image/*')
 
-        label.form-label(for='passInput') Password
-        input#passInput.mb-3.form-control(type='password' name='password' value=user.password required)
-        
-        label.form-label(for='confirmPassInput') Confirm Password
-        input#confirmPassInput.mb-3.form-control(type='password' name='passConf' value=user.password required)
+                label.form-label(for='passInput') Password
+                input#passInput.mb-3.form-control(type='password' name='password' value=user.password required)
 
-        label.form-label(for='studentRadio') Position
-        br
-        if (user.position == 'STUD')
-            .form-check.form-check-inline
-                input#studentRadio.form-check-input(type='radio' name='position' value='STUD' checked)
-                label.form-check-label(for='studentRadio')
-                    | Student
-        else 
-            .form-check.form-check-inline
-                input#studentRadio.form-check-input(type='radio' name='position' value='STUD')
-                label.form-check-label(for='studentRadio')
-                    | Student
-        if (user.position == 'TEAC')
-            .form-check.form-check-inline
-                input#teacherRadio.form-check-input(type='radio' name='position' value='TEAC' checked)
-                label.mb-3.form-check-label(for='teacherRadio')
-                    | Teacher
-        else
-            .form-check.form-check-inline
-                input#teacherRadio.form-check-input(type='radio' name='position' value='TEAC')
-                label.mb-3.form-check-label(for='teacherRadio')
-                    | Teacher
-        br
+                label.form-label(for='confirmPassInput') Confirm Password
+                input#confirmPassInput.mb-3.form-control(type='password' name='passConf' value=user.password required)
 
-        label.form-label(for='courseInput') Course
-        input#courseInput.mb-3.form-control(type='text' name='course' value=user.course required)
+                label.form-label(for='studentRadio') Position
+                br
+                if (user.position == 'STUD')
+                    .form-check.form-check-inline
+                        input#studentRadio.form-check-input(type='radio' name='position' value='STUD' checked)
+                        label.form-check-label(for='studentRadio')
+                            | Student
+                else 
+                    .form-check.form-check-inline
+                        input#studentRadio.form-check-input(type='radio' name='position' value='STUD')
+                        label.form-check-label(for='studentRadio')
+                            | Student
+                if (user.position == 'TEAC')
+                    .form-check.form-check-inline
+                        input#teacherRadio.form-check-input(type='radio' name='position' value='TEAC' checked)
+                        label.mb-3.form-check-label(for='teacherRadio')
+                            | Teacher
+                else
+                    .form-check.form-check-inline
+                        input#teacherRadio.form-check-input(type='radio' name='position' value='TEAC')
+                        label.mb-3.form-check-label(for='teacherRadio')
+                            | Teacher
+                br
 
-        button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Confirm
+                label.form-label(for='courseInput') Course
+                input#courseInput.mb-3.form-control(type='text' name='course' value=user.course required)
 
-  script(src='/javascripts/users/edit.js')
+                button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Confirm
+
+    script(src='/javascripts/users/edit.js')
 
 

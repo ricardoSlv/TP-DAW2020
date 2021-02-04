@@ -85,7 +85,7 @@ router.get('/:id', async (req, res, _next) => {
     }
 })
 
-router.get('/mine/:id', async (req, res, _next) => {
+router.get('/edit/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
         const user = await User.findById(req.user._id)

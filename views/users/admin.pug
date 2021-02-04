@@ -22,7 +22,7 @@ block content
                 td
                   .d-flex.justify-content-center
                     a(href='/users/'+u._id)
-                      img.rounded.me-1(src='/users/'+u._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                      img.rounded.me-1(src='/users/'+u._id+'/picture' alt='...' style='height:1.5em; width:1.5em; object-fit: cover;')
                       | #{u.name}
                 td #{u.position}
                 td #{u.course}
@@ -50,7 +50,7 @@ block content
                 td
                   .d-flex.justify-content-center
                     a(href='/users/'+r.producer._id)
-                      img.rounded.me-1(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                      img.rounded.me-1(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; width:1.5em; object-fit: cover;')
                       | #{r.producer.name}
                 td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                 td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}

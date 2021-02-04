@@ -9,7 +9,7 @@ block content
         input#idInput(type='hidden' name='id' value=post._id)
 
         label.form-label(for='titleInput') Title
-        input#titleInput.mb-3.form-control(type='text' name='title' value=post.title required)
+        input#titleInput.mb-3.form-control(type='text' name='title' value=post.title required readonly)
 
         label.form-label(for='subtitleInput') Subtitle
         input#subtitleInput.mb-3.form-control(type='text' name='subtitle' value=post.subtitle)
@@ -52,10 +52,10 @@ block content
             label.mb-3.form-check-label(for='appCheckbox')
               | App
         else 
-           .form-check.form-check-inline
-            input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
-            label.mb-3.form-check-label(for='appCheckbox')
-              | App
+            .form-check.form-check-inline
+              input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
+              label.mb-3.form-check-label(for='appCheckbox')
+                | App
         if (post.themes.includes('SLIDES'))
           .form-check.form-check-inline
             input#slidesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES' checked)
@@ -72,10 +72,10 @@ block content
             label.mb-3.form-check-label(for='testCheckbox')
               | Test
         else
-           .form-check.form-check-inline
-            input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
-            label.mb-3.form-check-label(for='testCheckbox')
-              | Test
+            .form-check.form-check-inline
+              input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
+              label.mb-3.form-check-label(for='testCheckbox')
+                | Test
         if (post.themes.includes('SOLVEDPROB'))
           .form-check.form-check-inline
             input#solvedproblemCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB' checked)

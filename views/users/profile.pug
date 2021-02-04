@@ -8,7 +8,7 @@ block content
         .px-4.pt-0.pb-4.cover
           .media.align-items-end.profile-head
             .profile.mr-3
-              img.rounded.mb-2.img-thumbnail(src='/users/'+user._id+'/picture' alt='...' width='130')
+              img.rounded.mb-2.img-thumbnail(src='/users/'+user._id+'/picture' alt='...' style='object-fit: cover; width:130px; height:130px;')
               a.btn.btn-outline-light.btn-sm.btn-block.mx-3(href='/users/edit/' + user._id) Edit profile
             .media-body.mb-5.text-white
               h4.mt-0.mb-0 #{user.name}
@@ -75,14 +75,17 @@ block content
               th Downloads
               th
               th
+              th
               each r in resources
                 tr
                   td 
-                    a(href='/resources/mine/'+r._id) #{r.title}
+                    a(href='/resources/'+r._id) #{r.title}
                   td #{r.type}
                   td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                   td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
                   td #{r.downloads}
+                  td 
+                    a.btn.btn-warning(href='/resources/edit/' + r._id) Edit
                   td 
                     button.btn.btn-primary(onclick=`setResourceVisibility("${r._id}",${!r.public})`) #{r.public ? 'Set to private' : 'Set to public'}
                   td 
@@ -96,13 +99,16 @@ block content
               th Created
               th Views
               th
+              th
               each p in posts
                 tr
                   td 
-                    a(href='/posts/mine/' + p._id) #{p.title}
+                    a(href='/posts/' + p._id) #{p.title}
                   td #{p.themes && p.themes.join(" ")}
                   td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                   td #{p.views}
+                  td 
+                    a.btn.btn-warning(href='/posts/edit/' + p._id) Edit
                   td 
                     button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
 

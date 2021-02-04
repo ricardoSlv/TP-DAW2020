@@ -76,7 +76,7 @@ const isLoggedIn = (req,res,next) => {
 //     next()
 // })
 
-app.use('/', isLoggedIn, indexRouter)
+app.use('/', indexRouter)
 app.use('/', authRouter)
 app.use('/users', isLoggedIn, userRouter)
 app.use('/resources', isLoggedIn, resourcesRouter)

@@ -6,16 +6,16 @@ import path, { join } from "path"
 const __dirname = path.resolve(path.dirname(''))
 
 export function list() {
-    return User.find({},{
-            name: 1,
-            position: 1,
-            course: 1,
-            level: 1,
-            dateReg: 1,
-            favs: 1,
-            lastOnline: 1
-        })
-        .sort({ name:1 })
+    return User.find({}, {
+        name: 1,
+        position: 1,
+        course: 1,
+        level: 1,
+        dateReg: 1,
+        favs: 1,
+        lastOnline: 1
+    })
+        .sort({ name: 1 })
         .exec()
 }
 
@@ -48,6 +48,24 @@ export async function insert(user, pictureFile) {
 
     return newUser.save()
 
+}
+
+export async function editById(id, newData, pictureFile) {
+
+    if (pictureFile) {
+        const oldPath = join(__dirname, pictureFile.path)
+        const newPath = join(__dirname, 'user_files/', id, 'picture')
+        await fsPromises.rename(oldPath, newPath)
+    }
+    return User
+        .updateOne({ _id: id }, {
+            $set: {
+                password: newData.password,
+                position: newData.position,
+                course: newData.course
+            }
+        })
+        .exec()
 }
 
 export async function checkDuplicate(name, email) {
@@ -86,15 +104,6 @@ export function update(filter, query) {
         .exec()
 }
 
-export function editById(id, password, position, course) {
-    return User
-        .updateOne({_id: id},{$set: {
-            password: password,
-            position: position,
-            course: course
-        }})
-        .exec()
-}
 
 export function findById(id) {
     return User
@@ -108,59 +117,67 @@ export function deleteById(id) {
         .exec()
 }
 
-export function addfavPost(id,postId,title) {
+export function addfavPost(id, postId, title) {
     return User
-        .updateOne({_id: id},{$push: {
-            favouritePosts: {
-                _id: postId, 
-                title: title,
+        .updateOne({ _id: id }, {
+            $push: {
+                favouritePosts: {
+                    _id: postId,
+                    title: title,
+                }
             }
-        }}).exec()
+        }).exec()
 }
 
-export function remfavPost(id,postId) {
+export function remfavPost(id, postId) {
     return User
-        .updateOne({_id: id},{$pull: {
-            favouritePosts: {
-                _id: postId
+        .updateOne({ _id: id }, {
+            $pull: {
+                favouritePosts: {
+                    _id: postId
+                }
             }
-        }}).exec()
+        }).exec()
 }
 
-export function addfavRes(id,resId,title) {
+export function addfavRes(id, resId, title) {
     return User
-        .updateOne({_id: id},{$push: {
-            favouriteResources: {
-                _id: resId, 
-                title: title,
+        .updateOne({ _id: id }, {
+            $push: {
+                favouriteResources: {
+                    _id: resId,
+                    title: title,
+                }
             }
-        }}).exec()
+        }).exec()
 }
 
-export function remfavRes(id,resId) {
+export function remfavRes(id, resId) {
     return User
-        .updateOne({_id: id},{$pull: {
-            favouriteResources: {
-                _id: resId
+        .updateOne({ _id: id }, {
+            $pull: {
+                favouriteResources: {
+                    _id: resId
+                }
             }
-        }}).exec()
+        }).exec()
 }
 
 export function addFav(id) {
     return User
-        .updateOne({_id: id},{$inc: {favs: 1}})
+        .updateOne({ _id: id }, { $inc: { favs: 1 } })
         .exec()
 }
 
 export function remFav(id) {
     return User
-        .updateOne({_id: id},{$inc: {favs: -1}})
+        .updateOne({ _id: id }, { $inc: { favs: -1 } })
         .exec()
 }
 
-export function listFaved(size){
-    return User.find({favs: {$gt:0}},{name:1, course:1 , position: 1, favs: 1})
-        .sort({favs: -1})
+export function listFaved(size) {
+    return User.find({ favs: { $gt: 0 } }, { name: 1, course: 1, position: 1, favs: 1 })
+        .sort({ favs: -1 })
         .limit(size)
         .exec()
 }

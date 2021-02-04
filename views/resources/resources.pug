@@ -45,7 +45,7 @@ block content
               td
                 .d-flex.justify-content-center
                   a(href='/users/'+r.producer._id)
-                    img.me-1.rounded(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                    img.me-1.rounded(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; width:1.5em; object-fit: cover;')
                     | #{r.producer.name}
               td #{r.downloads}
               td #{r.favs}

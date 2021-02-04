@@ -13,18 +13,19 @@ form.addEventListener('submit', async e => {
         return
     }
 
-    const editData = new FormData()
+    const editFormData = new FormData()
 
-    editData[password.name] = password.value
-    editData[course.name] = course.value
-    editData['position'] = STUD.checked ? STUD.value : TEAC.value
-    console.table(editData)
+    editFormData.append(password.name, password.value)
+    editFormData.append(course.name, course.value)
+    editFormData.append(picture.name, picture.files[0])
+    editFormData.append('position', STUD.checked ? STUD.value : TEAC.value)
+
+    console.table(editFormData)
     
     try {
         const resp = await fetch('/users/edit/' + id.value, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(editData)
+            body: editFormData
         })
 
         if(resp.status === 200) {
