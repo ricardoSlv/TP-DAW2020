@@ -3,9 +3,9 @@ extends ../layout
 block content
   section.container
     .row.justify-content-center
-      h1.mt-3.text-center='Daw Docs'
+      h1.mt-3.text-center='Home'
       .col-12.col-lg-6
-        h2.mt-3.text-center='Recent Posts'
+        h3.mt-3.text-center='Recent Posts'
         table.table.text-center
           th Title
           th Themes
@@ -28,7 +28,7 @@ block content
               td #{p.favs}
 
       .col-12.col-lg-6
-        h2.mt-3.text-center='Most Viewed Posts'
+        h3.mt-3.text-center='Most Viewed Posts'
         table.table.text-center
           th Title
           th Themes
@@ -50,7 +50,7 @@ block content
               td #{p.views}
               td #{p.favs}
       .col-12.col-lg-6
-        h2.mt-3.text-center='Most Faved Posts'
+        h3.mt-3.text-center='Most Faved Posts'
         table.table.text-center
           th Title
           th Themes
@@ -73,7 +73,7 @@ block content
               td #{p.favs}
 
       .col-12.col-lg-6
-        h2.mt-3.text-center='Hall of fame'
+        h3.mt-3.text-center='Hall of fame'
         table.table.text-center
           th Name
           th Course

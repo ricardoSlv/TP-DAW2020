@@ -4,6 +4,7 @@ body{
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background-color: rgba(219, 217, 217, 0.274)
 }
 
 section{
