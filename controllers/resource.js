@@ -12,6 +12,7 @@ export async function insert(user, resource, zipFile) {
     newResource.producer = {_id: user._id, name: user.name}
     newResource.registeredAt = new Date()
     newResource.downloads = 0
+    newResource.favs = 0
 
     try {
         // In case user directory doesnt exist
@@ -66,27 +67,45 @@ export function filterByProducer(prodId, visibility) {
     return Resource
         .find(
             filter,
-            {title:1, producer: 1, type: 1, downloads: 1, registeredAt: 1, public: 1,  createdAt: 1}
+            {title:1, producer: 1, type: 1, downloads: 1, registeredAt: 1, public: 1,  createdAt: 1, favs:1}
         ).exec()
 }
 
 export function listPublic(){
     return Resource.find(
         {public: true},
-        {title:1, producer: 1, type: 1, downloads: 1, registeredAt: 1, createdAt: 1}
+        {title:1, producer: 1, type: 1, downloads: 1, registeredAt: 1, createdAt: 1, favs:1}
         ).exec()
 }
 
 export function list(){
     return Resource.find(
         {},
-        {title:1, producer: 1, type: 1, downloads: 1, public: 1, registeredAt: 1, createdAt: 1}
+        {title:1, producer: 1, type: 1, downloads: 1, public: 1, registeredAt: 1, createdAt: 1, favs:1}
         ).exec()
 }
 
 export function addDownload(id) {
     return Resource
         .updateOne({_id: id},{$inc: { downloads: 1}})
+        .exec()
+}
+
+export function getProducerById(id) {
+    return Resource
+        .findOne({_id: id}, {producer:1})
+        .exec()
+}
+
+export function addFav(id) {
+    return Resource
+        .updateOne({_id: id},{$inc: {favs: 1}})
+        .exec()
+}
+
+export function remFav(id) {
+    return Resource
+        .updateOne({_id: id},{$inc: {favs: -1}})
         .exec()
 }
 

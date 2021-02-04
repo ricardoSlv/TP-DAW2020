@@ -20,6 +20,7 @@ block content
               option(value='title') Title
               option(value='type') Type
               option(value='downloads') Downloads
+              option(value='favourites') Favourites
               option(value='producer') Producer
               option(value='createdAt') Creation Date
               option(value='registeredAt') Register Date
@@ -33,6 +34,7 @@ block content
           th Registered
           th Producer
           th Downloads
+          th Favourites
           each r in resources
             tr
               td 
@@ -46,6 +48,7 @@ block content
                     img.me-1.rounded(src='/users/'+r.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
                     | #{r.producer.name}
               td #{r.downloads}
+              td #{r.favs}
         
         a.btn.btn-primary.w-100(href='/resources/upload') Upload
 
