@@ -1,6 +1,16 @@
 const form = document.querySelector('#postEdit')
 
-//const resourceList = []
+let resourceList = []
+
+const fetchResources = async () =>{
+    const routes = window.location.href.split('/')
+    const postId = routes[routes.length-1]
+    const resp = await fetch(`/posts/${postId}/resources`)
+    const resources = await resp.json()
+    resourceList.push(...resources)
+}
+
+fetchResources()
 
 form.addEventListener('submit', async e => {
 
@@ -12,13 +22,13 @@ form.addEventListener('submit', async e => {
 
     const postData = {}
 
-    //console.log(resourceList)
+    console.log(resourceList)
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
     postData['themes'] = [...themes].filter(t => t.checked).map(t => t.value)
     postData[content.name] = content.value
-    //postData['resources'] = resourceList
+    postData['resources'] = resourceList
 
     console.table(postData)
 
@@ -38,3 +48,32 @@ form.addEventListener('submit', async e => {
         alert('An error has occurred during signup, please retry 😥')
     }
 })
+
+function addResource(id,title){
+    
+    
+    const resourceItem = $(`
+    <li id="item${id}" class="d-flex justify-content-between align-items-center mb-3"> 
+    <a href="/resources/${id}">
+    ${title}
+    </a>
+    <button type="button" class="btn btn-danger mx-3" onclick="removeResource('${id}')">
+    Remove
+    </button>
+    </li>)`)
+    
+    $($('#addedResourceList')).append(resourceItem)
+    $('#btnadd'+id).attr('disabled', true)
+    
+    resourceList.push({_id: id, title: title})
+    console.log(resourceList)
+}
+
+function removeResource(id){
+    $('#btnadd'+id).attr('disabled', false)
+    $($(`#addedResourceList > #item${id}`)).remove()
+
+    resourceList = resourceList.filter(x=>x._id!=id)
+    console.log(resourceList)
+
+}

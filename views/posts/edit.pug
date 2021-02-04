@@ -90,5 +90,36 @@ block content
           textarea#contentTextarea.form-control.mb-3(style='height:6em' name='content')=post.content
           label(for='contentTextarea') Describe your post
         
+        label.form-label(for='resourceList') Resources
+        ul#addedResourceList.w-50(name='resources' style='min-width:10px')
+          each r in post.resources
+            li.d-flex.justify-content-between.align-items-center.mb-3(id=`item${r.id}`)
+              a(href=`/resources/${r.id}`)
+                | #{r.title}
+              button.btn.btn-danger.mx-3(type='button' onclick=`removeResource('${r.id}')`)
+                | Remove
+        button#addButton.my-1.btn.btn-primary.btn-block(type='button' data-bs-toggle='modal' data-bs-target='#resourceModal') Add Resources
+
         button.mt-3.btn.btn-primary.btn-block.w-100(type='submit') Confirm
+
+      #resourceModal.modal.fade(tabindex="-1" aria-labelledby="resourceModal" aria-hidden="true")
+        .modal-dialog.modal-dialog-scrollable
+          .modal-content
+            .modal-header
+              h5#staticBackdropLabel.modal-title Add resources
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+              ul#resourceList.list-group
+                each r in resources
+                  li.list-group-item.d-flex.justify-content-between.align-items-center
+                    a(href='/resources/'+r._id) #{r.title} 
+                    button.btn.btn-primary.mx-4(
+                      id='btnadd'+r._id 
+                      type='button' 
+                      onclick=`addResource("${r._id}","${r.title}")` 
+                      disabled=(post.resources.some(res=>res._id.toString().localeCompare(r._id.toString())===0)))
+                      | Add
+            .modal-footer
+              button.btn.btn-primary(type='button' data-bs-dismiss='modal') Done
+
     script(src='/javascripts/posts/editpost.js')

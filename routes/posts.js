@@ -59,7 +59,7 @@ router.post('/upload', async (req, res, _next) => {
 // Edit some post
 router.post('/edit/:id', async (req, res, _next) => {
     try {
-        await Post.editById(req.params.id, req.body.title, req.body.subtitle, req.body.content, req.body.themes)
+        await Post.editById(req.params.id, req.body)
         res.sendStatus(200)
     } 
     catch (e) {
@@ -79,17 +79,35 @@ router.get('/:id', async (req, res, _next) => {
         console.log(e)
         //TODO 404
         if (e.message === '401')
-            res.sendStatus(401)
+        res.sendStatus(401)
         else
-            res.sendStatus(500)
+        res.sendStatus(500)
+    }
+})
+
+router.get('/:id/resources', async (req, res, _next) => {
+    try {
+        const post = await Post.findById(req.params.id)
+        res.status(200).jsonp(post.resources)
+    } 
+    catch (e) {
+        console.log(e)
+        //TODO 404
+        if (e.message === '401')
+        res.sendStatus(401)
+        else
+        res.sendStatus(500)
     }
 })
 
 router.get('/edit/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
+
         const user = await User.findById(req.user._id)
-        res.render('posts/edit',{user, post})
+        const resources = await Resource.listPublic()
+
+        res.render('posts/edit',{user, post, resources})
     } 
     catch (e) {
         console.log(e)

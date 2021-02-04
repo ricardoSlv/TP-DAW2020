@@ -74,7 +74,7 @@ block content
                 td
                   .d-flex.justify-content-center
                     a(href='/users/'+p.producer._id)
-                      img.rounded.me-1(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                      img.rounded.me-1(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; width:1.5em; object-fit: cover;')
                       | #{p.producer.name}
                 td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                 td #{p.views}

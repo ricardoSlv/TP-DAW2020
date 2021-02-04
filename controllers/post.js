@@ -46,13 +46,15 @@ export function findById(id) {
         .exec()
 }
 
-export function editById(id, title, subtitle, content, themes) {
+export function editById(id, newData) {
+    console.log(newData.resources)
     return Post
         .updateOne({_id: id},{$set: {
-            title: title,
-            subtitle: subtitle,
-            content: content, 
-            themes: themes
+            title: newData.title,
+            subtitle: newData.subtitle,
+            content: newData.content, 
+            themes: newData.themes,
+            resources: newData.resources
         }}).exec()
 }
 

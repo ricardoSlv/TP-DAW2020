@@ -1,6 +1,6 @@
 const form = document.querySelector('#postForm')
 
-const resourceList = []
+let resourceList = []
 
 form.addEventListener('submit', async e => {
 
