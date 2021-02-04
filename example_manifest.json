@@ -1,0 +1,23 @@
+{
+    "files": [
+        {
+            "title" : "Teste pi 2019",
+            "type": "pdf",
+            "path": "testes/pi2019.pdf"
+        },
+        {
+            "title" : "Teste pi 2020",
+            "type": "pdf",
+            "path": "testes/pi2020.pdf"},
+        {
+            "title" : "Reame",
+            "type" : "markdown",
+            "path": "readme.md"
+        },
+        {
+            "title" : "Capa",
+            "type" : "img",
+            "path": "capa.png"
+        }
+    ]
+}

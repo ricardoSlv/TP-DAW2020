@@ -5,6 +5,8 @@ const fsPromises = fs.promises
 import path, { join } from "path"
 const __dirname = path.resolve(path.dirname(''))
 
+import unzipper from "unzipper"
+
 
 export async function insert(user, resource, zipFile) {
 
@@ -21,10 +23,19 @@ export async function insert(user, resource, zipFile) {
         if (!fs.existsSync(userDirectory))
             await fsPromises.mkdir(userDirectory)
 
-        //uploads/random => public/userid/resourceid.extension
         const newPath = join(__dirname, 'user_files/', user._id, newResource._id + '.' + zipFile.originalname.split('.').pop())
         await fsPromises.rename(oldPath, newPath)
+
+        await fsPromises.mkdir(userDirectory+'/'+newResource._id)
+        
+        await fs.createReadStream(newPath)
+        .pipe(unzipper.Extract({ path: userDirectory+'/'+ newResource._id })).promise()
+
+        const jsonFile = await fsPromises.readFile(userDirectory+'/'+ newResource._id +'/manifest.json')
+        console.log(JSON.parse(jsonFile))
+
     } catch (e) {
+        console.log(e)
         throw new Error(e)
     }
 
