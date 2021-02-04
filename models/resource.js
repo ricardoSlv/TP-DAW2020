@@ -10,6 +10,7 @@ const resourceSchema = new mongoose.Schema({
     createdAt: Date,
     registeredAt: Date,
     downloads: Number,
+    favs: Number,
     public: Boolean
 },{versionKey: false})
 
