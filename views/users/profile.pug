@@ -43,7 +43,7 @@ block content
               | Administrator
             else
               | Producer
-        if (user.favouriteResources.length > 0)
+        if (user.favouriteResources.length  > 0 || user.favouritePosts.length  > 0 )
           .p-4.row 
             h1.text-center Favourites
             .col-12.col-lg-6
@@ -59,7 +59,7 @@ block content
                   li.list-group-item 
                     a(href=`/posts/${p._id}`) #{p.title}
 
-        if (resources.lenght > 0)
+        if (resources.length  > 0)
           .p-4
             h1.my-3.text-center='Resources'
             table.table.text-center
