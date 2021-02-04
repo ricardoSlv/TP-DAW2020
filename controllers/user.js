@@ -23,6 +23,7 @@ export async function insert(user, pictureFile) {
     newUser.favouritesPosts = []
     newUser.favouritesResources = []
     newUser.level = "CONS"
+    newUser.favs = 0
 
     const duplicate = await checkDuplicate(newUser.name, newUser.email)
 
@@ -140,4 +141,17 @@ export function remfavRes(id,resId) {
                 _id: resId
             }
         }}).exec()
+}
+
+export function addFav(id) {
+    return User
+        .updateOne({_id: id},{$inc: {favs: 1}})
+        .exec()
+}
+
+export function listFaved(size){
+    return User.find({favs: {$gt:0}},{name:1, course:1 , position: 1, favs: 1})
+        .sort({favs: -1})
+        .limit(size)
+        .exec()
 }

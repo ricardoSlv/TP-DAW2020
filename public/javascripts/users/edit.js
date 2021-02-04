@@ -36,6 +36,4 @@ form.addEventListener('submit', async e => {
     }catch(e){
         alert('An error has occurred during edit, please retry 😥')
     }
-
-
 })

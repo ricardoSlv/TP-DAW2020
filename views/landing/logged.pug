@@ -12,6 +12,7 @@ block content
           th Uploaded
           th Producer
           th Views
+          th Favs
           each p in recentPubs
             tr
               td 
@@ -24,14 +25,17 @@ block content
                     img.me-1.rounded(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
                     | #{p.producer.name}
               td #{p.views}
+              td #{p.favs}
+
       .col-12.col-lg-6
-        h2.mt-3.text-center='Most Popular Posts'
+        h2.mt-3.text-center='Most Viewed Posts'
         table.table.text-center
           th Title
           th Themes
           th Uploaded
           th Producer
           th Views
+          th Favs
           each p in popularPubs
             tr
               td 
@@ -44,4 +48,47 @@ block content
                     img.me-1.rounded(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
                     | #{p.producer.name}
               td #{p.views}
+              td #{p.favs}
+      .col-12.col-lg-6
+        h2.mt-3.text-center='Most Faved Posts'
+        table.table.text-center
+          th Title
+          th Themes
+          th Uploaded
+          th Producer
+          th Views
+          th Favs
+          each p in favedPubs
+            tr
+              td 
+                a(href='/posts/'+p._id) #{p.title}
+              td #{p.themes.join(" ")}
+              td #{p.createdAt.toString().slice(4,16)}
+              td
+                .d-flex.justify-content-center
+                  a(href='/users/'+p.producer._id)
+                    img.me-1.rounded(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                    | #{p.producer.name}
+              td #{p.views}
+              td #{p.favs}
+
+      .col-12.col-lg-6
+        h2.mt-3.text-center='Hall of fame'
+        table.table.text-center
+          th Name
+          th Course
+          th Position
+          th Favs
+          each u in favedUsers
+            tr
+              td 
+                a(href='/users/' + u.u_id)
+                    img.me-1.rounded(src='/users/'+ u._id + '/picture' alt='...' style='height:1.5em; object-fit: cover;')
+                    | #{u.name}
+              td #{u.course}
+              if (u.position == "STUD")
+                td Student
+              else 
+                td Teacher
+              td #{u.favs}
       

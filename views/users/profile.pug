@@ -43,59 +43,62 @@ block content
               | Administrator
             else
               | Producer
-        .p-4.row 
-          h1.text-center Favourites
-          .col-12.col-lg-6
-            h2.mt-3.text-center='Resources'
-            ul.list-group
-              each r in user.favouriteResources
-                li.list-group-item 
-                  a(href=`/resources/${r._id}`) #{r.title}
-          .col-12.col-lg-6
-            h2.mt-3.text-center='Posts'
-            ul.list-group
-              each p in user.favouritePosts
-                li.list-group-item 
-                  a(href=`/posts/${p._id}`) #{p.title}
+        if (user.favouriteResources.length > 0)
+          .p-4.row 
+            h1.text-center Favourites
+            .col-12.col-lg-6
+              h2.mt-3.text-center='Resources'
+              ul.list-group
+                each r in user.favouriteResources
+                  li.list-group-item 
+                    a(href=`/resources/${r._id}`) #{r.title}
+            .col-12.col-lg-6
+              h2.mt-3.text-center='Posts'
+              ul.list-group
+                each p in user.favouritePosts
+                  li.list-group-item 
+                    a(href=`/posts/${p._id}`) #{p.title}
 
-        .p-4
-          h1.my-3.text-center='Resources'
-          table.table.text-center
-            th Title  
-            th Type
-            th Created
-            th Registered
-            th Downloads
-            th
-            th
-            each r in resources
-              tr
-                td 
-                  a(href='/resources/mine/'+r._id) #{r.title}
-                td #{r.type}
-                td #{r.createdAt && r.createdAt.toString().slice(4,16)}
-                td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
-                td #{r.downloads}
-                td 
-                  button.btn.btn-primary(onclick=`setResourceVisibility("${r._id}",${!r.public})`) #{r.public ? 'Set to private' : 'Set to public'}
-                td 
-                  button.btn.btn-danger(onclick=`deleteResource("${r._id}")`) Delete
+        if (resources.lenght > 0)
+          .p-4
+            h1.my-3.text-center='Resources'
+            table.table.text-center
+              th Title  
+              th Type
+              th Created
+              th Registered
+              th Downloads
+              th
+              th
+              each r in resources
+                tr
+                  td 
+                    a(href='/resources/mine/'+r._id) #{r.title}
+                  td #{r.type}
+                  td #{r.createdAt && r.createdAt.toString().slice(4,16)}
+                  td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
+                  td #{r.downloads}
+                  td 
+                    button.btn.btn-primary(onclick=`setResourceVisibility("${r._id}",${!r.public})`) #{r.public ? 'Set to private' : 'Set to public'}
+                  td 
+                    button.btn.btn-danger(onclick=`deleteResource("${r._id}")`) Delete
 
-          h1.my-3.text-center='Posts'
-          table.table.text-center
-            th Title
-            th Themes
-            th Created
-            th Views
-            th
-            each p in posts
-              tr
-                td 
-                  a(href='/posts/mine/' + p._id) #{p.title}
-                td #{p.themes && p.themes.join(" ")}
-                td #{p.createdAt && p.createdAt.toString().slice(4,16)}
-                td #{p.views}
-                td 
-                  button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
+        if (posts.length > 0)
+            h1.my-3.text-center='Posts'
+            table.table.text-center
+              th Title
+              th Themes
+              th Created
+              th Views
+              th
+              each p in posts
+                tr
+                  td 
+                    a(href='/posts/mine/' + p._id) #{p.title}
+                  td #{p.themes && p.themes.join(" ")}
+                  td #{p.createdAt && p.createdAt.toString().slice(4,16)}
+                  td #{p.views}
+                  td 
+                    button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
 
     script(src='/javascripts/users/profile.js')

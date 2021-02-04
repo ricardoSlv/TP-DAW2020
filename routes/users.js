@@ -78,14 +78,19 @@ router.get('/:id', async (req, res, _next) => {
 
 router.get('/:id/picture', async (req, res, _next) => {
     if (req.user){
-        res.download('./user_files/'+req.params.id+'/picture')
+        res.download('./user_files/' + req.params.id + '/picture')
     }else
         res.error(401,{user: req.user})
 })
 
+// Add post to favourites
 router.post('/:id/favouritesPosts/', async (req, res, _next) => {
     try {
-        await User.addfavPost(req.params.id,req.body._id,req.body.title)
+        // console.log("ID = " + req.params.id + " , " + req.body._id + " , " + req.body.title)
+        const idUser = await Post.getProducerById(req.body._id)
+        await User.addfavPost(req.params.id, req.body._id, req.body.title)
+        await User.addFav(idUser.producer._id)
+        await Post.addFav(req.body._id)
         res.sendStatus(201)
     } 
     catch (e) {

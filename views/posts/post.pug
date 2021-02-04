@@ -9,6 +9,7 @@ block content
         
         .d-flex.justify-content-between
           h2.mb-3 #{post.subtitle}
+          
           button.btn.btn-warning(onclick=`switchFavourite("${user._id}","${post._id}",${user.favouritePosts.some(p=>p._id.toString()===post._id.toString())},"${post.title}")`)
             | #{user.favouritePosts.some(p=>p._id.toString()===post._id.toString()) ? 'Remove Favourite' : 'Favourite'}
 

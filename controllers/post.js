@@ -7,7 +7,7 @@ export async function insert(user, post) {
     const newPost = new Post(post)
     newPost.producer = {_id: user._id, name: user.name}
     newPost.views = 0
-    newPost.likes = 0
+    newPost.favs = 0
     newPost.comments = []
     newPost.createdAt = new Date()
     return newPost.save()
@@ -20,15 +20,22 @@ export function list(){
 }
 
 export function listRecent(size){
-    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs: 1})
         .sort({createdAt: -1})
         .limit(size)
         .exec()
 }
 
 export function listPopular(size){
-    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs: 1})
         .sort({views: -1})
+        .limit(size)
+        .exec()
+}
+
+export function listFaved(size){
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs: 1})
+        .sort({favs: -1})
         .limit(size)
         .exec()
 }
@@ -81,5 +88,17 @@ export function addComment(id,user,comment) {
 export function addView(id) {
     return Post
         .updateOne({_id: id},{$inc: { views: 1}})
+        .exec()
+}
+
+export function getProducerById(id) {
+    return Post
+        .findOne({_id: id}, {producer:1})
+        .exec()
+}
+
+export function addFav(id) {
+    return Post
+        .updateOne({_id: id},{$inc: {favs: 1}})
         .exec()
 }

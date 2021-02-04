@@ -8,7 +8,7 @@ const resourceSchema = new mongoose.Schema({
     themes: [String],
     content: String,
     views: Number,
-    likes: Number,
+    favs: Number,
     producer: {_id: ObjectId, name: String},
     resources:[{_id: ObjectId, title: String}],
     comments:[{user: {_id: ObjectId, name: String}, text: String, createdAt: Date}],
