@@ -27,6 +27,10 @@ router.get('/', async (req, res, _next) => {
         posts.sort((p1,p2)=>p1.producer.name.localeCompare(p2.producer.name))
     else if (req.query.sortType=='views')
         posts.sort((p1,p2)=>p2.views-p1.views)
+    else if (req.query.sortType=='favourites'){
+        console.log("Entrei")
+        posts.sort((p1,p2)=>p2.favs-p1.favs)
+    }
 
     res.render('posts/posts',{user: req.user, posts: posts})
 })

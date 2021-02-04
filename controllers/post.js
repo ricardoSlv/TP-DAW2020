@@ -14,27 +14,27 @@ export async function insert(user, post) {
 }
 
 export function list(){
-    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1})
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, favs: 1, createdAt: 1})
         .sort({createdAt: -1})
         .exec()
 }
 
 export function listRecent(size){
-    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs: 1})
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, favs: 1,createdAt: 1, favs: 1})
         .sort({createdAt: -1})
         .limit(size)
         .exec()
 }
 
 export function listPopular(size){
-    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs: 1})
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, favs: 1, createdAt: 1, favs: 1})
         .sort({views: -1})
         .limit(size)
         .exec()
 }
 
 export function listFaved(size){
-    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs: 1})
+    return Post.find({},{title:1, themes:1 , producer: 1, views: 1, favs: 1,createdAt: 1, favs: 1})
         .sort({favs: -1})
         .limit(size)
         .exec()
@@ -100,5 +100,11 @@ export function getProducerById(id) {
 export function addFav(id) {
     return Post
         .updateOne({_id: id},{$inc: {favs: 1}})
+        .exec()
+}
+
+export function remFav(id) {
+    return Post
+        .updateOne({_id: id},{$inc: {favs: -1}})
         .exec()
 }

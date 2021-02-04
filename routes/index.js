@@ -7,12 +7,12 @@ import * as User from '../controllers/user.js'
 router.get('/', async (req,res,_next)=>{
     if(req.user){
         try {
-            const recentPubs = await Post.listRecent(10)
-            const popularPubs = await Post.listPopular(10)
+            const recentPubs = await Post.listRecent(5)
+            const popularPubs = await Post.listPopular(5)
             console.log(recentPubs)
             console.log(popularPubs)
-            const favedPubs = await Post.listFaved(10)
-            const favedUsers = await User.listFaved(10)
+            const favedPubs = await Post.listFaved(5)
+            const favedUsers = await User.listFaved(5)
             res.render('landing/logged',{recentPubs, popularPubs, favedPubs, favedUsers, user: req.user})
         }
         catch(e){

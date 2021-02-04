@@ -12,8 +12,11 @@ export function list() {
             course: 1,
             level: 1,
             dateReg: 1,
+            favs: 1,
             lastOnline: 1
-        }).exec()
+        })
+        .sort({ name:1 })
+        .exec()
 }
 
 export async function insert(user, pictureFile) {
@@ -146,6 +149,12 @@ export function remfavRes(id,resId) {
 export function addFav(id) {
     return User
         .updateOne({_id: id},{$inc: {favs: 1}})
+        .exec()
+}
+
+export function remFav(id) {
+    return User
+        .updateOne({_id: id},{$inc: {favs: -1}})
         .exec()
 }
 

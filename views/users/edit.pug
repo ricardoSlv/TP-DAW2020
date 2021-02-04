@@ -8,6 +8,9 @@ block content
 
         input#idInput(type='hidden' name='id' value=user._id)
 
+        label.form-label(for='pictureInput') Profile picture
+        input#pictureInput.mb-3.form-control(type='file' name='picture' accept='image/*')
+
         label.form-label(for='passInput') Password
         input#passInput.mb-3.form-control(type='password' name='password' value=user.password required)
         

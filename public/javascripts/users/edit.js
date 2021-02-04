@@ -5,7 +5,7 @@ form.addEventListener('submit', async e => {
     e.preventDefault()
 
     const editForm = e.target
-    const { id, password, passConf, position, course } = editForm
+    const { id, picture, password, passConf, position, course } = editForm
     const [STUD, TEAC] = [...position]
 
     if (password.value !== passConf.value) {
@@ -13,13 +13,13 @@ form.addEventListener('submit', async e => {
         return
     }
 
-    const editData = {}
+    const editData = new FormData()
 
     editData[password.name] = password.value
     editData[course.name] = course.value
     editData['position'] = STUD.checked ? STUD.value : TEAC.value
     console.table(editData)
-
+    
     try {
         const resp = await fetch('/users/edit/' + id.value, {
             method: 'POST',

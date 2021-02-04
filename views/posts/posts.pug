@@ -19,6 +19,7 @@ block content
               option(value='title') Title
               option(value='themes') Theme
               option(value='views') Views
+              option(value='favourites') Favourites
               option(value='producer') Producer
               option(value='createdAt') Creation Date
           
@@ -30,6 +31,7 @@ block content
           th Created
           th Producer
           th Views
+          th Favs
           each p in posts
             tr
               td 
@@ -42,5 +44,6 @@ block content
                     img.rounded.me-1(src='/users/'+p.producer._id+'/picture' alt='...' style='height:1.5em; object-fit: cover;')
                     | #{p.producer.name}
               td #{p.views}
+              td #{p.favs}
         
         a.btn.btn-primary.w-100(href='/posts/upload') New Post
