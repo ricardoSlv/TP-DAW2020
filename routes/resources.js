@@ -87,10 +87,12 @@ router.get('/:id', async (req, res, _next) => {
     }
 })
 
-router.get('/:id/files/:filepath', async (req, res, _next) => {
+router.get('/:id/files/*', async (req, res, _next) => {
     const resource = await Resource.findById(req.params.id)
+    const filepath = req.url.split('/').slice(3).join('/')
+
     if (req.user) {
-        res.download(`./user_files/${resource.producer._id}/${resource._id}/${req.params.filepath}`)
+        res.download(`./user_files/${resource.producer._id}/${resource._id}/${filepath}`)
     } else
         res.error(401, { user: req.user })
 })
