@@ -1,4 +1,3 @@
-import { title } from "process"
 import Post from "../models/post.js"
 
 // Insert a new post

@@ -31,7 +31,7 @@ form.addEventListener('submit', async e => {
             window.location.pathname='/resources/upload'
         }
         else
-            alert('The server has encountered an error, please retry later 😥')
+            alert('The server has encountered an error, please check your manifest.json or retry later 😥')
     }catch(e){
         alert('An error has occurred during signup, please retry 😥')
     }

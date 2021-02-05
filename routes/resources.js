@@ -45,10 +45,8 @@ router.post('/upload', upload.single('zip'), async (req, res, _next) => {
         const resource = await Resource.insert(req.user, req.body, req.file)
         User.update({_id: req.user._id},{level: "PROD"})
         
-        console.log(resource, "ola")
         res.status(200).jsonp(resource)
     } catch (e) {
-        console.log("ola")
         console.log(e)
         if (e.message === '409')
             res.sendStatus(409)
@@ -87,6 +85,14 @@ router.get('/:id', async (req, res, _next) => {
         else
             res.status(500).send()
     }
+})
+
+router.get('/:id/files/:filepath', async (req, res, _next) => {
+    const resource = await Resource.findById(req.params.id)
+    if (req.user) {
+        res.download(`./user_files/${resource.producer._id}/${resource._id}/${req.params.filepath}`)
+    } else
+        res.error(401, { user: req.user })
 })
 
 router.get('/edit/:id', async (req, res, _next) => {
@@ -133,7 +139,7 @@ router.get('/:id/download', async (req, res, _next) => {
     if (req.user){
         const resource = await Resource.findById(req.params.id)
         Resource.addDownload(req.params.id)
-        res.download(`./user_files/${resource.producer._id.toString()}/${resource.id}.zip`)
+        res.download(`./user_files/${resource.producer._id.toString()}/${resource._id}/${resource._id}.zip`)
     }else{
         res.status(401)
         res.render('error',{user: req.user, error: {status:401, stack:'You must be logged in to download any resource'}})

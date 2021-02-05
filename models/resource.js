@@ -7,6 +7,8 @@ const resourceSchema = new mongoose.Schema({
     //REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB
     type: String,
     producer: {_id: ObjectId, name: String},
+    // TODO: Change to {title: String, type: String, path: String}, currently mongoose files.push tries to convert the object to a string :^/
+    files: [Object],
     createdAt: Date,
     registeredAt: Date,
     downloads: Number,
