@@ -9,33 +9,40 @@ import unzipper from "unzipper"
 
 
 export async function insert(user, resource, zipFile) {
-
+    
     const newResource = new Resource(resource)
     newResource.producer = {_id: user._id, name: user.name}
     newResource.registeredAt = new Date()
     newResource.downloads = 0
     newResource.favs = 0
 
+    const userDirectory = join(__dirname, 'user_files/', user._id)
+    const resourceDirectory = join(__dirname, 'user_files/', user._id, '/'+newResource._id)
+    const newPath = join(__dirname, 'user_files/', user._id, newResource._id+'', '/', newResource._id + '.' + zipFile.originalname.split('.').pop())
+    const oldPath = join(__dirname, zipFile.path)
     try {
         // In case user directory doesnt exist
-        const userDirectory = join(__dirname, 'user_files/', user._id)
-        const oldPath = join(__dirname, zipFile.path)
         if (!fs.existsSync(userDirectory))
             await fsPromises.mkdir(userDirectory)
-
-        const newPath = join(__dirname, 'user_files/', user._id, newResource._id + '.' + zipFile.originalname.split('.').pop())
+            
+        await fsPromises.mkdir(resourceDirectory)
         await fsPromises.rename(oldPath, newPath)
-
-        await fsPromises.mkdir(userDirectory+'/'+newResource._id)
         
         await fs.createReadStream(newPath)
         .pipe(unzipper.Extract({ path: userDirectory+'/'+ newResource._id })).promise()
 
         const jsonFile = await fsPromises.readFile(userDirectory+'/'+ newResource._id +'/manifest.json')
-        console.log(JSON.parse(jsonFile))
+        const manifestData = JSON.parse(jsonFile)
+
+        console.log('manifestData.files', manifestData.files)
+        for(const file of manifestData.files){
+            await fsPromises.readFile(`${userDirectory}/${newResource._id}/${file.path}`)
+            newResource.files.push(file)
+        }
 
     } catch (e) {
         console.log(e)
+        await fsPromises.rmdir(`${userDirectory}/${newResource._id}`,{ recursive: true })
         throw new Error(e)
     }
 
@@ -58,6 +65,7 @@ export function editById(id, title, subtitle, type) {
 }
 
 export function deleteById(id) {
+    //TODO: Apagar a pasta
     return Resource
         .findByIdAndDelete(id)
         .exec()

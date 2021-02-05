@@ -6,7 +6,7 @@ block content
       .col-lg-8
         
         h1.m-4.text-center #{resource.title}
-        h2.m-4.text-center #{resource.subtitle}
+        h2.m-4 #{resource.subtitle}
         .d-flex.justify-content-between
           a.d-flex(href='/users/'+resource.producer._id)
             img.rounded.me-1(src='/users/'+resource.producer._id+'/picture' alt='...' style='height:1.5em; width:1.5em; object-fit:cover')
@@ -15,9 +15,42 @@ block content
             | #{user.favouriteResources.some(r=>r._id.toString()===resource._id.toString()) ? 'Remove Favourite' : 'Favourite'}
       
         p #{resource.downloads} downloads
-        h5 #{resource.type}
-        a.btn.btn-primary.w-100(href=`/resources/${resource._id}/download`) Download
+        ul 
+          li #{resource.type}
+        
+        h1.mt-5.text-center Files
+        ul.pt-4 
+          each f in resource.files
+            li.mb-4 
+              .d-flex.align-items-center
+                h2.me-4 #{f.title}
+                a.btn.btn-primary(href= `/resources/${resource._id}/files/${f.path}`) Download
+              p Type 
+                b #{f.type}
+              if(f.type==='img')
+                .d-flex.justify-content-center
+                  img(src=`/resources/${resource._id}/files/${f.path}` width='80%' style="height: 500px; width 80%; object-fit: cover")
+              if(f.type==='pdf')
+                .d-flex.justify-content-center
+                  div(id=resource._id style="height:700px")
+                  script.
+                    document.addEventListener("adobe_dc_view_sdk.ready", function(){
+                      const id = "#{resource._id}"
+                      const path = "#{f.path}" 
+                      let url = `/resources/${id}/files/${path}` 
+                      console.log(url)
+                      var adobeDCView = new AdobeDC.View({clientId: "439faf3d6c4a42488b22cc4e151d4c5e", divId: id});
+                      adobeDCView.previewFile({
+                        content:{location: {url: url}},
+                        metaData:{fileName: "Bodea Brochure.pdf"}
+                      }, {});
+                    });
+
+
+        a.my-3.btn.btn-primary.w-100(href=`/resources/${resource._id}/download`) Download Full Resource
+
   
     script(src='/javascripts/resources/resource.js')
+    
 
 

@@ -112,6 +112,7 @@ export function findById(id) {
 }
 
 export function deleteById(id) {
+    //TODO: Apagar a pasta
     return User
         .findByIdAndDelete(id)
         .exec()
