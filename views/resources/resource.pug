@@ -30,22 +30,24 @@ block content
               if(f.type==='img')
                 .d-flex.justify-content-center
                   img(src=`/resources/${resource._id}/files/${f.path}` width='80%' style="height: 500px; width 80%; object-fit: cover")
+              if(f.type==='mp4')
+                video(height="500px" autoplay controls)
+                  source(src=`/resources/${resource._id}/files/${f.path}` type="video/mp4")
               if(f.type==='pdf')
-                .d-flex.justify-content-center
-                  div(id=resource._id style="height:700px")
-                  script.
-                    document.addEventListener("adobe_dc_view_sdk.ready", function(){
-                      const id = "#{resource._id}"
-                      const path = "#{f.path}" 
-                      const title = "#{f.title}" 
-                      let url = `/resources/${id}/files/${path}` 
-                      console.log(url)
-                      var adobeDCView = new AdobeDC.View({clientId: "439faf3d6c4a42488b22cc4e151d4c5e", divId: id});
-                      adobeDCView.previewFile({
-                        content:{location: {url: url}},
-                        metaData:{fileName: title}
-                      }, {});
-                    });
+                div(id=resource._id style="height:700px")
+                script.
+                  document.addEventListener("adobe_dc_view_sdk.ready", function(){
+                    const id = "#{resource._id}"
+                    const path = "#{f.path}" 
+                    const title = "#{f.title}" 
+                    let url = `/resources/${id}/files/${path}` 
+                    console.log(url)
+                    var adobeDCView = new AdobeDC.View({clientId: "439faf3d6c4a42488b22cc4e151d4c5e", divId: id});
+                    adobeDCView.previewFile({
+                      content:{location: {url: url}},
+                      metaData:{fileName: title}
+                    }, {});
+                  })
 
 
         a.my-3.btn.btn-primary.w-100(href=`/resources/${resource._id}/download`) Download Full Resource
