@@ -11,29 +11,14 @@ import * as Post from '../controllers/post.js'
 //TODO: Proteger as rotas, error handling
 router.get('/', async (req, res, _next) => {
 
-    let users = await User.list()
-    console.log(req.query)
+    const query = {}
+    req.query.nameFilter && (query.title = new RegExp(req.query.nameFilter))
+    req.query.courseFilter && (query.course = new RegExp(req.query.courseFilter))
+    
+    const ordering = ["dateReg","lastOnline","favs"].includes(req.query.sortType) ? -1 : 1
+    const sort = req.query.sortType ? {[req.query.sortType]: ordering} : {}
 
-    if (req.query.nameFilter!='')
-        users = users.filter(u => (new RegExp(req.query.nameFilter)).test(u.name))
-    else if (req.query.courseFilter!='')
-        users = users.filter(u => (new RegExp(req.query.courseFilter)).test(u.course))
-
-    // Sort
-    if (req.query.sortType == 'name')
-        users.sort((u1, u2) => u1.name.localeCompare(u2.name))
-    else if (req.query.sortType == 'position')
-        users.sort((u1, u2) => u1.position.localeCompare(u2.position))
-    else if (req.query.sortType == 'joinedAt')
-        users.sort((u1, u2) => u2.dateReg.getTime() - u1.dateReg.getTime())
-    else if (req.query.sortType == 'lastSeen')
-        users.sort((u1, u2) => u2.lastOnline.getTime() - u1.lastOnline.getTime())
-    else if (req.query.sortType == 'course')
-        users.sort((u1, u2) => u1.course.localeCompare(u2.course))
-    else if (req.query.sortType == 'level')
-        users.sort((u1, u2) => u1.level.localeCompare(u2.level))
-    else if (req.query.sortType == 'favourites')
-        users.sort((u1, u2) => u2.favs - u1.favs)
+    let users = await User.filter(query,sort)
 
     res.render('users/users', { user: req.user, users })
 })

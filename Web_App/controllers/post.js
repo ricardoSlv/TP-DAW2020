@@ -18,6 +18,13 @@ export function list(){
         .exec()
 }
 
+export function filter(query,sort){
+    return Post.find(query)
+        .collation({locale: "en" })
+        .sort(sort)
+        .exec()
+}
+
 export function listRecent(size){
     return Post.find({},{title:1, themes:1 , producer: 1, views: 1, favs: 1,createdAt: 1, favs: 1})
         .sort({createdAt: -1})

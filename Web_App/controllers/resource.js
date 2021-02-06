@@ -118,6 +118,13 @@ export function list(){
         ).exec()
 }
 
+export function filter(query,sort){
+    return Resource.find(query)
+        .collation({locale: "en" })
+        .sort(sort)
+        .exec()
+}
+
 export function addDownload(id) {
     return Resource
         .updateOne({_id: id},{$inc: { downloads: 1}})

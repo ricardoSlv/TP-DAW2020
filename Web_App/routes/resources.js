@@ -10,29 +10,15 @@ const upload = multer({ dest: 'uploads/' })
 //TODO: Proteger as rotas
 
 router.get('/', async (req, res, _next) => {
-    //TODO: Optimize by querying on mongodb
-    let resources = await Resource.listPublic()
-    console.log(req.query)
 
-    if (req.query.titleFilter!='')
-        resources = resources.filter(r => (new RegExp(req.query.titleFilter)).test(r.title))
-    else if (req.query.prodFilter!='')
-        resources = resources.filter(r => (new RegExp(req.query.prodFilter)).test(r.producer.name))
+    const query = {}
+    req.query.titleFilter && (query.title = new RegExp(req.query.titleFilter))
+    req.query.prodFilter && (query["producer.name"] = new RegExp(req.query.prodFilter))
+    
+    const ordering = ["createdAt","registeredAt","downloads","favs"].includes(req.query.sortType) ? -1 : 1
+    const sort = req.query.sortType ? {[req.query.sortType]: ordering} : {}
 
-    if (req.query.sortType == 'title')
-        resources.sort((r1, r2) => r1.title.localeCompare(r2.title))
-    else if (req.query.sortType == 'type')
-        resources.sort((r1, r2) => r1.type.localeCompare(r2.type))
-    else if (req.query.sortType == 'createdAt')
-        resources.sort((r1, r2) => r2.createdAt.getTime() - r1.createdAt.getTime())
-    else if (req.query.sortType == 'registeredAt')
-        resources.sort((r1, r2) => r2.registeredAt.getTime() - r1.registeredAt.getTime())
-    else if (req.query.sortType == 'producer')
-        resources.sort((r1, r2) => r1.producer.name.localeCompare(r2.producer.name))
-    else if (req.query.sortType == 'downloads')
-        resources.sort((r1, r2) => r2.downloads - r1.downloads)
-    else if (req.query.sortType == 'favourites')
-        resources.sort((r1, r2) => r2.favs - r1.favs)
+    let resources = await Resource.filter(query,sort)
 
     res.render('resources/resources', { user: req.user, resources })
 })
