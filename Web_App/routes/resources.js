@@ -12,11 +12,12 @@ const upload = multer({ dest: 'uploads/' })
 router.get('/', async (req, res, _next) => {
     //TODO: Optimize by querying on mongodb
     let resources = await Resource.listPublic()
+    console.log(req.query)
 
-    if (req.query.filterType === 'title')
-        resources = resources.filter(r => (new RegExp(req.query.filter)).test(r.title))
-    else if ((req.query.filterType === 'producer'))
-        resources = resources.filter(r => (new RegExp(req.query.filter)).test(r.producer.name))
+    if (req.query.titleFilter!='')
+        resources = resources.filter(r => (new RegExp(req.query.titleFilter)).test(r.title))
+    else if (req.query.prodFilter!='')
+        resources = resources.filter(r => (new RegExp(req.query.prodFilter)).test(r.producer.name))
 
     if (req.query.sortType == 'title')
         resources.sort((r1, r2) => r1.title.localeCompare(r2.title))
