@@ -1,0 +1,802 @@
+[
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e0a"
+    },
+    "name": "Luis_0",
+    "email": "Luis_0@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "04/06/2019 01:13 PM",
+    "lastOnline": "01/29/2021 01:39 AM",
+    "favs": 32,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e0b"
+    },
+    "name": "Ulisses_1",
+    "email": "Ulisses_1@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "03/25/2019 09:19 PM",
+    "lastOnline": "01/26/2021 03:51 AM",
+    "favs": 83,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e0c"
+    },
+    "name": "Ricardo_2",
+    "email": "Ricardo_2@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "09/26/2019 08:31 PM",
+    "lastOnline": "01/07/2021 03:00 PM",
+    "favs": 3,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e0d"
+    },
+    "name": "JCR_3",
+    "email": "JCR_3@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "09/23/2020 08:33 PM",
+    "lastOnline": "01/13/2021 04:12 PM",
+    "favs": 97,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e0e"
+    },
+    "name": "Marega_4",
+    "email": "Marega_4@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "06/26/2020 04:58 PM",
+    "lastOnline": "01/23/2021 11:16 PM",
+    "favs": 92,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e0f"
+    },
+    "name": "Luis_5",
+    "email": "Luis_5@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "07/21/2020 04:56 AM",
+    "lastOnline": "01/20/2021 10:45 AM",
+    "favs": 40,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e10"
+    },
+    "name": "Ulisses_6",
+    "email": "Ulisses_6@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "01/23/2019 04:17 AM",
+    "lastOnline": "01/01/2021 10:02 AM",
+    "favs": 1,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e11"
+    },
+    "name": "Ricardo_7",
+    "email": "Ricardo_7@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "10/26/2020 04:50 AM",
+    "lastOnline": "01/13/2021 09:15 AM",
+    "favs": 54,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e12"
+    },
+    "name": "JCR_8",
+    "email": "JCR_8@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "05/28/2020 12:28 PM",
+    "lastOnline": "01/18/2021 07:28 AM",
+    "favs": 63,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e13"
+    },
+    "name": "Marega_9",
+    "email": "Marega_9@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "01/27/2020 05:37 AM",
+    "lastOnline": "01/12/2021 04:35 AM",
+    "favs": 97,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e14"
+    },
+    "name": "Luis_10",
+    "email": "Luis_10@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "11/22/2019 08:04 AM",
+    "lastOnline": "01/10/2021 07:27 AM",
+    "favs": 53,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e15"
+    },
+    "name": "Ulisses_11",
+    "email": "Ulisses_11@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "08/15/2020 11:15 AM",
+    "lastOnline": "01/19/2021 06:44 AM",
+    "favs": 23,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e16"
+    },
+    "name": "Ricardo_12",
+    "email": "Ricardo_12@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "03/21/2020 06:54 AM",
+    "lastOnline": "01/24/2021 09:43 PM",
+    "favs": 15,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e17"
+    },
+    "name": "JCR_13",
+    "email": "JCR_13@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "06/09/2020 05:46 PM",
+    "lastOnline": "01/30/2021 04:31 PM",
+    "favs": 54,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e18"
+    },
+    "name": "Marega_14",
+    "email": "Marega_14@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "12/26/2019 08:02 AM",
+    "lastOnline": "01/31/2021 04:19 AM",
+    "favs": 38,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e19"
+    },
+    "name": "Luis_15",
+    "email": "Luis_15@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "07/21/2019 09:39 AM",
+    "lastOnline": "02/02/2021 07:23 AM",
+    "favs": 64,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e1a"
+    },
+    "name": "Ulisses_16",
+    "email": "Ulisses_16@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "10/06/2019 01:30 PM",
+    "lastOnline": "01/29/2021 06:23 AM",
+    "favs": 31,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e1b"
+    },
+    "name": "Ricardo_17",
+    "email": "Ricardo_17@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "06/10/2020 03:40 AM",
+    "lastOnline": "01/14/2021 03:53 AM",
+    "favs": 46,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e1c"
+    },
+    "name": "JCR_18",
+    "email": "JCR_18@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "01/24/2020 08:45 AM",
+    "lastOnline": "01/24/2021 05:05 AM",
+    "favs": 11,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e1d"
+    },
+    "name": "Marega_19",
+    "email": "Marega_19@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "11/07/2019 05:59 PM",
+    "lastOnline": "01/17/2021 03:58 PM",
+    "favs": 66,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e1e"
+    },
+    "name": "Luis_20",
+    "email": "Luis_20@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "08/17/2020 03:31 AM",
+    "lastOnline": "01/13/2021 12:38 AM",
+    "favs": 60,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e1f"
+    },
+    "name": "Ulisses_21",
+    "email": "Ulisses_21@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "02/01/2019 07:00 AM",
+    "lastOnline": "01/24/2021 05:21 AM",
+    "favs": 75,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e20"
+    },
+    "name": "Ricardo_22",
+    "email": "Ricardo_22@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "02/14/2020 02:58 AM",
+    "lastOnline": "01/22/2021 07:58 AM",
+    "favs": 64,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e21"
+    },
+    "name": "JCR_23",
+    "email": "JCR_23@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "06/10/2019 11:12 PM",
+    "lastOnline": "12/31/2020 11:25 PM",
+    "favs": 69,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e22"
+    },
+    "name": "Marega_24",
+    "email": "Marega_24@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "10/12/2020 06:33 PM",
+    "lastOnline": "01/19/2021 12:11 AM",
+    "favs": 65,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e23"
+    },
+    "name": "Luis_25",
+    "email": "Luis_25@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "09/01/2019 01:33 PM",
+    "lastOnline": "01/29/2021 01:41 AM",
+    "favs": 58,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e24"
+    },
+    "name": "Ulisses_26",
+    "email": "Ulisses_26@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "10/05/2020 11:20 AM",
+    "lastOnline": "01/22/2021 05:42 PM",
+    "favs": 93,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e25"
+    },
+    "name": "Ricardo_27",
+    "email": "Ricardo_27@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "01/05/2019 02:19 PM",
+    "lastOnline": "01/26/2021 10:10 PM",
+    "favs": 16,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e26"
+    },
+    "name": "JCR_28",
+    "email": "JCR_28@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "01/03/2020 01:56 AM",
+    "lastOnline": "01/19/2021 10:42 AM",
+    "favs": 7,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e27"
+    },
+    "name": "Marega_29",
+    "email": "Marega_29@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "12/07/2019 12:39 PM",
+    "lastOnline": "01/12/2021 07:57 PM",
+    "favs": 25,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e28"
+    },
+    "name": "Luis_30",
+    "email": "Luis_30@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "10/27/2020 12:27 PM",
+    "lastOnline": "01/14/2021 11:15 AM",
+    "favs": 53,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e29"
+    },
+    "name": "Ulisses_31",
+    "email": "Ulisses_31@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "09/03/2019 03:45 AM",
+    "lastOnline": "01/18/2021 04:13 PM",
+    "favs": 100,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e2a"
+    },
+    "name": "Ricardo_32",
+    "email": "Ricardo_32@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "03/09/2020 08:17 AM",
+    "lastOnline": "01/15/2021 11:22 PM",
+    "favs": 29,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e2b"
+    },
+    "name": "JCR_33",
+    "email": "JCR_33@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "03/25/2020 12:58 PM",
+    "lastOnline": "01/19/2021 02:08 AM",
+    "favs": 11,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e2c"
+    },
+    "name": "Marega_34",
+    "email": "Marega_34@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "07/18/2020 07:29 PM",
+    "lastOnline": "01/27/2021 09:01 AM",
+    "favs": 4,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e2d"
+    },
+    "name": "Luis_35",
+    "email": "Luis_35@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "08/18/2020 09:55 AM",
+    "lastOnline": "01/23/2021 04:55 AM",
+    "favs": 2,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e2e"
+    },
+    "name": "Ulisses_36",
+    "email": "Ulisses_36@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "11/17/2019 04:03 PM",
+    "lastOnline": "01/25/2021 10:20 PM",
+    "favs": 31,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e2f"
+    },
+    "name": "Ricardo_37",
+    "email": "Ricardo_37@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "07/10/2019 10:29 AM",
+    "lastOnline": "01/27/2021 09:10 AM",
+    "favs": 44,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e30"
+    },
+    "name": "JCR_38",
+    "email": "JCR_38@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "07/25/2019 05:31 PM",
+    "lastOnline": "01/06/2021 04:42 AM",
+    "favs": 67,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e31"
+    },
+    "name": "Marega_39",
+    "email": "Marega_39@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Biologia",
+    "level": "PROD",
+    "dateReg": "11/04/2020 06:04 AM",
+    "lastOnline": "01/22/2021 03:38 PM",
+    "favs": 58,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e32"
+    },
+    "name": "Luis_40",
+    "email": "Luis_40@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "05/12/2020 02:33 AM",
+    "lastOnline": "01/17/2021 06:20 AM",
+    "favs": 3,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e33"
+    },
+    "name": "Ulisses_41",
+    "email": "Ulisses_41@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "08/10/2019 01:53 AM",
+    "lastOnline": "01/12/2021 02:41 AM",
+    "favs": 33,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e34"
+    },
+    "name": "Ricardo_42",
+    "email": "Ricardo_42@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "03/19/2019 10:01 AM",
+    "lastOnline": "01/30/2021 07:57 PM",
+    "favs": 26,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e35"
+    },
+    "name": "JCR_43",
+    "email": "JCR_43@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Inform\u00e1tica",
+    "level": "PROD",
+    "dateReg": "11/13/2020 08:48 PM",
+    "lastOnline": "01/15/2021 01:59 AM",
+    "favs": 28,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e36"
+    },
+    "name": "Marega_44",
+    "email": "Marega_44@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "01/14/2019 04:28 AM",
+    "lastOnline": "01/05/2021 11:44 AM",
+    "favs": 57,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e37"
+    },
+    "name": "Luis_45",
+    "email": "Luis_45@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "05/13/2020 12:08 PM",
+    "lastOnline": "01/23/2021 09:00 AM",
+    "favs": 28,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e38"
+    },
+    "name": "Ulisses_46",
+    "email": "Ulisses_46@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Filosofia",
+    "level": "PROD",
+    "dateReg": "11/21/2020 10:21 PM",
+    "lastOnline": "01/21/2021 06:44 PM",
+    "favs": 57,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e39"
+    },
+    "name": "Ricardo_47",
+    "email": "Ricardo_47@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "06/08/2019 07:45 AM",
+    "lastOnline": "01/22/2021 09:03 AM",
+    "favs": 86,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e3a"
+    },
+    "name": "JCR_48",
+    "email": "JCR_48@gmail.com",
+    "password": "pass",
+    "position": "STUD",
+    "course": "Desporto",
+    "level": "PROD",
+    "dateReg": "02/12/2020 11:27 AM",
+    "lastOnline": "01/11/2021 08:51 AM",
+    "favs": 7,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "601de8abeffd5ae52ff24e3b"
+    },
+    "name": "Marega_49",
+    "email": "Marega_49@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Medicina",
+    "level": "PROD",
+    "dateReg": "06/05/2020 05:10 PM",
+    "lastOnline": "01/04/2021 06:58 PM",
+    "favs": 6,
+    "favouriteResources": [],
+    "favouritePosts": []
+  }
+]
