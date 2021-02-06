@@ -2,29 +2,46 @@
     $(function() {
         $.widget("zpd.paging", {
             options: {
-                limit: 5,
+                limit: 10,
                 rowDisplayStyle: 'block',
                 activePage: 0,
                 rows: []
             },
-            _create: function() {
+            _create: function() {  	
+                $( ".paging-nav" ).remove()   
                 var rows = $("tbody", this.element).children();
                 this.options.rows = rows;
                 this.options.rowDisplayStyle = rows.css('display');
                 var nav = this._getNavBar();
                 this.element.after(nav);
-                this.showPage(0);
+                this.showPage(this.options.activePage);
             },
             _getNavBar: function() {
                 var rows = this.options.rows;
                 var nav = $('<div>', {class: 'paging-nav'});
-                for (var i = 0; i < Math.ceil(rows.length / this.options.limit); i++) {
-                    this._on($('<a>', {
-                        href: '#',
-                        text: (i + 1),
-                        "data-page": (i)
-                    }).appendTo(nav),
-                            {click: "pageClickHandler"});
+                var last = Math.ceil(rows.length / this.options.limit)
+                console.log("Numero paginas = " + last)
+                console.log("Atual = " + this.options.activePage)
+                var actual = this.options.activePage
+                if (actual + 6 > last){
+                    for (i; i < last; i++) {
+                        this._on($('<a>', {
+                            href: '#',
+                            text: (i + 1),
+                            "data-page": (i)
+                        }).appendTo(nav),
+                                {click: "pageClickHandler"});
+                    }
+                }
+                else {
+                    for (actual; actual < (actual + 6); i++) {
+                        this._on($('<a>', {
+                            href: '#',
+                            text: (i + 1),
+                            "data-page": (i)
+                        }).appendTo(nav),
+                                {click: "pageClickHandler"});
+                    }
                 }
                 //create previous link
                 this._on($('<a>', {
@@ -60,6 +77,7 @@
                 $(event.target).siblings().attr('class', "");
                 $(event.target).attr('class', "selected-page");
                 var pageNum = $(event.target).attr('data-page');
+                this._create();
                 this.showPage(pageNum);
             },
             pageStepHandler: function(event) {
