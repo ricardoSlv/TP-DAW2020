@@ -34,7 +34,6 @@ export async function insert(user, resource, zipFile) {
         const jsonFile = await fsPromises.readFile(userDirectory+'/'+ newResource._id +'/manifest.json')
         const manifestData = JSON.parse(jsonFile)
 
-        console.log('manifestData.files', manifestData.files)
         for(const file of manifestData.files){
             await fsPromises.readFile(`${userDirectory}/${newResource._id}/${file.path}`)
             newResource.files.push(file)
@@ -64,10 +63,26 @@ export function editById(id, title, subtitle, type) {
     }}).exec()
 }
 
-export function deleteById(id) {
-    //TODO: Apagar a pasta
+export async function deleteById(id) {
+    
+    try{
+        const resource = await Resource.findById(id)
+        console.log("ola",resource)
+        const resourceDirectory = join(__dirname, 'user_files/', resource.producer._id+'/'+resource._id)
+        await fsPromises.rmdir(resourceDirectory,{ recursive: true })
+    }catch(e){
+        console.log(e)
+    }
+
     return Resource
         .findByIdAndDelete(id)
+        .exec()
+}
+
+export function deleteByProducer(producer) {
+
+    return Resource
+        .deleteMany({"producer._id": producer})
         .exec()
 }
 

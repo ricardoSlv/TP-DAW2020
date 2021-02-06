@@ -63,6 +63,13 @@ export function deleteById(id) {
         .exec()
 }
 
+export function deleteByProducer(producer) {
+
+    return Post
+        .deleteMany({"producer._id": producer})
+        .exec()
+}
+
 export function filterByProducer(prodId) {
 
     return Post

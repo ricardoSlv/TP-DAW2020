@@ -1,5 +1,8 @@
 import User from "../models/user.js"
 
+import * as Resource from "../controllers/resource.js"
+import * as Post from "../controllers/post.js"
+
 import fs from "fs"
 const fsPromises = fs.promises
 import path, { join } from "path"
@@ -41,6 +44,7 @@ export async function insert(user, pictureFile) {
     const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
     await fsPromises.mkdir(userDirectory)
     const oldPath = join(__dirname, pictureFile.path)
+
     //uploads/random => public/id/picture
     //Without extension, let browser figure it out
     const newPath = join(__dirname, 'user_files/', newUser._id.toString(), 'picture')
@@ -111,8 +115,16 @@ export function findById(id) {
         .exec()
 }
 
-export function deleteById(id) {
-    //TODO: Apagar a pasta
+export async function deleteById(id) {
+    try{
+        const userDirectory = join(__dirname, 'user_files/', id)
+        await fsPromises.rmdir(userDirectory,{ recursive: true })
+        await Resource.deleteByProducer(id)
+        await Post.deleteByProducer(id)
+    }catch(e){
+        console.log(e)
+    }
+
     return User
         .findByIdAndDelete(id)
         .exec()
