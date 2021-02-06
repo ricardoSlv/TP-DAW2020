@@ -120,7 +120,7 @@ router.delete('/:id', async (req, res, _next) => {
         res.sendStatus(200)
     } 
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
@@ -131,12 +131,11 @@ router.patch('/:id', async (req, res, _next) => {
         res.sendStatus(200)
     } 
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
 
-//TODO: Update quando fizermos unzip
 router.get('/:id/download', async (req, res, _next) => {
     if (req.user){
         const resource = await Resource.findById(req.params.id)

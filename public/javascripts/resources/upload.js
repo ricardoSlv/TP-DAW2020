@@ -33,7 +33,7 @@ form.addEventListener('submit', async e => {
         else
             alert('The server has encountered an error, please check your manifest.json or retry later 😥')
     }catch(e){
-        alert('An error has occurred during signup, please retry 😥')
+        alert('An error has occurred during upload, please retry 😥')
     }
 
 
