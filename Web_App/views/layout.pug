@@ -12,6 +12,12 @@ html
     link(rel='stylesheet' href='/stylesheets/styles.css')
     script(type='module' src='https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js')
     script(nomodule='' src='https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js')
+    script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
+    script(type='text/javascript' src='/javascripts/paging.js')
+    script(type='text/javascript').
+      $(document).ready(function() {
+      $('#tableData').paging({limit:10});
+      });
   body
     header
         nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.px-4
