@@ -62,6 +62,12 @@ export function deleteById(id) {
         .exec()
 }
 
+export function deleteComment(id,idcomment){
+    return Post
+        .findByIdAndUpdate(id,{$pull:{comments:{_id: idcomment}}})
+        .exec()
+}
+
 export function deleteByProducer(producer) {
 
     return Post

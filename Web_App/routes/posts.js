@@ -126,12 +126,11 @@ router.get('/edit/:id', async (req, res, _next) => {
 
 router.post('/:id/comment', async (req, res, _next) => {
     try {
-        console.log(e)
         await Post.addComment(req.params.id, req.user, req.body)
         res.sendStatus(200)
     } 
     catch (e) {
-
+        console.log(e)
         res.status(500).send()
     }
 })
@@ -139,6 +138,17 @@ router.post('/:id/comment', async (req, res, _next) => {
 router.delete('/:id', async (req, res, _next) => {
     try {
         await Post.deleteById(req.params.id)
+        res.sendStatus(200)
+    } 
+    catch (e) {
+        console.log(e)
+        res.sendStatus(500)
+    }
+})
+
+router.delete('/:id/:idcomment', async (req, res, _next) => {
+    try {
+        await Post.deleteComment(req.params.id,req.params.idcomment)
         res.sendStatus(200)
     } 
     catch (e) {
