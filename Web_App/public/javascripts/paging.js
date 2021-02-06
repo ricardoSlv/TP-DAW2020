@@ -55,13 +55,12 @@
                         this._on($('<a>', {
                             href: '#',
                             text: 'First',
-                            "data-direction": -this.options.activePage
+                            "data-page": 0
                         }).prependTo(nav),
-                                {click: "pageStepHandler"});
+                                {click: "pageClickHandler"});
                 }
                 //create next link
                 if(this.options.activePage < Math.ceil(this.options.rows.length / this.options.limit)-1){
-                var dirLast = (((Math.ceil(this.options.rows.length / this.options.limit)-1)-this.options.activePage)*1)
                 this._on($('<a>', {
                     href: '#',
                     text: '>>',
@@ -71,10 +70,9 @@
                         this._on($('<a>', {
                             href: '#',
                             text: 'Last',
-                            "data-direction": +dirLast
+                            "data-page": Math.ceil(this.options.rows.length / this.options.limit)-1
                         }).appendTo(nav),
-                                {click: "pageStepHandler"});
-                
+                                {click: "pageClickHandler"});
                 }
                 return nav;
             },
@@ -99,18 +97,20 @@
                 $(event.target).siblings().attr('class', "");
                 $(event.target).attr('class', "selected-page");
                 var pageNum = $(event.target).attr('data-page');
+                //this._create();
                 this.showPage(pageNum);
             },
             pageStepHandler: function(event) {
                 event.preventDefault();
                 //get the direction and ensure it's numeric
                 var dir = $(event.target).attr('data-direction') * 1;
-                console.log("DIR: "+dir)
                 var pageNum = this.options.activePage + dir;
+                console.log("pageNum: "+pageNum)
                 //if we're in limit, trigger the requested pages link
-                if (pageNum >= 0 && pageNum < this.options.rows.length) {
+                console.log("Rows length: "+ this.options.rows.length)
+                //if (pageNum >= 0 && pageNum < this.options.rows.length) {
                     $("a[data-page=" + pageNum + "]", $(event.target).parent()).click();
-                }
+               // }
             }
         });
     });
