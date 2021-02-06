@@ -52,7 +52,7 @@ router.get('/profile', async (req, res, _next) => {
 
 router.get('/admin', async (req, res, _next) => {
     const user = await User.findById(req.user?._id)
-
+    console.log(req.user, user)
     if (user && user.level.localeCompare("ADMN") == 0) {
         const resources = await Resource.list()
         const posts = await Post.list()

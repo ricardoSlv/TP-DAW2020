@@ -43,7 +43,9 @@ router.get('/upload', (req, res, _next) => {
 router.post('/upload', upload.single('zip'), async (req, res, _next) => {
     try {
         const resource = await Resource.insert(req.user, req.body, req.file)
-        User.update({ _id: req.user._id }, { level: "PROD" })
+        
+        if(req.user==='CONS')
+            User.update({ _id: req.user._id }, { level: "PROD" })
 
         res.status(200).jsonp(resource)
     } catch (e) {
