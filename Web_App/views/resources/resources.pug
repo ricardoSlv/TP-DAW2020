@@ -27,7 +27,7 @@ block content
           
             button.mx-1.btn.btn-primary.btn-block(type='submit') Search
       
-        table.table.text-center
+        table#tableData.table.table-bordered.table-striped.table.text-center
           th Title
           th Type
           th Created
@@ -50,5 +50,5 @@ block content
               td #{r.downloads}
               td #{r.favs}
         
-        a.btn.btn-primary.w-100(href='/resources/upload') Upload
+        a.btn.btn-primary.w-100.my-3(href='/resources/upload') Upload
 

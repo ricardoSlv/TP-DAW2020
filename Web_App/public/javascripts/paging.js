@@ -21,27 +21,48 @@
                 var last = Math.ceil(rows.length / this.options.limit)
                 console.log("Numero paginas = " + last)
                 console.log("Atual = " + this.options.activePage)
-                var actual = this.options.activePage
+                var actual = this.options.activePage*1
                 var i = actual - 3
                 var i = ((i<0) ? 0 : i)
                 if (actual + 3 > last){
                     for (i; i < last; i++) {
-                        this._on($('<a>', {
-                            href: '#',
-                            text: (i + 1),
-                            "data-page": (i)
-                        }).appendTo(nav),
-                                {click: "pageClickHandler"});
+                        if(i === actual){
+                            this._on($('<a>', {
+                                href: '#',
+                                text: (i + 1),
+                                "data-page": (i),
+                                class: "selected-page"
+                            }).appendTo(nav),
+                                    {click: "pageClickHandler"});
+                        }else{
+                            this._on($('<a>', {
+                                href: '#',
+                                text: (i + 1),
+                                "data-page": (i)
+                            }).appendTo(nav),
+                                    {click: "pageClickHandler"});
+                    
+                        }
                     }
                 }
                 else {
                     for (i; i < (actual + 3); i++) {
-                        this._on($('<a>', {
-                            href: '#',
-                            text: (i + 1),
-                            "data-page": (i)
-                        }).appendTo(nav),
-                                {click: "pageClickHandler"});
+                        if(i === actual){
+                            this._on($('<a>', {
+                                href: '#',
+                                text: (i + 1),
+                                "data-page": (i),
+                                class: "selected-page"
+                            }).appendTo(nav),
+                                    {click: "pageClickHandler"});
+                        }else{
+                            this._on($('<a>', {
+                                href: '#',
+                                text: (i + 1),
+                                "data-page": (i)
+                            }).appendTo(nav),
+                                    {click: "pageClickHandler"});
+                    }
                     }
                 }
                 //create previous link
@@ -97,7 +118,6 @@
                 $(event.target).siblings().attr('class', "");
                 $(event.target).attr('class', "selected-page");
                 var pageNum = $(event.target).attr('data-page');
-                //this._create();
                 this.showPage(pageNum);
             },
             pageStepHandler: function(event) {
@@ -105,9 +125,7 @@
                 //get the direction and ensure it's numeric
                 var dir = $(event.target).attr('data-direction') * 1;
                 var pageNum = this.options.activePage + dir;
-                console.log("pageNum: "+pageNum)
                 //if we're in limit, trigger the requested pages link
-                console.log("Rows length: "+ this.options.rows.length)
                 //if (pageNum >= 0 && pageNum < this.options.rows.length) {
                     $("a[data-page=" + pageNum + "]", $(event.target).parent()).click();
                // }
