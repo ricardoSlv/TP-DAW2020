@@ -28,6 +28,10 @@ def stringToId(s):
         '$oid' : s
     }
 
+# ObjectID -> String
+def idToString(id):
+    return id.get("$oid")
+
 # To pick random user
 def pick_random_user(users):
     key = random.choice(list(users.keys()))
@@ -104,6 +108,147 @@ for x in users_id:
 titles = ["Teste de PI", "Recurso de PI", "Receita de coelho", "Tática do jogo", "Vitória!"]
 subtitles = ["Com cebola", "O melhor", "Cartoon e companhia", "Tese do melhor que há!", "Fichas da UMinho"]
 themes = ["REPORT", "THESIS", "ARTICLE", "APP", "SLIDES", "TEST", "SOLVEDPROB"]
+files = [{
+            "files": [
+                {
+                    "title" : "Coelhinho assado",
+                    "type": "img",
+                    "path": "0.jpg"
+                },
+                {
+                    "title" : "Corredor profissional",
+                    "type": "img",
+                    "path": "1.jpg"
+                },
+                {
+                    "title" : "Golão",
+                    "type" : "mp4",
+                    "path": "1.mp4"
+                },
+                {
+                    "title" : "Teste de PI",
+                    "type" : "pdf",
+                    "path": "5.pdf"
+                },
+                {
+                    "title" : "Recurso de PI",
+                    "type" : "pdf",
+                    "path": "6.pdf"
+                }
+            ]
+        },
+        {
+            "files": [
+                {
+                    "title" : "Tática para o jogo",
+                    "type": "mp4",
+                    "path": "1.mp4"
+                },
+                {
+                    "title" : "Porco cantor",
+                    "type": "img",
+                    "path": "4.jpg"
+                },
+                {
+                    "title" : "Sermão aos ratos",
+                    "type" : "img",
+                    "path": "5.jpg"
+                },
+                {
+                    "title" : "Sneaky Sneaky",
+                    "type" : "img",
+                    "path": "6.jpg"
+                },
+                {
+                    "title" : "Mauzão",
+                    "type" : "img",
+                    "path": "7.jpg"
+                },
+                {
+                    "title" : "Caçador nato",
+                    "type" : "img",
+                    "path": "8.jpg"
+                }
+            ]
+        },
+        {
+            "files": [
+                {
+                    "title" : "Teste 1 de PI",
+                    "type": "pdf",
+                    "path": "2.pdf"
+                },
+                {
+                    "title" : "Porco caçador",
+                    "type": "img",
+                    "path": "3.jpg"
+                },
+                {
+                    "title" : "Teste 2 de PI",
+                    "type" : "pdf",
+                    "path": "3.pdf"
+                },
+                {
+                    "title" : "Figura elegante",
+                    "type" : "img",
+                    "path": "4.jpg"
+                },
+                {
+                    "title" : "Teste 3 de PI",
+                    "type" : "pdf",
+                    "path": "4.pdf"
+                }
+            ]
+        },
+        {
+            "files": [
+                {
+                    "title" : "Pato nadador e voador",
+                    "type": "img",
+                    "path": "2.jpg"
+                },
+                {
+                    "title" : "Video-Aula de como cortar uma cebola!",
+                    "type": "mp4",
+                    "path": "2.mp4"
+                },
+                {
+                    "title" : "Porco com chapéu",
+                    "type" : "img",
+                    "path": "3.jpg"
+                },
+                {
+                    "title" : "Exame de programação",
+                    "type" : "pdf",
+                    "path": "4.pdf"
+                },
+                {
+                    "title" : "Hamster com cauda",
+                    "type" : "img",
+                    "path": "5.jpg"
+                }
+            ]
+        },
+        {
+            "files": [
+                {
+                    "title" : "Cebola cortante",
+                    "type": "mp4",
+                    "path": "2.mp4"
+                },
+                {
+                    "title" : "Dissertação em programação imperativa",
+                    "type": "pdf",
+                    "path": "5.pdf"
+                },
+                {
+                    "title" : "Exercício da aula",
+                    "type": "pdf",
+                    "path": "6.pdf"
+                }
+            ]
+        }
+]
 
 # Generate JSON data for resources
 data_resources = []
@@ -124,20 +269,22 @@ for x in range(500):
         'subtitle': subtitles[x%5],
         'type': themes[x%7],
         'producer': producer,
-        'files': [],
+        'files': files[x%5].get("files"),
         'createdAt': dataCreate,
         'registeredAt': dataRegistered,
         'downloads': random_number(50),
         'favs': random_number(5),
         'public': True
     })
+    # Copy the resource to the user folder
+    new_path = current_path + '\\population_result\\user_files\\' + idToString(producer.get("_id")) + '\\' + str(aux)
+    shutil.copytree(current_path + "\\resources_examples\\" + str(x%5 + 1), new_path)
+    os.rename(new_path + '\\zip.zip', new_path + '\\' + str(aux) + ".zip")
     resources[str(aux)] = title
 
 # Write to file
 with open('population_result\\resources.json', 'w', encoding='utf-8') as file:
     json.dump(data_resources, file, indent=2)
-
-### RESOURCE FOLDERS ###
 
 ##### POSTS CREATION #####
 

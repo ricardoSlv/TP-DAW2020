@@ -1,0 +1,19 @@
+{
+    "files": [
+        {
+            "title" : "Cebola cortante",
+            "type": "mp4",
+            "path": "2.mp4"
+        },
+        {
+            "title" : "Dissertação em programação imperativa",
+            "type": "pdf",
+            "path": "5.pdf"
+        },
+        {
+            "title" : "Exercício da aula",
+            "type": "pdf",
+            "path": "6.pdf"
+        }
+    ]
+}
