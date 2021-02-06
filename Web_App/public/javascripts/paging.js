@@ -7,8 +7,7 @@
                 activePage: 0,
                 rows: []
             },
-            _create: function() {  	
-                $( ".paging-nav" ).remove()   
+            _create: function() {  	 
                 var rows = $("tbody", this.element).children();
                 this.options.rows = rows;
                 this.options.rowDisplayStyle = rows.css('display');
@@ -23,7 +22,9 @@
                 console.log("Numero paginas = " + last)
                 console.log("Atual = " + this.options.activePage)
                 var actual = this.options.activePage
-                if (actual + 6 > last){
+                var i = actual - 3
+                var i = ((i<0) ? 0 : i)
+                if (actual + 3 > last){
                     for (i; i < last; i++) {
                         this._on($('<a>', {
                             href: '#',
@@ -34,7 +35,7 @@
                     }
                 }
                 else {
-                    for (actual; actual < (actual + 6); i++) {
+                    for (i; i < (actual + 3); i++) {
                         this._on($('<a>', {
                             href: '#',
                             text: (i + 1),
@@ -44,19 +45,37 @@
                     }
                 }
                 //create previous link
+                if(this.options.activePage != 0){
                 this._on($('<a>', {
                     href: '#',
                     text: '<<',
                     "data-direction": -1
                 }).prependTo(nav),
                         {click: "pageStepHandler"});
+                        this._on($('<a>', {
+                            href: '#',
+                            text: 'First',
+                            "data-direction": -this.options.activePage
+                        }).prependTo(nav),
+                                {click: "pageStepHandler"});
+                }
                 //create next link
+                if(this.options.activePage < Math.ceil(this.options.rows.length / this.options.limit)-1){
+                var dirLast = (((Math.ceil(this.options.rows.length / this.options.limit)-1)-this.options.activePage)*1)
                 this._on($('<a>', {
                     href: '#',
                     text: '>>',
                     "data-direction": +1
                 }).appendTo(nav),
                         {click: "pageStepHandler"});
+                        this._on($('<a>', {
+                            href: '#',
+                            text: 'Last',
+                            "data-direction": +dirLast
+                        }).appendTo(nav),
+                                {click: "pageStepHandler"});
+                
+                }
                 return nav;
             },
             showPage: function(pageNum) {
@@ -71,19 +90,22 @@
                         $(rows[i]).css('display', 'none');
                     }
                 }
+                var nav = this._getNavBar()
+                $( ".paging-nav" ).remove()  
+                this.element.after(nav)
             },
             pageClickHandler: function(event) {
                 event.preventDefault();
                 $(event.target).siblings().attr('class', "");
                 $(event.target).attr('class', "selected-page");
                 var pageNum = $(event.target).attr('data-page');
-                this._create();
                 this.showPage(pageNum);
             },
             pageStepHandler: function(event) {
                 event.preventDefault();
                 //get the direction and ensure it's numeric
                 var dir = $(event.target).attr('data-direction') * 1;
+                console.log("DIR: "+dir)
                 var pageNum = this.options.activePage + dir;
                 //if we're in limit, trigger the requested pages link
                 if (pageNum >= 0 && pageNum < this.options.rows.length) {
