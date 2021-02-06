@@ -6,12 +6,10 @@ block content
       h1.my-3.text-center Users
       .col-12.col-lg-8
         form#searchform.my-4.d-flex.align-items-center
-            select.mx-1#filtertype.form-select(name='filterType')
-              option(selected='' value='') Select filter type
-              option(value='name') Name
-              option(value='course') Course
-            
-            input.mx-1#filter.form-control(type='text' name='filter' defaultValue='' placeholder='Filter')
+
+            input.mx-1#filter.form-control(type='text' name='nameFilter' defaultValue='' placeholder='Filter Name')
+
+            input.mx-1#filter.form-control(type='text' name='courseFilter' defaultValue='' placeholder='Filter Course')
 
             select.mx-1#sorttype.form-select(name='sortType')
               option(selected='' value='') Select sort type

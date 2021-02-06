@@ -46,7 +46,6 @@ export function findById(id) {
 }
 
 export function editById(id, newData) {
-    console.log(newData.resources)
     return Post
         .updateOne({_id: id},{$set: {
             title: newData.title,
@@ -60,6 +59,12 @@ export function editById(id, newData) {
 export function deleteById(id) {
     return Post
         .findByIdAndDelete(id)
+        .exec()
+}
+
+export function deleteComment(id,idcomment){
+    return Post
+        .findByIdAndUpdate(id,{$pull:{comments:{_id: idcomment}}})
         .exec()
 }
 

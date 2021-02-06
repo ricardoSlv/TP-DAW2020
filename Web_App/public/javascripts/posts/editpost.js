@@ -14,15 +14,12 @@ fetchResources()
 
 form.addEventListener('submit', async e => {
 
-    console.log('entrei')
     e.preventDefault()
     const editForm = e.target
     const { id, title, subtitle, content, themes} = editForm
     const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
 
     const postData = {}
-
-    console.log(resourceList)
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
@@ -66,7 +63,6 @@ function addResource(id,title){
     $('#btnadd'+id).attr('disabled', true)
     
     resourceList.push({_id: id, title: title})
-    console.log(resourceList)
 }
 
 function removeResource(id){
@@ -74,6 +70,5 @@ function removeResource(id){
     $($(`#addedResourceList > #item${id}`)).remove()
 
     resourceList = resourceList.filter(x=>x._id!=id)
-    console.log(resourceList)
 
 }

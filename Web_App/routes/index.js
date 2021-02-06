@@ -9,14 +9,12 @@ router.get('/', async (req,res,_next)=>{
         try {
             const recentPubs = await Post.listRecent(5)
             const popularPubs = await Post.listPopular(5)
-            console.log(recentPubs)
-            console.log(popularPubs)
             const favedPubs = await Post.listFaved(5)
             const favedUsers = await User.listFaved(5)
             res.render('landing/logged',{recentPubs, popularPubs, favedPubs, favedUsers, user: req.user})
         }
         catch(e){
-            console.log("Error = " + e)
+            console.log(e)
         }
     }else
         res.render('landing/notlogged',{user: req.user})
