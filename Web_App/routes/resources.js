@@ -13,38 +13,38 @@ router.get('/', async (req, res, _next) => {
     //TODO: Optimize by querying on mongodb
     let resources = await Resource.listPublic()
 
-    if(req.query.filterType==='title')
-        resources = resources.filter(r=>(new RegExp(req.query.filter)).test(r.title))
-    else if ((req.query.filterType==='producer'))
-        resources = resources.filter(r=>(new RegExp(req.query.filter)).test(r.producer.name))
-    
-    if (req.query.sortType=='title')
-        resources.sort((r1,r2)=>r1.title.localeCompare(r2.title))
-    else if (req.query.sortType=='type')
-        resources.sort((r1,r2)=>r1.type.localeCompare(r2.type))
-    else if (req.query.sortType=='createdAt')
-        resources.sort((r1,r2)=>r2.createdAt.getTime()-r1.createdAt.getTime())
-    else if (req.query.sortType=='registeredAt')
-        resources.sort((r1,r2)=>r2.registeredAt.getTime()-r1.registeredAt.getTime())
-    else if(req.query.sortType=='producer')
-        resources.sort((r1,r2)=>r1.producer.name.localeCompare(r2.producer.name))
-    else if (req.query.sortType=='downloads')
-        resources.sort((r1,r2)=>r2.downloads-r1.downloads)
-    else if (req.query.sortType=='favourites')
-        resources.sort((r1,r2)=>r2.favs-r1.favs)
+    if (req.query.filterType === 'title')
+        resources = resources.filter(r => (new RegExp(req.query.filter)).test(r.title))
+    else if ((req.query.filterType === 'producer'))
+        resources = resources.filter(r => (new RegExp(req.query.filter)).test(r.producer.name))
 
-    res.render('resources/resources',{user: req.user, resources})
+    if (req.query.sortType == 'title')
+        resources.sort((r1, r2) => r1.title.localeCompare(r2.title))
+    else if (req.query.sortType == 'type')
+        resources.sort((r1, r2) => r1.type.localeCompare(r2.type))
+    else if (req.query.sortType == 'createdAt')
+        resources.sort((r1, r2) => r2.createdAt.getTime() - r1.createdAt.getTime())
+    else if (req.query.sortType == 'registeredAt')
+        resources.sort((r1, r2) => r2.registeredAt.getTime() - r1.registeredAt.getTime())
+    else if (req.query.sortType == 'producer')
+        resources.sort((r1, r2) => r1.producer.name.localeCompare(r2.producer.name))
+    else if (req.query.sortType == 'downloads')
+        resources.sort((r1, r2) => r2.downloads - r1.downloads)
+    else if (req.query.sortType == 'favourites')
+        resources.sort((r1, r2) => r2.favs - r1.favs)
+
+    res.render('resources/resources', { user: req.user, resources })
 })
 
 router.get('/upload', (req, res, _next) => {
-    res.render('resources/upload',{user: req.user})
+    res.render('resources/upload', { user: req.user })
 })
 
 router.post('/upload', upload.single('zip'), async (req, res, _next) => {
     try {
         const resource = await Resource.insert(req.user, req.body, req.file)
-        User.update({_id: req.user._id},{level: "PROD"})
-        
+        User.update({ _id: req.user._id }, { level: "PROD" })
+
         res.status(200).jsonp(resource)
     } catch (e) {
         console.log(e)
@@ -60,30 +60,29 @@ router.post('/edit/:id', async (req, res, _next) => {
     try {
         await Resource.editById(req.params.id, req.body.title, req.body.subtitle, req.body.type)
         res.sendStatus(200)
-    } 
+    }
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
 
 router.get('/:id', async (req, res, _next) => {
-    
+
     try {
         const resource = await Resource.findById(req.params.id)
         const user = await User.findById(req.user._id)
 
-        if(resource.public===false&&resource.producer._id.toString()!=user._id.toString()){
+        if (!resource)
+            res.render('error', { user: req.user, error: { status: 404, stack: 'This resource does not exist or may have been deleted' } })
+        else if (resource.public === false && resource.producer._id.toString() != user._id.toString()) {
             res.status(401)
-            res.render('error',{user: req.user,error: {status: 401, stack:'This resource has been set to private'}})
+            res.render('error', { user: req.user, error: { status: 401, stack: 'This resource has been set to private' } })
         } else
-            res.render('resources/resource',{user, resource})
+            res.render('resources/resource', { user, resource })
     } catch (e) {
         console.log(e)
-        if (e.message === '404')
-            res.status(409).send()
-        else
-            res.status(500).send()
+        res.sendStatus(500)
     }
 })
 
@@ -101,9 +100,8 @@ router.get('/edit/:id', async (req, res, _next) => {
     try {
         const resource = await Resource.findById(req.params.id)
         const user = await User.findById(req.user._id)
-        // Post.addView(req.params.id)
-        res.render('resources/edit',{user, resource})
-    } 
+        res.render('resources/edit', { user, resource })
+    }
     catch (e) {
         console.log(e)
         //TODO 404
@@ -118,7 +116,7 @@ router.delete('/:id', async (req, res, _next) => {
     try {
         await Resource.deleteById(req.params.id)
         res.sendStatus(200)
-    } 
+    }
     catch (e) {
         console.log(e)
         res.sendStatus(500)
@@ -129,7 +127,7 @@ router.patch('/:id', async (req, res, _next) => {
     try {
         await Resource.updateById(req.params.id, req.body)
         res.sendStatus(200)
-    } 
+    }
     catch (e) {
         console.log(e)
         res.sendStatus(500)
@@ -137,13 +135,13 @@ router.patch('/:id', async (req, res, _next) => {
 })
 
 router.get('/:id/download', async (req, res, _next) => {
-    if (req.user){
+    if (req.user) {
         const resource = await Resource.findById(req.params.id)
         Resource.addDownload(req.params.id)
         res.download(`./user_files/${resource.producer._id.toString()}/${resource._id}/${resource._id}.zip`)
-    }else{
+    } else {
         res.status(401)
-        res.render('error',{user: req.user, error: {status:401, stack:'You must be logged in to download any resource'}})
+        res.render('error', { user: req.user, error: { status: 401, stack: 'You must be logged in to download any resource' } })
     }
 })
 

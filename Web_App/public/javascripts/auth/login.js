@@ -13,7 +13,7 @@ form.addEventListener('submit', async e => {
     loginData[email.name] = email.value
     loginData[password.name] = password.value
     loginData[remember.name] = remember.checked
-
+    
     console.table(loginData)
 
     try {

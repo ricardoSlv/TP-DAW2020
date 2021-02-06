@@ -118,7 +118,7 @@ router.post('/:id/favouritesPosts/', async (req, res, _next) => {
         res.sendStatus(201)
     }
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
@@ -133,7 +133,7 @@ router.post('/:id/favouritesResources/', async (req, res, _next) => {
         res.sendStatus(201)
     }
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
@@ -148,7 +148,7 @@ router.delete('/:id/favouritesPosts/:postid', async (req, res, _next) => {
         res.sendStatus(200)
     }
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
@@ -163,7 +163,7 @@ router.delete('/:id/favouritesResources/:resid', async (req, res, _next) => {
         res.sendStatus(200)
     }
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
@@ -174,7 +174,7 @@ router.delete('/:id', async (req, res, _next) => {
         res.sendStatus(200)
     }
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })

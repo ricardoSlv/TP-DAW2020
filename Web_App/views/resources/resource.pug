@@ -40,8 +40,7 @@ block content
                     const id = "#{resource._id}"
                     const path = "#{f.path}" 
                     const title = "#{f.title}" 
-                    let url = `/resources/${id}/files/${path}` 
-                    console.log(url)
+                    let url = `/resources/${id}/files/${path}`
                     var adobeDCView = new AdobeDC.View({clientId: "439faf3d6c4a42488b22cc4e151d4c5e", divId: id});
                     adobeDCView.previewFile({
                       content:{location: {url: url}},

@@ -46,7 +46,6 @@ export function findById(id) {
 }
 
 export function editById(id, newData) {
-    console.log(newData.resources)
     return Post
         .updateOne({_id: id},{$set: {
             title: newData.title,

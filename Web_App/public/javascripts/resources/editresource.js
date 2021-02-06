@@ -4,15 +4,12 @@ const form = document.querySelector('#resourceEdit')
 
 form.addEventListener('submit', async e => {
 
-    console.log('entrei')
     e.preventDefault()
     const editForm = e.target
     const { id, title, subtitle, type} = editForm
     //const [REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB] = [...themes]
 
     const postData = {}
-
-    //console.log(resourceList)
 
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value

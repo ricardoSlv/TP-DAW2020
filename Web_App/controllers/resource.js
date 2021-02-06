@@ -67,7 +67,6 @@ export async function deleteById(id) {
     
     try{
         const resource = await Resource.findById(id)
-        console.log("ola",resource)
         const resourceDirectory = join(__dirname, 'user_files/', resource.producer._id+'/'+resource._id)
         await fsPromises.rmdir(resourceDirectory,{ recursive: true })
     }catch(e){

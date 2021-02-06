@@ -28,7 +28,6 @@ router.get('/', async (req, res, _next) => {
     else if (req.query.sortType=='views')
         posts.sort((p1,p2)=>p2.views-p1.views)
     else if (req.query.sortType=='favourites'){
-        console.log("Entrei")
         posts.sort((p1,p2)=>p2.favs-p1.favs)
     }
 
@@ -43,12 +42,10 @@ router.get('/upload', async (req, res, _next) => {
 // Post a new post 
 router.post('/upload', async (req, res, _next) => {
     try {
-        console.log(req.body)
         const post = await Post.insert(req.user, req.body)
         res.status(200).send(post)
     } 
     catch (e) {
-        console.log(e)
         if (e.message === '401')
             res.sendStatus(401)
         else
@@ -63,7 +60,7 @@ router.post('/edit/:id', async (req, res, _next) => {
         res.sendStatus(200)
     } 
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })
@@ -72,27 +69,34 @@ router.get('/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
         const user = await User.findById(req.user._id)
-        Post.addView(req.params.id)
-        res.render('posts/post',{user, post})
+
+        if(!post) 
+            res.render('error',{user: req.user,error: {status: 404, stack:'This post does not exist or may have been deleted'}})
+        else{
+            Post.addView(req.params.id)
+            res.render('posts/post',{user, post})
+        }
     } 
     catch (e) {
         console.log(e)
-        //TODO 404
         if (e.message === '401')
-        res.sendStatus(401)
+            res.sendStatus(401)
         else
-        res.sendStatus(500)
+            res.sendStatus(500)
     }
 })
 
 router.get('/:id/resources', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
-        res.status(200).jsonp(post.resources)
+        
+        if(!post) 
+            res.sendStatus(404)
+        else
+            res.status(200).jsonp(post.resources)
     } 
     catch (e) {
         console.log(e)
-        //TODO 404
         if (e.message === '401')
         res.sendStatus(401)
         else
@@ -103,29 +107,32 @@ router.get('/:id/resources', async (req, res, _next) => {
 router.get('/edit/:id', async (req, res, _next) => {
     try {
         const post = await Post.findById(req.params.id)
-
         const user = await User.findById(req.user._id)
         const resources = await Resource.listPublic()
-
-        res.render('posts/edit',{user, post, resources})
+        
+        if(!post) 
+            res.render('error',{user: req.user,error: {status: 404, stack:'This post does not exist or may have been deleted'}})
+        else
+            res.render('posts/edit',{user, post, resources})
     } 
     catch (e) {
         console.log(e)
-        //TODO 404
         if (e.message === '401')
-            res.sendStatus(401)
+            res.render('error',{user: req.user,error: {status: 401, stack:'You must be logged in to acess this post'}})
         else
-            res.sendStatus(500)
+            res.render('error',{user: req.user,error: {status: 500, stack:'Internal server error'}})
+
     }
 })
 
 router.post('/:id/comment', async (req, res, _next) => {
     try {
+        console.log(e)
         await Post.addComment(req.params.id, req.user, req.body)
         res.sendStatus(200)
     } 
     catch (e) {
-        console.log('e', e)
+
         res.status(500).send()
     }
 })
@@ -136,7 +143,7 @@ router.delete('/:id', async (req, res, _next) => {
         res.sendStatus(200)
     } 
     catch (e) {
-        console.log('e', e)
+        console.log(e)
         res.sendStatus(500)
     }
 })

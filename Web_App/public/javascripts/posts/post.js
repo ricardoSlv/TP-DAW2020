@@ -6,7 +6,6 @@ form.addEventListener('submit', async e => {
 
     const commentForm = e.target
     const { text } = commentForm
-    console.log({ text: text.value })
 
     try {
         const resp = await fetch(window.location.href + '/comment/', {
