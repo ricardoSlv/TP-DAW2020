@@ -6,7 +6,7 @@ block content
       .col-lg-8
         
         h1.m-4.text-center #{resource.title}
-        h2.m-4 #{resource.subtitle}
+        h2.m-4.text-center #{resource.subtitle}
         .d-flex.justify-content-between
           a.d-flex(href='/users/'+resource.producer._id)
             img.rounded.me-1(src='/users/'+resource.producer._id+'/picture' alt='...' style='height:1.5em; width:1.5em; object-fit:cover')
@@ -15,8 +15,8 @@ block content
             | #{user.favouriteResources.some(r=>r._id.toString()===resource._id.toString()) ? 'Remove Favourite' : 'Favourite'}
       
         p #{resource.downloads} downloads
-        ul 
-          li #{resource.type}
+        ul.list-group 
+          li.list-group-item #{resource.type}
         
         h1.mt-5.text-center Files
         ul.pt-4 
