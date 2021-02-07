@@ -20,7 +20,8 @@ block content
         
         h1.mt-5.text-center Files
         ul.pt-4 
-          each f in resource.files
+          each e in Object.entries(resource.files)
+            -const [i,f] = e
             li.mb-4 
               .d-flex.align-items-center
                 h2.me-4 #{f.title}
@@ -34,13 +35,15 @@ block content
                 video(height="500px" controls)
                   source(src=`/resources/${resource._id}/files/${f.path}` type="video/mp4")
               if(f.type==='pdf')
-                div(id=resource._id style="height:700px")
+                -const viewerId = `${resource._id}${i}`
+                div(id=viewerId style="height:700px")
                 script.
                   document.addEventListener("adobe_dc_view_sdk.ready", function(){
-                    const id = "#{resource._id}"
+                    const resId = "#{resource._id}"
+                    const id = "#{viewerId}"
                     const path = "#{f.path}" 
                     const title = "#{f.title}" 
-                    let url = `/resources/${id}/files/${path}`
+                    let url = `/resources/${resId}/files/${path}`
                     var adobeDCView = new AdobeDC.View({clientId: "439faf3d6c4a42488b22cc4e151d4c5e", divId: id});
                     adobeDCView.previewFile({
                       content:{location: {url: url}},
