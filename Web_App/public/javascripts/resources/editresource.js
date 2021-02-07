@@ -1,7 +1,4 @@
 const form = document.querySelector('#resourceEdit')
-
-//const resourceList = []
-
 form.addEventListener('submit', async e => {
 
     e.preventDefault()

@@ -11,7 +11,7 @@ import * as Post from '../controllers/post.js'
 router.get('/', async (req, res, _next) => {
 
     const query = {}
-    req.query.nameFilter && (query.title = new RegExp(req.query.nameFilter))
+    req.query.nameFilter && (query.name = new RegExp(req.query.nameFilter))
     req.query.courseFilter && (query.course = new RegExp(req.query.courseFilter))
     
     const ordering = ["dateReg","lastOnline","favs"].includes(req.query.sortType) ? -1 : 1
