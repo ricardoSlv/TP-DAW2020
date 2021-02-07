@@ -5,8 +5,6 @@ import * as User from '../controllers/user.js'
 import * as Post from '../controllers/post.js'
 import * as Resource from '../controllers/resource.js'
 
-//TODO: Proteger as rotas
-
 router.get('/', async (req, res, _next) => {
 
     const query = {}
@@ -30,7 +28,7 @@ router.get('/upload', async (req, res, _next) => {
 router.post('/upload', async (req, res, _next) => {
     try {
         const post = await Post.insert(req.user, req.body)
-        res.status(200).send(post)
+        res.status(200).jsonp(post)
     }
     catch (e) {
         if (e.message === '401')
@@ -39,7 +37,6 @@ router.post('/upload', async (req, res, _next) => {
             res.sendStatus(500)
     }
 })
-
 
 router.post('/edit/:id', async (req, res, _next) => {
     try {
