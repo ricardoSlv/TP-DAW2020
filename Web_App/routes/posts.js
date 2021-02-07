@@ -30,7 +30,7 @@ router.get('/upload', async (req, res, _next) => {
 router.post('/upload', async (req, res, _next) => {
     try {
         const post = await Post.insert(req.user, req.body)
-        res.status(200).send(post)
+        res.status(200).jsonp(post)
     }
     catch (e) {
         if (e.message === '401')

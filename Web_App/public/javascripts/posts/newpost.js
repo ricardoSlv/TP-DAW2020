@@ -25,8 +25,9 @@ form.addEventListener('submit', async e => {
             body: JSON.stringify(postData),
         })
         if(resp.status === 200) {
+            const newpost = await resp.json()
             alert('Post creation successfull! 😀')
-            window.location.pathname='/posts/upload'
+            window.location.pathname='/posts/'+newpost._id
         }
         else
             alert('The server has encountered an error, please retry later 😥')
