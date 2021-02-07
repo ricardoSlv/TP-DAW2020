@@ -40,9 +40,8 @@ export async function insert(user, resource, zipFile) {
         }
 
     } catch (e) {
-        console.log(e)
         await fsPromises.rmdir(`${userDirectory}/${newResource._id}`,{ recursive: true })
-        throw new Error(e)
+        throw new Error(' Manifest error, couldnt not find : '+e.path.split('user_files/')[1].split('/').slice(2).join('/'))
     }
 
     return newResource.save()

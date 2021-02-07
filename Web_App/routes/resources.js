@@ -38,7 +38,7 @@ router.post('/upload', upload.single('zip'), async (req, res, _next) => {
         if (e.message === '409')
             res.sendStatus(409)
         else
-            res.sendStatus(500)
+            res.status(500).jsonp({[e.name]: e.message})
     }
 })
 
