@@ -34,8 +34,7 @@ import userRouter from './routes/users.js'
 import resourcesRouter from './routes/resources.js'
 import postRouter from './routes/posts.js'
 
-
-//TODO: Cron Job para limpar os ficheiros perdidos no upload/
+//TODO: Cron Job to clean files lost on/
 const app = express()
 
 app.set('views', join(__dirname, 'views'))
@@ -65,7 +64,7 @@ const isLoggedIn = (req,res,next) => {
         next();
     }
     else {
-        res.status(401)
+        res.redirect('/')
         res.send()
     }
 }

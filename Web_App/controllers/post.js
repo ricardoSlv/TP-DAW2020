@@ -2,7 +2,6 @@ import Post from "../models/post.js"
 
 // Insert a new post
 export async function insert(user, post) {
-    //TODO: Mudar para producer se ainda n for
     const newPost = new Post(post)
     newPost.producer = {_id: user._id, name: user.name}
     newPost.views = 0

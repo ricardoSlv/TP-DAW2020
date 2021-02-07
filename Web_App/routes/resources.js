@@ -7,8 +7,6 @@ import * as User from '../controllers/user.js'
 import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 
-//TODO: Proteger as rotas
-
 router.get('/', async (req, res, _next) => {
 
     const query = {}
@@ -44,7 +42,6 @@ router.post('/upload', upload.single('zip'), async (req, res, _next) => {
     }
 })
 
-// Edit some post
 router.post('/edit/:id', async (req, res, _next) => {
     try {
         await Resource.editById(req.params.id, req.body.title, req.body.subtitle, req.body.type)
@@ -89,11 +86,16 @@ router.get('/edit/:id', async (req, res, _next) => {
     try {
         const resource = await Resource.findById(req.params.id)
         const user = await User.findById(req.user._id)
-        res.render('resources/edit', { user, resource })
+        if (!resource)
+            res.render('error', { user: req.user, error: { status: 404, stack: 'This resource does not exist or may have been deleted' } })
+        else if (resource.public === false && resource.producer._id.toString() != user._id.toString()) {
+            res.status(401)
+            res.render('error', { user: req.user, error: { status: 401, stack: 'This resource has been set to private' } })
+        }   else 
+            res.render('resources/edit', { user, resource })
     }
     catch (e) {
         console.log(e)
-        //TODO 404
         if (e.message === '401')
             res.sendStatus(401)
         else
