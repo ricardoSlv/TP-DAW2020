@@ -34,7 +34,7 @@ import userRouter from './routes/users.js'
 import resourcesRouter from './routes/resources.js'
 import postRouter from './routes/posts.js'
 
-//TODO: Cron Job to clean files lost on/
+//TODO: Cron Job to clean files lost on upload/
 const app = express()
 
 app.set('views', join(__dirname, 'views'))
