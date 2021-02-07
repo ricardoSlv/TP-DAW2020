@@ -334,7 +334,12 @@ for x in range(1000):
         for x in range(3):
             res.append(pick_random_resource(resources))
     for y in range(10):
+        c_id_aux = ObjectId()
+        c_id = {
+            '$oid': str(c_id_aux)
+        }
         comment = {
+            '_id' : c_id,
             'user': pick_random_user(users),
             'text': comments[random_number(4)],
             'createdAt': random_date("12/10/2020 1:30 PM", "12/31/2020 4:50 AM", random.random())
