@@ -27,8 +27,9 @@ form.addEventListener('submit', async e => {
         })
 
         if(resp.status === 200) {
+            const newresource = await resp.json()
             alert('Upload successfull! 😀')
-            window.location.pathname='/resources/upload'
+            window.location.pathname='/resources/'+newresource._id
         }
         else
             alert('The server has encountered an error, please check your manifest.json or retry later 😥')

@@ -8,7 +8,6 @@ import * as User from '../controllers/user.js'
 import * as Resource from '../controllers/resource.js'
 import * as Post from '../controllers/post.js'
 
-//TODO: Proteger as rotas, error handling
 router.get('/', async (req, res, _next) => {
 
     const query = {}
@@ -91,7 +90,6 @@ router.get('/:id/picture', async (req, res, _next) => {
         res.error(401, { user: req.user })
 })
 
-// Add post to favourites
 router.post('/:id/favouritesPosts/', async (req, res, _next) => {
     try {
         const idUser = await Post.getProducerById(req.body._id)
@@ -106,7 +104,6 @@ router.post('/:id/favouritesPosts/', async (req, res, _next) => {
     }
 })
 
-// Add resource to favourites
 router.post('/:id/favouritesResources/', async (req, res, _next) => {
     try {
         const idUser = await Resource.getProducerById(req.body._id)
@@ -121,7 +118,6 @@ router.post('/:id/favouritesResources/', async (req, res, _next) => {
     }
 })
 
-// Remove post from favourites
 router.delete('/:id/favouritesPosts/:postid', async (req, res, _next) => {
     try {
         const idUser = await Post.getProducerById(req.params.postid)
@@ -136,7 +132,6 @@ router.delete('/:id/favouritesPosts/:postid', async (req, res, _next) => {
     }
 })
 
-// Remove resource from favourites
 router.delete('/:id/favouritesResources/:resid', async (req, res, _next) => {
     try {
         const idUser = await Resource.getProducerById(req.params.resid)

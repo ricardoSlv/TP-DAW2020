@@ -22,6 +22,13 @@ export function list() {
         .exec()
 }
 
+export function filter(query,sort){
+    return User.find(query)
+        .collation({locale: "en" })
+        .sort(sort)
+        .exec()
+}
+
 export async function insert(user, pictureFile) {
     const newUser = new User(user)
     newUser.dateReg = new Date()
