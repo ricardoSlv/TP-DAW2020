@@ -19,6 +19,8 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 // Check if connection was sucessful
 var db = mongoose.connection
 
+import * as User from './controllers/user.js'
+
 db.on('error', console.error.bind(console, 'MongoDB connection error...'))
 db.once('open', function() {
     console.log('MongoDB connection successfull...')
@@ -32,7 +34,6 @@ import userRouter from './routes/users.js'
 import resourcesRouter from './routes/resources.js'
 import postRouter from './routes/posts.js'
 
-import * as User from './controllers/user.js'
 
 //TODO: Cron Job para limpar os ficheiros perdidos no upload/
 const app = express()
@@ -68,13 +69,6 @@ const isLoggedIn = (req,res,next) => {
         res.send()
     }
 }
-
-// app.use((req, _res, next) => {
-//     console.log(req.cookies&&Object.keys(req.cookies))
-//     console.log(req.user&&Object.entries(req.user))
-//     console.log((req.user?._id, req.user?.name))
-//     next()
-// })
 
 app.use('/', indexRouter)
 app.use('/', authRouter)

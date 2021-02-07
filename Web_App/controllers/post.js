@@ -18,6 +18,13 @@ export function list(){
         .exec()
 }
 
+export function filter(query,sort){
+    return Post.find(query)
+        .collation({locale: "en" })
+        .sort(sort)
+        .exec()
+}
+
 export function listRecent(size){
     return Post.find({},{title:1, themes:1 , producer: 1, views: 1, favs: 1,createdAt: 1, favs: 1})
         .sort({createdAt: -1})
@@ -46,7 +53,6 @@ export function findById(id) {
 }
 
 export function editById(id, newData) {
-    console.log(newData.resources)
     return Post
         .updateOne({_id: id},{$set: {
             title: newData.title,
@@ -63,6 +69,12 @@ export function deleteById(id) {
         .exec()
 }
 
+export function deleteComment(id,idcomment){
+    return Post
+        .findByIdAndUpdate(id,{$pull:{comments:{_id: idcomment}}})
+        .exec()
+}
+
 export function deleteByProducer(producer) {
 
     return Post
@@ -75,7 +87,7 @@ export function filterByProducer(prodId) {
     return Post
         .find(
             { "producer._id": prodId },
-            {title:1, themes:1 , producer: 1, views: 1, createdAt: 1}
+            {title:1, themes:1 , producer: 1, views: 1, createdAt: 1, favs:1}
         ).exec()
 }
 

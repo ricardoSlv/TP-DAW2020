@@ -5,6 +5,7 @@
                 limit: 10,
                 rowDisplayStyle: 'block',
                 activePage: 0,
+                navID: 0,
                 rows: []
             },
             _create: function() {  	 
@@ -17,7 +18,7 @@
             },
             _getNavBar: function() {
                 var rows = this.options.rows;
-                var nav = $('<div>', {class: 'paging-nav'});
+                var nav = $('<div>', {class: 'paging-nav', id: this.options.navID});
                 var last = Math.ceil(rows.length / this.options.limit)
                 console.log("Numero paginas = " + last)
                 console.log("Atual = " + this.options.activePage)
@@ -110,7 +111,8 @@
                     }
                 }
                 var nav = this._getNavBar()
-                $( ".paging-nav" ).remove()  
+                //$( ".paging-nav" ).remove()  
+                $( "#" + this.options.navID ).remove()  
                 this.element.after(nav)
             },
             pageClickHandler: function(event) {

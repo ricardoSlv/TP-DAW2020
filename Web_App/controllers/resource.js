@@ -67,7 +67,6 @@ export async function deleteById(id) {
     
     try{
         const resource = await Resource.findById(id)
-        console.log("ola",resource)
         const resourceDirectory = join(__dirname, 'user_files/', resource.producer._id+'/'+resource._id)
         await fsPromises.rmdir(resourceDirectory,{ recursive: true })
     }catch(e){
@@ -117,6 +116,13 @@ export function list(){
         {},
         {title:1, producer: 1, type: 1, downloads: 1, public: 1, registeredAt: 1, createdAt: 1, favs:1}
         ).exec()
+}
+
+export function filter(query,sort){
+    return Resource.find(query)
+        .collation({locale: "en" })
+        .sort(sort)
+        .exec()
 }
 
 export function addDownload(id) {

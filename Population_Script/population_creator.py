@@ -81,10 +81,30 @@ for x in range(50):
     users_id.append(str(aux))
     users[str(aux)] = name
 
+# Add admin
+dataReg = random_date("01/01/2019 1:30 PM", "12/08/2020 4:50 AM", random.random())
+lastSeen = random_date("12/31/2020 1:30 PM", "02/03/2021 4:50 AM", random.random())
+aux = ObjectId()
+id = stringToId(str(aux))
+data_users.append({
+        '_id': id,
+        'name': "Administrador",
+        'email': "administrador@gmail.com",
+        'password': "pass",
+        'position': "TEAC",
+        'course': "Administração interna",
+        'level': 'ADMN',
+        'dateReg': dataReg,
+        'lastOnline': lastSeen,
+        'favs': 0,
+        'favouriteResources':[],
+        'favouritePosts': []
+})
+users_id.append(str(aux))
+
 # Write to file
 with open('population_result\\users.json', 'w', encoding='utf-8') as file:
     json.dump(data_users, file, indent=2)
-
 
 ### PICTURE FOLDERS ###
 
@@ -265,7 +285,7 @@ for x in range(500):
     producer = pick_random_user(users)
     data_resources.append({
         '_id': id,
-        'title': title,
+        'title': title + "_" + str(x),
         'subtitle': subtitles[x%5],
         'type': themes[x%7],
         'producer': producer,
@@ -300,7 +320,7 @@ comments = ["Muito bom post !", "Quem escreveu este post merece um prémio de ca
 # Generate JSON data for posts
 data_posts = []
 
-for x in range(500):
+for x in range(1000):
     dataCreate = random_date("01/01/2019 1:30 PM", "12/08/2020 4:50 AM", random.random())
     aux = ObjectId()
     id = {
@@ -322,7 +342,7 @@ for x in range(500):
         comments_aux.append(comment)
     data_posts.append({
         '_id': id,
-        'title': titles[x%5],
+        'title': titles[x%5] + "_" + str(x),
         'subtitle': subtitles[x%5],
         'themes': themes[x%7],
         'content': content[x%5],

@@ -1,0 +1,29 @@
+{
+    "files": [
+        {
+            "title" : "Coelhinho assado",
+            "type": "img",
+            "path": "0.jpg"
+        },
+        {
+            "title" : "Corredor profissional",
+            "type": "img",
+            "path": "1.jpg"
+        },
+        {
+            "title" : "Golão",
+            "type" : "mp4",
+            "path": "1.mp4"
+        },
+        {
+            "title" : "Teste de PI",
+            "type" : "pdf",
+            "path": "5.pdf"
+        },
+        {
+            "title" : "Recurso de PI",
+            "type" : "pdf",
+            "path": "6.pdf"
+        }
+    ]
+}

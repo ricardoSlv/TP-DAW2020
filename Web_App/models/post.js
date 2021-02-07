@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 const ObjectId = mongoose.ObjectId
 
-const resourceSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
     title: String,
     subtitle: String,
     //REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB
@@ -16,4 +16,4 @@ const resourceSchema = new mongoose.Schema({
 },{versionKey: false})
 
 
-export default mongoose.model('post', resourceSchema, 'posts')
+export default mongoose.model('post', postSchema, 'posts')

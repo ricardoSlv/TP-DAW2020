@@ -6,7 +6,6 @@ form.addEventListener('submit', async e => {
 
     const commentForm = e.target
     const { text } = commentForm
-    console.log({ text: text.value })
 
     try {
         const resp = await fetch(window.location.href + '/comment/', {
@@ -51,6 +50,22 @@ async function switchFavourite(idUser, idPost, isFavourite, postTitle) {
             else
                 alert('The server has encountered an error, please retry later 😥')
         }
+    } catch (e) {
+        alert('An error has trying to add the comment, please retry 😥')
+    }
+}
+
+async function removeComment(idComment) {
+    try {
+        const resp = await fetch(window.location.href+'/'+idComment, {
+            method: 'DELETE',
+        })
+        if (resp.status === 200) {
+            alert('Comment sucessfullly deleted! 😀')
+            window.location.reload()
+        }
+        else
+            alert('The server has encountered an error, please retry later 😥')
     } catch (e) {
         alert('An error has trying to add the comment, please retry 😥')
     }

@@ -21,8 +21,6 @@ block content
           else
             p 0 Favourites
         
-          
-        
         h4 Themes:
         ul.list-group
           each t in post.themes
@@ -47,14 +45,17 @@ block content
                 textarea.form-control(rows='3' name='text' style='height: 6em;')
               button.btn.btn-primary.my-2(type='submit') Submit
         
+        h4 Comments:
         .my-5
           each c in post.comments
             .my-4.d-flex.align-items-start
               img.d-flex.rounded-circle(src='/users/'+c.user._id+'/picture' alt='...' style='height:3em; width:3em; object-fit: cover')
-              .ps-3
+              .ps-3.me-3
                 .mb-2.d-flex.align-items-end
                   h5.me-2.my-0 #{c.user.name}
                   span.text-muted #{c.createdAt.toString().slice(4,21)}
                 | #{c.text}
+              if((user._id.toString().localeCompare(c.user._id.toString())===0) || user.level=='ADMN')
+                button.btn.btn-danger(onclick=`removeComment('${c._id}')`) Delete
 
     script(src='/javascripts/posts/post.js')

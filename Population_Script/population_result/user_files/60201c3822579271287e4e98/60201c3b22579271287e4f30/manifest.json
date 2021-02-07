@@ -1,0 +1,29 @@
+{
+    "files": [
+        {
+            "title" : "Pato nadador e voador",
+            "type": "img",
+            "path": "2.jpg"
+        },
+        {
+            "title" : "Video-Aula de como cortar uma cebola!",
+            "type": "mp4",
+            "path": "2.mp4"
+        },
+        {
+            "title" : "Porco com chapéu",
+            "type" : "img",
+            "path": "3.jpg"
+        },
+        {
+            "title" : "Exame de programação",
+            "type" : "pdf",
+            "path": "4.pdf"
+        },
+        {
+            "title" : "Hamster com cauda",
+            "type" : "img",
+            "path": "5.jpg"
+        }
+    ]
+}

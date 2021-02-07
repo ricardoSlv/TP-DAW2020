@@ -2,7 +2,9 @@ extends layout
 
 block content
   section.w3-containter
-    h1.em4.text-center= message
-    details
-      summary= error.status 
-      pre #{error.stack}
+    .d-flex.justify-content-center.align-items-center.flex-column.my-5
+      h1.em4.text-center=`Error: ${error.status}`
+      img.my-5(src="/error.svg" style="width:400px; height:400px")
+      
+      h3= message
+      pre(style="font-size:1.5em") #{error.stack}

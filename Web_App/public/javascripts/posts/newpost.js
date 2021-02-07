@@ -12,15 +12,11 @@ form.addEventListener('submit', async e => {
 
     const postData = {}
 
-    console.log(resourceList)
-
     postData[title.name] = title.value
     postData[subtitle.name] = subtitle.value
     postData['themes'] = [...themes].filter(t => t.checked).map(t => t.value)
     postData[content.name] = content.value
     postData['resources'] = resourceList
-
-    console.table(postData)
 
     try {
         const resp = await fetch('/posts/upload', {

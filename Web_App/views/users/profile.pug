@@ -67,12 +67,13 @@ block content
         if (resources.length  > 0)
           .p-4
             h1.my-3.text-center='Resources'
-            table.table.text-center
+            table#tableData.table.table-bordered.table-striped.table.text-center
               th Title  
               th Type
               th Created
               th Registered
               th Downloads
+              th Favs
               th
               th
               th
@@ -84,6 +85,7 @@ block content
                   td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                   td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
                   td #{r.downloads}
+                  td #{r.favs}
                   td 
                     a.btn.btn-warning(href='/resources/edit/' + r._id) Edit
                   td 
@@ -93,11 +95,12 @@ block content
 
         if (posts.length > 0)
             h1.my-3.text-center='Posts'
-            table.table.text-center
+            table#tableData2.table.table-bordered.table-striped.table.text-center
               th Title
               th Themes
               th Created
               th Views
+              th Favs
               th
               th
               each p in posts
@@ -107,9 +110,14 @@ block content
                   td #{p.themes && p.themes.join(" ")}
                   td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                   td #{p.views}
+                  td #{p.favs}
                   td 
                     a.btn.btn-warning(href='/posts/edit/' + p._id) Edit
                   td 
                     button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
-
+        br
     script(src='/javascripts/users/profile.js')
+    script(type='text/javascript').
+        $(document).ready(function() {
+        $('#tableData2').paging({limit:10, navID:2});
+        });

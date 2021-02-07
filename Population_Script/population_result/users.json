@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd09f"
+      "$oid": "60201c3822579271287e4e87"
     },
     "name": "Luis_0",
     "email": "Luis_0@gmail.com",
@@ -17,7 +17,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a0"
+      "$oid": "60201c3822579271287e4e88"
     },
     "name": "Ulisses_1",
     "email": "Ulisses_1@gmail.com",
@@ -33,7 +33,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a1"
+      "$oid": "60201c3822579271287e4e89"
     },
     "name": "Ricardo_2",
     "email": "Ricardo_2@gmail.com",
@@ -49,7 +49,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a2"
+      "$oid": "60201c3822579271287e4e8a"
     },
     "name": "JCR_3",
     "email": "JCR_3@gmail.com",
@@ -65,7 +65,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a3"
+      "$oid": "60201c3822579271287e4e8b"
     },
     "name": "Marega_4",
     "email": "Marega_4@gmail.com",
@@ -81,7 +81,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a4"
+      "$oid": "60201c3822579271287e4e8c"
     },
     "name": "Luis_5",
     "email": "Luis_5@gmail.com",
@@ -97,7 +97,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a5"
+      "$oid": "60201c3822579271287e4e8d"
     },
     "name": "Ulisses_6",
     "email": "Ulisses_6@gmail.com",
@@ -113,7 +113,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a6"
+      "$oid": "60201c3822579271287e4e8e"
     },
     "name": "Ricardo_7",
     "email": "Ricardo_7@gmail.com",
@@ -129,7 +129,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a7"
+      "$oid": "60201c3822579271287e4e8f"
     },
     "name": "JCR_8",
     "email": "JCR_8@gmail.com",
@@ -145,7 +145,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a8"
+      "$oid": "60201c3822579271287e4e90"
     },
     "name": "Marega_9",
     "email": "Marega_9@gmail.com",
@@ -161,7 +161,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0a9"
+      "$oid": "60201c3822579271287e4e91"
     },
     "name": "Luis_10",
     "email": "Luis_10@gmail.com",
@@ -177,7 +177,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0aa"
+      "$oid": "60201c3822579271287e4e92"
     },
     "name": "Ulisses_11",
     "email": "Ulisses_11@gmail.com",
@@ -193,7 +193,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ab"
+      "$oid": "60201c3822579271287e4e93"
     },
     "name": "Ricardo_12",
     "email": "Ricardo_12@gmail.com",
@@ -209,7 +209,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ac"
+      "$oid": "60201c3822579271287e4e94"
     },
     "name": "JCR_13",
     "email": "JCR_13@gmail.com",
@@ -225,7 +225,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ad"
+      "$oid": "60201c3822579271287e4e95"
     },
     "name": "Marega_14",
     "email": "Marega_14@gmail.com",
@@ -241,7 +241,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ae"
+      "$oid": "60201c3822579271287e4e96"
     },
     "name": "Luis_15",
     "email": "Luis_15@gmail.com",
@@ -257,7 +257,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0af"
+      "$oid": "60201c3822579271287e4e97"
     },
     "name": "Ulisses_16",
     "email": "Ulisses_16@gmail.com",
@@ -273,7 +273,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b0"
+      "$oid": "60201c3822579271287e4e98"
     },
     "name": "Ricardo_17",
     "email": "Ricardo_17@gmail.com",
@@ -289,7 +289,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b1"
+      "$oid": "60201c3822579271287e4e99"
     },
     "name": "JCR_18",
     "email": "JCR_18@gmail.com",
@@ -305,7 +305,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b2"
+      "$oid": "60201c3822579271287e4e9a"
     },
     "name": "Marega_19",
     "email": "Marega_19@gmail.com",
@@ -321,7 +321,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b3"
+      "$oid": "60201c3822579271287e4e9b"
     },
     "name": "Luis_20",
     "email": "Luis_20@gmail.com",
@@ -337,7 +337,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b4"
+      "$oid": "60201c3822579271287e4e9c"
     },
     "name": "Ulisses_21",
     "email": "Ulisses_21@gmail.com",
@@ -353,7 +353,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b5"
+      "$oid": "60201c3822579271287e4e9d"
     },
     "name": "Ricardo_22",
     "email": "Ricardo_22@gmail.com",
@@ -369,7 +369,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b6"
+      "$oid": "60201c3822579271287e4e9e"
     },
     "name": "JCR_23",
     "email": "JCR_23@gmail.com",
@@ -385,7 +385,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b7"
+      "$oid": "60201c3822579271287e4e9f"
     },
     "name": "Marega_24",
     "email": "Marega_24@gmail.com",
@@ -401,7 +401,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b8"
+      "$oid": "60201c3822579271287e4ea0"
     },
     "name": "Luis_25",
     "email": "Luis_25@gmail.com",
@@ -417,7 +417,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0b9"
+      "$oid": "60201c3822579271287e4ea1"
     },
     "name": "Ulisses_26",
     "email": "Ulisses_26@gmail.com",
@@ -433,7 +433,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ba"
+      "$oid": "60201c3822579271287e4ea2"
     },
     "name": "Ricardo_27",
     "email": "Ricardo_27@gmail.com",
@@ -449,7 +449,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0bb"
+      "$oid": "60201c3822579271287e4ea3"
     },
     "name": "JCR_28",
     "email": "JCR_28@gmail.com",
@@ -465,7 +465,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0bc"
+      "$oid": "60201c3822579271287e4ea4"
     },
     "name": "Marega_29",
     "email": "Marega_29@gmail.com",
@@ -481,7 +481,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0bd"
+      "$oid": "60201c3822579271287e4ea5"
     },
     "name": "Luis_30",
     "email": "Luis_30@gmail.com",
@@ -497,7 +497,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0be"
+      "$oid": "60201c3822579271287e4ea6"
     },
     "name": "Ulisses_31",
     "email": "Ulisses_31@gmail.com",
@@ -513,7 +513,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0bf"
+      "$oid": "60201c3822579271287e4ea7"
     },
     "name": "Ricardo_32",
     "email": "Ricardo_32@gmail.com",
@@ -529,7 +529,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c0"
+      "$oid": "60201c3822579271287e4ea8"
     },
     "name": "JCR_33",
     "email": "JCR_33@gmail.com",
@@ -545,7 +545,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c1"
+      "$oid": "60201c3822579271287e4ea9"
     },
     "name": "Marega_34",
     "email": "Marega_34@gmail.com",
@@ -561,7 +561,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c2"
+      "$oid": "60201c3822579271287e4eaa"
     },
     "name": "Luis_35",
     "email": "Luis_35@gmail.com",
@@ -577,7 +577,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c3"
+      "$oid": "60201c3822579271287e4eab"
     },
     "name": "Ulisses_36",
     "email": "Ulisses_36@gmail.com",
@@ -593,7 +593,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c4"
+      "$oid": "60201c3822579271287e4eac"
     },
     "name": "Ricardo_37",
     "email": "Ricardo_37@gmail.com",
@@ -609,7 +609,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c5"
+      "$oid": "60201c3822579271287e4ead"
     },
     "name": "JCR_38",
     "email": "JCR_38@gmail.com",
@@ -625,7 +625,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c6"
+      "$oid": "60201c3822579271287e4eae"
     },
     "name": "Marega_39",
     "email": "Marega_39@gmail.com",
@@ -641,7 +641,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c7"
+      "$oid": "60201c3822579271287e4eaf"
     },
     "name": "Luis_40",
     "email": "Luis_40@gmail.com",
@@ -657,7 +657,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c8"
+      "$oid": "60201c3822579271287e4eb0"
     },
     "name": "Ulisses_41",
     "email": "Ulisses_41@gmail.com",
@@ -673,7 +673,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0c9"
+      "$oid": "60201c3822579271287e4eb1"
     },
     "name": "Ricardo_42",
     "email": "Ricardo_42@gmail.com",
@@ -689,7 +689,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ca"
+      "$oid": "60201c3822579271287e4eb2"
     },
     "name": "JCR_43",
     "email": "JCR_43@gmail.com",
@@ -705,7 +705,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0cb"
+      "$oid": "60201c3822579271287e4eb3"
     },
     "name": "Marega_44",
     "email": "Marega_44@gmail.com",
@@ -721,7 +721,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0cc"
+      "$oid": "60201c3822579271287e4eb4"
     },
     "name": "Luis_45",
     "email": "Luis_45@gmail.com",
@@ -737,7 +737,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0cd"
+      "$oid": "60201c3822579271287e4eb5"
     },
     "name": "Ulisses_46",
     "email": "Ulisses_46@gmail.com",
@@ -753,7 +753,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0ce"
+      "$oid": "60201c3822579271287e4eb6"
     },
     "name": "Ricardo_47",
     "email": "Ricardo_47@gmail.com",
@@ -769,7 +769,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0cf"
+      "$oid": "60201c3822579271287e4eb7"
     },
     "name": "JCR_48",
     "email": "JCR_48@gmail.com",
@@ -785,7 +785,7 @@
   },
   {
     "_id": {
-      "$oid": "601eed426c1bbc369b8cd0d0"
+      "$oid": "60201c3822579271287e4eb8"
     },
     "name": "Marega_49",
     "email": "Marega_49@gmail.com",
@@ -796,6 +796,22 @@
     "dateReg": "06/05/2020 05:10 PM",
     "lastOnline": "01/04/2021 06:58 PM",
     "favs": 6,
+    "favouriteResources": [],
+    "favouritePosts": []
+  },
+  {
+    "_id": {
+      "$oid": "60201c3822579271287e4eb9"
+    },
+    "name": "Administrador",
+    "email": "administrador@gmail.com",
+    "password": "pass",
+    "position": "TEAC",
+    "course": "Administra\u00e7\u00e3o interna",
+    "level": "ADMN",
+    "dateReg": "08/06/2019 02:36 AM",
+    "lastOnline": "01/29/2021 10:36 AM",
+    "favs": 0,
     "favouriteResources": [],
     "favouritePosts": []
   }

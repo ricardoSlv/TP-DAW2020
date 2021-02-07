@@ -9,7 +9,7 @@ block content
 
         .p-4
           h1.my-3.text-center='Users'
-          table.table.text-center
+          table#tableData.table.table-bordered.table-striped.table.text-center
             th Name
             th Position
             th Course
@@ -34,13 +34,14 @@ block content
 
         .p-4
           h1.my-3.text-center='Resources'
-          table.table.text-center
+          table#tableData2.table.table-bordered.table-striped.table.text-center
             th Title  
             th Type
             th Producer
             th Created
             th Registered
             th Downloads
+            th Favs
             th
             each r in resources
               tr
@@ -55,16 +56,17 @@ block content
                 td #{r.createdAt && r.createdAt.toString().slice(4,16)}
                 td #{r.registeredAt && r.registeredAt.toString().slice(4,16)}
                 td #{r.downloads}
+                td #{r.favs}
                 td 
                   button.btn.btn-danger(onclick=`deleteResource("${r._id}")`) Delete
-
           h1.my-3.text-center='Posts'
-          table.table.text-center
+          table#tableData3.table.table-bordered.table-striped.table.text-center
             th Title
             th Themes
             th Producer
             th Created
             th Views
+            th Favs
             th
             each p in posts
               tr
@@ -78,8 +80,17 @@ block content
                       | #{p.producer.name}
                 td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                 td #{p.views}
+                td #{p.favs}
                 td 
                   button.btn.btn-danger(onclick=`deletePost("${p._id}")`) Delete
 
     script(src='/javascripts/users/admin.js')
+    script(type='text/javascript').
+      $(document).ready(function() {
+      $('#tableData2').paging({limit:10, navID:2});
+      });
+    script(type='text/javascript').
+      $(document).ready(function() {
+      $('#tableData3').paging({limit:10, navID:3});
+      });
 
