@@ -6,5 +6,5 @@
 #### -> JavaScript
 #### -> NodeJS
 #### -> Express + pug
-#### -> MongoDB
+#### -> MongoDB + Mongoose
 #### -> Python
