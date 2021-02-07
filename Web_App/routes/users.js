@@ -71,6 +71,7 @@ router.post('/edit/:id', upload.single('picture'), async (req, res, _next) => {
 
 router.get('/:id', async (req, res, _next) => {
     const user = await User.findById(req.params.id)
+    user.level = req.user.level
 
     if (user) {
         const resources = await Resource.filterByProducer(req.params.id, true)

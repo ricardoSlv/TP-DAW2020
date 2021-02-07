@@ -41,7 +41,7 @@ export async function insert(user, resource, zipFile) {
 
     } catch (e) {
         await fsPromises.rmdir(`${userDirectory}/${newResource._id}`,{ recursive: true })
-        throw new Error(' Manifest error, couldnt not find : '+e.path.split('user_files/')[1].split('/').slice(2).join('/'))
+        throw new Error(' Manifest error, could not find : '+e.path.split('user_files/')[1].split('/').slice(2).join('/'))
     }
 
     return newResource.save()
@@ -107,14 +107,19 @@ export function listPublic(){
     return Resource.find(
         {public: true},
         {title:1, producer: 1, type: 1, downloads: 1, registeredAt: 1, createdAt: 1, favs:1}
-        ).exec()
+        )
+        .collation({locale: "en" })
+        .sort({title: 1})
+        .exec()
 }
 
 export function list(){
     return Resource.find(
         {},
         {title:1, producer: 1, type: 1, downloads: 1, public: 1, registeredAt: 1, createdAt: 1, favs:1}
-        ).exec()
+        )
+        .sort({registeredAt: -1})
+        .exec()
 }
 
 export function filter(query,sort){
