@@ -71,7 +71,7 @@ block content
             each p in posts
               tr
                 td 
-                  a(href='/posts/mine/' + p._id) #{p.title}
+                  a(href='/posts/' + p._id) #{p.title}
                 td #{p.themes && p.themes.join(" ")}
                 td
                   .d-flex.justify-content-center
