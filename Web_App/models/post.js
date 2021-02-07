@@ -11,7 +11,7 @@ const postSchema = new mongoose.Schema({
     favs: Number,
     producer: {_id: ObjectId, name: String},
     resources:[{_id: ObjectId, title: String}],
-    comments:[{_id: ObjectId, {user: {_id: ObjectId, name: String}, text: String, createdAt: Date}],
+    comments:[{_id: ObjectId, user: {_id: ObjectId, name: String}, text: String, createdAt: Date}],
     createdAt: Date,
 },{versionKey: false})
 
