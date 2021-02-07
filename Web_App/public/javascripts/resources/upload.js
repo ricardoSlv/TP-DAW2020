@@ -26,13 +26,13 @@ form.addEventListener('submit', async e => {
             body: uploadFormData,
         })
 
+        const data = await resp.json()
         if(resp.status === 200) {
-            const newresource = await resp.json()
             alert('Upload successfull! 😀')
-            window.location.pathname='/resources/'+newresource._id
+            window.location.pathname='/resources/'+data._id
         }
         else
-            alert('The server has encountered an error, please check your manifest.json or retry later 😥')
+            alert(`The server has encountered an error: "${JSON.stringify(data)}" , please check your manifest.json or retry later 😥`)
     }catch(e){
         alert('An error has occurred during upload, please retry 😥')
     }
