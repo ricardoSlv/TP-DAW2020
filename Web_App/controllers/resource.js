@@ -24,7 +24,7 @@ export async function insert(user, resource, zipFile) {
         // In case user directory doesnt exist
         if (!fs.existsSync(userDirectory))
             await fsPromises.mkdir(userDirectory)
-            
+        
         await fsPromises.mkdir(resourceDirectory)
         await fsPromises.rename(oldPath, newPath)
         

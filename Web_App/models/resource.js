@@ -1,14 +1,15 @@
 import mongoose from "mongoose"
 const ObjectId = mongoose.ObjectId
 
+const file = new mongoose.Schema({title: String, type: String, path: String});
 const resourceSchema = new mongoose.Schema({
     title: String,
     subtitle: String,
     //REPORT, THESIS, ARTICLE, APP, SLIDES, TEST, SOLVEDPROB
     type: String,
     producer: {_id: ObjectId, name: String},
-    // TODO: Change to {title: String, type: String, path: String}, currently mongoose files.push tries to convert the object to a string :^/
-    files: [Object],
+    // TODO: Change to , currently mongoose files.push tries to convert the object to a string :^/
+    files: [file],
     createdAt: Date,
     registeredAt: Date,
     downloads: Number,

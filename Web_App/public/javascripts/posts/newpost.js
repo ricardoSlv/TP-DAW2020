@@ -48,6 +48,7 @@ function addResource(id,title){
         </button>
     </li>)`)
 
+
     $($('#addedResourceList')).append(resourceItem)
     $('#btnadd'+id).attr('disabled', true)
 
