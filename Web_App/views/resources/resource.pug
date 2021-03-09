@@ -4,7 +4,7 @@ block content
   section.container
     .row.justify-content-center
       .col-lg-8
-        
+
         h1.m-4.text-center #{resource.title}
         h2.m-4.text-center #{resource.subtitle}
         .d-flex.justify-content-between
@@ -13,11 +13,11 @@ block content
             | #{resource.producer.name}
           button.btn.btn-warning(onclick=`switchFavourite("${user._id}","${resource._id}",${user.favouriteResources.some(r=>r._id.toString()===resource._id.toString())},"${resource.title}")`)
             | #{user.favouriteResources.some(r=>r._id.toString()===resource._id.toString()) ? 'Remove Favourite' : 'Favourite'}
-      
+
         p #{resource.downloads} downloads
         ul.list-group 
           li.list-group-item #{resource.type}
-        
+
         h1.mt-5.text-center Files
         ul.pt-4 
           each e in Object.entries(resource.files)
@@ -54,8 +54,8 @@ block content
 
         a.my-3.btn.btn-primary.w-100(href=`/resources/${resource._id}/download`) Download Full Resource
 
-  
+
     script(src='/javascripts/resources/resource.js')
-    
+
 
 

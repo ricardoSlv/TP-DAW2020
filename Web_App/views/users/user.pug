@@ -80,7 +80,7 @@ block content
                 td #{p.createdAt && p.createdAt.toString().slice(4,16)}
                 td #{p.views}
                 td #{p.favs}
-                
+
           script(type='text/javascript').
             $(document).ready(function() {
             $('#tableData2').paging({limit:10, navID:2});

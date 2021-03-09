@@ -1,203 +1,195 @@
-import User from "../models/user.js"
+import User from '../models/user.js'
 
-import * as Resource from "../controllers/resource.js"
-import * as Post from "../controllers/post.js"
+import * as Resource from '../controllers/resource.js'
+import * as Post from '../controllers/post.js'
 
-import fs from "fs"
+import fs from 'fs'
 const fsPromises = fs.promises
-import path, { join } from "path"
+import path, { join } from 'path'
 const __dirname = path.resolve(path.dirname(''))
 
 export function list() {
-    return User.find({}, {
-        name: 1,
-        position: 1,
-        course: 1,
-        level: 1,
-        dateReg: 1,
-        favs: 1,
-        lastOnline: 1
-    })
-        .sort({ name: 1 })
-        .exec()
+  return User.find(
+    {},
+    {
+      name: 1,
+      position: 1,
+      course: 1,
+      level: 1,
+      dateReg: 1,
+      favs: 1,
+      lastOnline: 1,
+    }
+  )
+    .sort({ name: 1 })
+    .exec()
 }
 
-export function filter(query,sort){
-    return User.find(query)
-        .collation({locale: "en" })
-        .sort(sort)
-        .exec()
+export function filter(query, sort) {
+  return User.find(query).collation({ locale: 'en' }).sort(sort).exec()
 }
 
 export async function insert(user, pictureFile) {
-    const newUser = new User(user)
-    newUser.dateReg = new Date()
-    newUser.lastOnline = new Date()
-    newUser.favouritesPosts = []
-    newUser.favouritesResources = []
-    newUser.level = "CONS"
-    newUser.favs = 0
+  const newUser = new User(user)
+  newUser.dateReg = new Date()
+  newUser.lastOnline = new Date()
+  newUser.favouritesPosts = []
+  newUser.favouritesResources = []
+  newUser.level = 'CONS'
+  newUser.favs = 0
 
-    const duplicate = await checkDuplicate(newUser.name, newUser.email)
+  const duplicate = await checkDuplicate(newUser.name, newUser.email)
 
-    if (duplicate)
-        throw new Error(409)
+  if (duplicate) throw new Error(409)
 
-    // In case user_files doesnt exist
-    const userFiles = join(__dirname, 'user_files/')
-    if (!fs.existsSync(userFiles))
-        await fsPromises.mkdir(userFiles)
+  // In case user_files doesnt exist
+  const userFiles = join(__dirname, 'user_files/')
+  if (!fs.existsSync(userFiles)) await fsPromises.mkdir(userFiles)
 
-    const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
-    await fsPromises.mkdir(userDirectory)
-    const oldPath = join(__dirname, pictureFile.path)
+  const userDirectory = join(__dirname, 'user_files/', newUser._id.toString())
+  await fsPromises.mkdir(userDirectory)
+  const oldPath = join(__dirname, pictureFile.path)
 
-    //uploads/random => public/id/picture
-    //Without extension, let browser figure it out
-    const newPath = join(__dirname, 'user_files/', newUser._id.toString(), 'picture')
-    await fsPromises.rename(oldPath, newPath)
+  //uploads/random => public/id/picture
+  //Without extension, let browser figure it out
+  const newPath = join(
+    __dirname,
+    'user_files/',
+    newUser._id.toString(),
+    'picture'
+  )
+  await fsPromises.rename(oldPath, newPath)
 
-    return newUser.save()
-
+  return newUser.save()
 }
 
 export async function editById(id, newData, pictureFile) {
-
-    if (pictureFile) {
-        const oldPath = join(__dirname, pictureFile.path)
-        const newPath = join(__dirname, 'user_files/', id, 'picture')
-        await fsPromises.rename(oldPath, newPath)
+  if (pictureFile) {
+    const oldPath = join(__dirname, pictureFile.path)
+    const newPath = join(__dirname, 'user_files/', id, 'picture')
+    await fsPromises.rename(oldPath, newPath)
+  }
+  return User.updateOne(
+    { _id: id },
+    {
+      $set: {
+        password: newData.password,
+        position: newData.position,
+        course: newData.course,
+      },
     }
-    return User
-        .updateOne({ _id: id }, {
-            $set: {
-                password: newData.password,
-                position: newData.position,
-                course: newData.course
-            }
-        })
-        .exec()
+  ).exec()
 }
 
 export async function checkDuplicate(name, email) {
-    const user = await User
-        .findOne({ $or: [{ name }, { email }] })
-        .exec()
+  const user = await User.findOne({ $or: [{ name }, { email }] }).exec()
 
-    return !!user
+  return !!user
 }
 
 export async function checkExists(email) {
-    const user = await User
-        .findOne({ email })
-        .exec()
+  const user = await User.findOne({ email }).exec()
 
-    if (user)
-        return user
-    else
-        throw new Error('401')
+  if (user) return user
+  else throw new Error('401')
 }
 
 export async function checkCredentials(email, password) {
-    const user = await User
-        .findOne({ email, password })
-        .exec()
+  const user = await User.findOne({ email, password }).exec()
 
-    if (user)
-        return user
-    else
-        throw new Error('401')
+  if (user) return user
+  else throw new Error('401')
 }
 
 export function update(filter, query) {
-    return User
-        .updateOne(filter, query)
-        .exec()
+  return User.updateOne(filter, query).exec()
 }
 
-
 export function findById(id) {
-    return User
-        .findById(id)
-        .exec()
+  return User.findById(id).exec()
 }
 
 export async function deleteById(id) {
-    try{
-        const userDirectory = join(__dirname, 'user_files/', id)
-        await fsPromises.rmdir(userDirectory,{ recursive: true })
-        await Resource.deleteByProducer(id)
-        await Post.deleteByProducer(id)
-    }catch(e){
-        console.log(e)
-    }
+  try {
+    const userDirectory = join(__dirname, 'user_files/', id)
+    await fsPromises.rmdir(userDirectory, { recursive: true })
+    await Resource.deleteByProducer(id)
+    await Post.deleteByProducer(id)
+  } catch (e) {
+    console.log(e)
+  }
 
-    return User
-        .findByIdAndDelete(id)
-        .exec()
+  return User.findByIdAndDelete(id).exec()
 }
 
 export function addfavPost(id, postId, title) {
-    return User
-        .updateOne({ _id: id }, {
-            $push: {
-                favouritePosts: {
-                    _id: postId,
-                    title: title,
-                }
-            }
-        }).exec()
+  return User.updateOne(
+    { _id: id },
+    {
+      $push: {
+        favouritePosts: {
+          _id: postId,
+          title: title,
+        },
+      },
+    }
+  ).exec()
 }
 
 export function remfavPost(id, postId) {
-    return User
-        .updateOne({ _id: id }, {
-            $pull: {
-                favouritePosts: {
-                    _id: postId
-                }
-            }
-        }).exec()
+  return User.updateOne(
+    { _id: id },
+    {
+      $pull: {
+        favouritePosts: {
+          _id: postId,
+        },
+      },
+    }
+  ).exec()
 }
 
 export function addfavRes(id, resId, title) {
-    return User
-        .updateOne({ _id: id }, {
-            $push: {
-                favouriteResources: {
-                    _id: resId,
-                    title: title,
-                }
-            }
-        }).exec()
+  return User.updateOne(
+    { _id: id },
+    {
+      $push: {
+        favouriteResources: {
+          _id: resId,
+          title: title,
+        },
+      },
+    }
+  ).exec()
 }
 
 export function remfavRes(id, resId) {
-    return User
-        .updateOne({ _id: id }, {
-            $pull: {
-                favouriteResources: {
-                    _id: resId
-                }
-            }
-        }).exec()
+  return User.updateOne(
+    { _id: id },
+    {
+      $pull: {
+        favouriteResources: {
+          _id: resId,
+        },
+      },
+    }
+  ).exec()
 }
 
 export function addFav(id) {
-    return User
-        .updateOne({ _id: id }, { $inc: { favs: 1 } })
-        .exec()
+  return User.updateOne({ _id: id }, { $inc: { favs: 1 } }).exec()
 }
 
 export function remFav(id) {
-    return User
-        .updateOne({ _id: id }, { $inc: { favs: -1 } })
-        .exec()
+  return User.updateOne({ _id: id }, { $inc: { favs: -1 } }).exec()
 }
 
 export function listFaved(size) {
-    return User.find({ favs: { $gt: 0 } }, { name: 1, course: 1, position: 1, favs: 1 })
-        .sort({ favs: -1 })
-        .limit(size)
-        .exec()
+  return User.find(
+    { favs: { $gt: 0 } },
+    { name: 1, course: 1, position: 1, favs: 1 }
+  )
+    .sort({ favs: -1 })
+    .limit(size)
+    .exec()
 }

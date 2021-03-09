@@ -1,7 +1,8 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose'
 const ObjectId = mongoose.ObjectId
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     name: String,
     email: String,
     password: String,
@@ -13,9 +14,10 @@ const userSchema = new mongoose.Schema({
     dateReg: Date,
     lastOnline: Date,
     favs: Number,
-    favouriteResources: [{_id: ObjectId, title: String}],
-    favouritePosts: [{_id: ObjectId, title: String}]
-},{versionKey: false})
-
+    favouriteResources: [{ _id: ObjectId, title: String }],
+    favouritePosts: [{ _id: ObjectId, title: String }],
+  },
+  { versionKey: false }
+)
 
 export default mongoose.model('user', userSchema, 'users')

@@ -35,14 +35,6 @@ main{
     background-repeat: no-repeat
 }
 
-/*
-body {
-    background: #8f8f8f;
-    background: linear-gradient(to right, #0c2ada, #0634ca);
-    min-height: 100vh
-} 
-*/
-
 .paging-nav {
     text-align: center;
     padding-top: 2px;

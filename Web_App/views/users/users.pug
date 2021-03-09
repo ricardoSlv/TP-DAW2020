@@ -7,21 +7,21 @@ block content
       .col-12.col-lg-8
         form#searchform.my-4.d-flex.align-items-center
 
-            input.mx-1#filter.form-control(type='text' name='nameFilter' defaultValue='' placeholder='Filter Name')
+          input.mx-1#filter.form-control(type='text' name='nameFilter' defaultValue='' placeholder='Filter Name')
 
-            input.mx-1#filter.form-control(type='text' name='courseFilter' defaultValue='' placeholder='Filter Course')
+          input.mx-1#filter.form-control(type='text' name='courseFilter' defaultValue='' placeholder='Filter Course')
 
-            select.mx-1#sorttype.form-select(name='sortType')
-              option(selected='' value='') Select sort type
-              option(value='name') Name
-              option(value='position') Position
-              option(value='course') Course
-              option(value='level') Level
-              option(value='dateReg') Joined date
-              option(value='lastSeen') Last seen
-              option(value='favs') Favourites
-          
-            button.mx-1.btn.btn-primary.btn-block(type='submit') Search
+          select.mx-1#sorttype.form-select(name='sortType')
+            option(selected='' value='') Select sort type
+            option(value='name') Name
+            option(value='position') Position
+            option(value='course') Course
+            option(value='level') Level
+            option(value='dateReg') Joined date
+            option(value='lastSeen') Last seen
+            option(value='favs') Favourites
+
+          button.mx-1.btn.btn-primary.btn-block(type='submit') Search
 
         table#tableData.table.table-bordered.table-striped.table.text-center
           th Name

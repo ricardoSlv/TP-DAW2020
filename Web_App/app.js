@@ -22,8 +22,8 @@ var db = mongoose.connection
 import * as User from './controllers/user.js'
 
 db.on('error', console.error.bind(console, 'MongoDB connection error...'))
-db.once('open', function() {
-    console.log('MongoDB connection successfull...')
+db.once('open', function () {
+  console.log('MongoDB connection successfull...')
 })
 
 import jwt from 'jsonwebtoken'
@@ -49,24 +49,23 @@ app.use(cookieParser())
 app.use(express.static(join(__dirname, 'public')))
 
 app.use((req, _res, next) => {
-    jwt.verify(req.cookies.JWT, process.env.JWTSECRET, (e, payload) => {
-        if (!e){
-            req.user = {_id: payload._id, name: payload.name, level: payload.level}
-            User.update({_id: payload._id},{$set:{lastOnline : new Date()}})
-        }
-    })
-    next()
+  jwt.verify(req.cookies.JWT, process.env.JWTSECRET, (e, payload) => {
+    if (!e) {
+      req.user = { _id: payload._id, name: payload.name, level: payload.level }
+      User.update({ _id: payload._id }, { $set: { lastOnline: new Date() } })
+    }
+  })
+  next()
 })
 
 // Protect routes
-const isLoggedIn = (req,res,next) => {
-    if (req.user){
-        next();
-    }
-    else {
-        res.redirect('/')
-        res.send()
-    }
+const isLoggedIn = (req, res, next) => {
+  if (req.user) {
+    next()
+  } else {
+    res.redirect('/')
+    res.send()
+  }
 }
 
 app.use('/', indexRouter)
@@ -77,18 +76,18 @@ app.use('/posts', isLoggedIn, postRouter)
 
 // catch 404 and forward to error handler
 app.use(function (_req, _res, next) {
-    next(createError(404))
+  next(createError(404))
 })
 
 // error handler
 app.use(function (err, req, res, _) {
-    // set locals, only providing error in development
-    res.locals.message = err.message
-    res.locals.error = req.app.get('env') === 'development' ? err : {}
+  // set locals, only providing error in development
+  res.locals.message = err.message
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-    // render the error page
-    res.status(err.status || 500)
-    res.render('error',{user: req.user})
+  // render the error page
+  res.status(err.status || 500)
+  res.render('error', { user: req.user })
 })
 
 export default app

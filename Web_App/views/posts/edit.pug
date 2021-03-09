@@ -52,10 +52,10 @@ block content
             label.mb-3.form-check-label(for='appCheckbox')
               | App
         else 
-            .form-check.form-check-inline
-              input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
-              label.mb-3.form-check-label(for='appCheckbox')
-                | App
+          .form-check.form-check-inline
+            input#appCheckbox.form-check-input(type='checkbox' name='themes' value='APP')
+            label.mb-3.form-check-label(for='appCheckbox')
+              | App
         if (post.themes.includes('SLIDES'))
           .form-check.form-check-inline
             input#slidesCheckbox.form-check-input(type='checkbox' name='themes' value='SLIDES' checked)
@@ -72,10 +72,10 @@ block content
             label.mb-3.form-check-label(for='testCheckbox')
               | Test
         else
-            .form-check.form-check-inline
-              input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
-              label.mb-3.form-check-label(for='testCheckbox')
-                | Test
+          .form-check.form-check-inline
+            input#testCheckbox.form-check-input(type='checkbox' name='themes' value='TEST')
+            label.mb-3.form-check-label(for='testCheckbox')
+              | Test
         if (post.themes.includes('SOLVEDPROB'))
           .form-check.form-check-inline
             input#solvedproblemCheckbox.form-check-input(type='checkbox' name='themes' value='SOLVEDPROB' checked)
@@ -89,7 +89,7 @@ block content
         .form-floating
           textarea#contentTextarea.form-control.mb-3(style='height:6em' name='content')=post.content
           label(for='contentTextarea') Describe your post
-        
+
         label.form-label(for='resourceList') Resources
         ul#addedResourceList.w-50(name='resources' style='min-width:10px')
           each r in post.resources

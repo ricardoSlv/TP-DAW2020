@@ -29,61 +29,61 @@ html
       });
   body
     header
-        nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.px-4
-          a.navbar-brand(href='/')
-            | Daw Docs
-          button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-          #navbarContent.collapse.navbar-collapse
-            ul.navbar-nav.me-auto
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.px-4
+        a.navbar-brand(href='/')
+          | Daw Docs
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarContent.collapse.navbar-collapse
+          ul.navbar-nav.me-auto
+            li.nav-item
+              a.nav-link.d-flex.align-items-center.mb-0(href='/')
+                ion-icon.px-1(name='home-outline')
+                h5.mb-0 Home 
+            li.nav-item
+              a.nav-link.d-flex.align-items-center.mb-0(href='https://github.com/ricardoSlv/TP-DAW2020')
+                ion-icon.px-1(name='logo-github')
+                h5.mb-0 Github
+
+            if(user)
               li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='/')
-                  ion-icon.px-1(name='home-outline')
-                  h5.mb-0 Home 
+                a.nav-link.d-flex.align-items-center.mb-0(href='/users')
+                  ion-icon.px-1(name='people-circle')
+                  h5.mb-0 Users
               li.nav-item
-                a.nav-link.d-flex.align-items-center.mb-0(href='https://github.com/ricardoSlv/TP-DAW2020')
-                  ion-icon.px-1(name='logo-github')
-                  h5.mb-0 Github
+                a.nav-link.d-flex.align-items-center.mb-0(href='/posts/')
+                  ion-icon.px-1(name='document-text')
+                  h5.mb-0 Posts
+              li.nav-item
+                a.nav-link.d-flex.align-items-center.mb-0(href='/resources/')
+                  ion-icon.px-1(name='folder')
+                  h5.mb-0 Resources
+              li.nav-item
+                a.nav-link.d-flex.align-items-center.mb-0(href='/users/profile')
+                  ion-icon.px-1(name='person-circle')
+                  h5.mb-0 Profile
+              if(user.level && user.level.localeCompare('ADMN')==0)
+                li.nav-item
+                  a.nav-link.d-flex.align-items-center.mb-0(href='/users/admin')
+                    ion-icon.px-1(name='shield')
+                    h5.mb-0 Admin
+              li.nav-item
+                a.nav-link.d-flex.align-items-center.mb-0(href='/logout')
+                  ion-icon.px-1(name='log-out')
+                  h5.mb-0 Logout
 
-              if(user)
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/users')
-                    ion-icon.px-1(name='people-circle')
-                    h5.mb-0 Users
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/posts/')
-                    ion-icon.px-1(name='document-text')
-                    h5.mb-0 Posts
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/resources/')
-                    ion-icon.px-1(name='folder')
-                    h5.mb-0 Resources
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/users/profile')
-                    ion-icon.px-1(name='person-circle')
-                    h5.mb-0 Profile
-                if(user.level && user.level.localeCompare('ADMN')==0)
-                  li.nav-item
-                    a.nav-link.d-flex.align-items-center.mb-0(href='/users/admin')
-                      ion-icon.px-1(name='shield')
-                      h5.mb-0 Admin
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/logout')
-                    ion-icon.px-1(name='log-out')
-                    h5.mb-0 Logout
+            else
+              li.nav-item
+                a.nav-link.d-flex.align-items-center.mb-0(href='/login')
+                  ion-icon.px-1(name='log-in')
+                  h5.mb-0='Login'
+              li.nav-item
+                a.nav-link.d-flex.align-items-center.mb-0(href='/signup')
+                  ion-icon.px-1(name='person-add')
+                  h5.mb-0='Signup'
 
-              else
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/login')
-                    ion-icon.px-1(name='log-in')
-                    h5.mb-0='Login'
-                li.nav-item
-                  a.nav-link.d-flex.align-items-center.mb-0(href='/signup')
-                    ion-icon.px-1(name='person-add')
-                    h5.mb-0='Signup'
-
-            span.navbar-text.h5.mb-0
-              | DAW 2020
+          span.navbar-text.h5.mb-0
+            | DAW 2020
     main
       block content
     footer.bg-primary.py-1.px-4

@@ -4,27 +4,27 @@ block content
   section.container
     .row.justify-content-center
       h1.my-3.text-center='Resources'
-      
+
       .col-12.col-lg-8
         //Does a GET on resources/?filterType="filterType"&filter="filter"&sortType="sortType" by default
         form#searchform.my-4.d-flex.align-items-center
 
-            input.mx-1#filter.form-control(type='text' name='titleFilter' defaultValue='' placeholder='Filter Title')
+          input.mx-1#filter.form-control(type='text' name='titleFilter' defaultValue='' placeholder='Filter Title')
 
-            input.mx-1#filter.form-control(type='text' name='prodFilter' defaultValue='' placeholder='Filter Producer')
+          input.mx-1#filter.form-control(type='text' name='prodFilter' defaultValue='' placeholder='Filter Producer')
 
-            select.mx-1#sorttype.form-select(name='sortType')
-              option(selected='' value='') Select sort type
-              option(value='title') Title
-              option(value='type') Type
-              option(value='downloads') Downloads
-              option(value='favs') Favourites
-              option(value='producer') Producer
-              option(value='createdAt') Creation Date
-              option(value='registeredAt') Register Date
-          
-            button.mx-1.btn.btn-primary.btn-block(type='submit') Search
-      
+          select.mx-1#sorttype.form-select(name='sortType')
+            option(selected='' value='') Select sort type
+            option(value='title') Title
+            option(value='type') Type
+            option(value='downloads') Downloads
+            option(value='favs') Favourites
+            option(value='producer') Producer
+            option(value='createdAt') Creation Date
+            option(value='registeredAt') Register Date
+
+          button.mx-1.btn.btn-primary.btn-block(type='submit') Search
+
         table#tableData.table.table-bordered.table-striped.table.text-center
           th Title
           th Type
@@ -47,6 +47,6 @@ block content
                     | #{r.producer.name}
               td #{r.downloads}
               td #{r.favs}
-        
+
         a.btn.btn-primary.w-100.my-3(href='/resources/upload') Upload
 

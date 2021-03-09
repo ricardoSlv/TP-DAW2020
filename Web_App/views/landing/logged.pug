@@ -83,12 +83,12 @@ block content
             tr
               td 
                 a(href='/users/' + u._id)
-                    img.me-1.rounded(src='/users/'+ u._id + '/picture' alt='...' style='height:1.5em; width:1.5em; object-fit: cover;')
-                    | #{u.name}
+                  img.me-1.rounded(src='/users/'+ u._id + '/picture' alt='...' style='height:1.5em; width:1.5em; object-fit: cover;')
+                  | #{u.name}
               td #{u.course}
               if (u.position == "STUD")
                 td Student
               else 
                 td Teacher
               td #{u.favs}
-      
+

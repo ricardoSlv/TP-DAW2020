@@ -5,6 +5,6 @@ block content
     .d-flex.justify-content-center.align-items-center.flex-column.my-5
       h1.em4.text-center=`Error: ${error.status}`
       img.my-5(src="/error.svg" style="width:400px; height:400px")
-      
+
       h3= message
       pre(style="font-size:1.5em") #{error.stack}

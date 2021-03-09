@@ -4,7 +4,7 @@ block content
   section.container
     .row.justify-content-center
       .col-lg-8
-        
+
         h1.m-4.text-center #{post.title}
         h2.m-4.text-center #{post.subtitle}
         .d-flex.justify-content-between
@@ -20,7 +20,7 @@ block content
             p #{post.favs} Favourites
           else
             p 0 Favourites
-        
+
         h4 Themes:
         ul.list-group
           each t in post.themes
@@ -44,7 +44,7 @@ block content
               .form-group
                 textarea.form-control(rows='3' name='text' style='height: 6em;')
               button.btn.btn-primary.my-2(type='submit') Submit
-        
+
         h4 Comments:
         .my-5
           each c in post.comments

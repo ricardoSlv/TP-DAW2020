@@ -8,20 +8,20 @@ block content
         //Does a GET on resources/?filterType="filterType"&filter="filter"&sortType="sortType" by default
         form#searchform.my-4.d-flex.align-items-center
 
-            input.mx-1#filter.form-control(type='text' name='titleFilter' defaultValue='' placeholder='Filter Title')
+          input.mx-1#filter.form-control(type='text' name='titleFilter' defaultValue='' placeholder='Filter Title')
 
-            input.mx-1#filter.form-control(type='text' name='prodFilter' defaultValue='' placeholder='Filter Producer')
+          input.mx-1#filter.form-control(type='text' name='prodFilter' defaultValue='' placeholder='Filter Producer')
 
-            select.mx-1#sorttype.form-select(name='sortType')
-              option(selected='' value='') Select sort type
-              option(value='title') Title
-              option(value='themes') Theme
-              option(value='views') Views
-              option(value='favs') Favourites
-              option(value='producer') Producer
-              option(value='createdAt') Creation Date
-          
-            button.mx-1.btn.btn-primary.btn-block(type='submit') Search
+          select.mx-1#sorttype.form-select(name='sortType')
+            option(selected='' value='') Select sort type
+            option(value='title') Title
+            option(value='themes') Theme
+            option(value='views') Views
+            option(value='favs') Favourites
+            option(value='producer') Producer
+            option(value='createdAt') Creation Date
+
+          button.mx-1.btn.btn-primary.btn-block(type='submit') Search
 
         table#tableData.table.table-bordered.table-striped.table.text-center
           th Title
@@ -43,5 +43,5 @@ block content
                     | #{p.producer.name}
               td #{p.views}
               td #{p.favs}
-        
+
         a.btn.btn-primary.w-100.my-3(href='/posts/upload') New Post

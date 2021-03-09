@@ -2,7 +2,7 @@
 
 /**
  * Module dependencies.
-*/
+ */
 
 import app from '../app.js'
 //const debug = require('debug')('dawexpress:server')
@@ -58,9 +58,7 @@ function onError(error) {
     throw error
   }
 
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port
+  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -80,5 +78,5 @@ function onError(error) {
  */
 
 function onListening() {
-  console.log("Server listening on: " + port + " ...")
+  console.log('Server listening on: ' + port + ' ...')
 }
